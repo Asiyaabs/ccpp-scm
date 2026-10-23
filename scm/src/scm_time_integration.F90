@@ -68,6 +68,7 @@ subroutine do_time_step(scm_state, physics, cdata, in_spinup)
   !! @{
 
   !> - Call apply_forcing_* from \ref forcing. This routine updates the "input" state variables for the physics call (updates filtered values from previous timestep, if leapfrog scheme). It effectively replaces the change of the state variables due to dynamics.
+  if (.not. scm_state%debug_disable_forcing) then
   select case(scm_state%time_scheme)
     case(1)
       if (scm_state%input_type == 0) then
@@ -89,6 +90,7 @@ subroutine do_time_step(scm_state, physics, cdata, in_spinup)
         call apply_forcing_DEPHY(scm_state, in_spinup)
       end if
   end select
+  end if
 
   if (scm_state%time_scheme == 2) then
     !IPD cdata points to time level 2 for updating state variables; update time level 2 state variables with those where the forcing has been applied this time step

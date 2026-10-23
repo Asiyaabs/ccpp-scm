@@ -1,0 +1,5 @@
+Waiting on job launch; 7476630.desched1 with qsub arguments:
+    qsub  -l select=1:ncpus=1 -A UALB0055 -q develop@desched1 -l walltime=00:10:00
+
+There was an error reading the namelist case_config in the file input_experiment.nml; error code = 19
+error opening namelist

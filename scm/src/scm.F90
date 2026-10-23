@@ -184,7 +184,53 @@ subroutine scm_main_sub()
 
   call physics%associate(scm_state)
   call physics%set(scm_input_instance, scm_state)
+  scm_state%tagging = physics%Model%tagging
+  if (physics%Model%tagging) then
+     scm_state%qv_tag_index = get_tracer_index(scm_state%tracer_names, "qv_tag")
+  else
+     scm_state%qv_tag_index = 0
+  end if
 
+  if (scm_state%tagging .and. scm_state%qv_tag_index > 0) then
+     block
+       integer :: itag, rsp(6)
+       character(len=6), parameter :: tnames(6) = (/ "qv_tag","ql_tag","qi_tag","qr_tag","qs_tag","qg_tag" /)
+       do itag = 0, 5
+          if (get_tracer_index(scm_state%tracer_names, trim(tnames(itag+1))) /= scm_state%qv_tag_index + itag) then
+             write(*,*) "ERROR: tag tracers must be contiguous and ordered: qv,ql,qi,qr,qs,qg _tag"
+             stop 1
+          end if
+       end do
+       rsp = (/ scm_state%water_vapor_index, scm_state%cloud_water_index, scm_state%cloud_ice_index, &
+                scm_state%rain_index, scm_state%snow_index, scm_state%graupel_index /)
+       do itag = 0, 5
+          select case (scm_state%qv_tag_init_mode)
+          case (1)
+             ! unchanged for qv_tag (uniform 1.0); hydrometeor tags start at 0
+             if (itag == 0) then
+                scm_state%state_tracer(:,:,scm_state%qv_tag_index,1) = 1.0
+             else
+                scm_state%state_tracer(:,:,scm_state%qv_tag_index+itag,1) = 0.0
+             end if
+          case (2)
+             if (rsp(itag+1) > 0) then
+                scm_state%state_tracer(:,:,scm_state%qv_tag_index+itag,1) = scm_state%state_tracer(:,:,rsp(itag+1),1)
+             else
+                scm_state%state_tracer(:,:,scm_state%qv_tag_index+itag,1) = 0.0
+             end if
+          case default   ! mode 0 and anything else
+             scm_state%state_tracer(:,:,scm_state%qv_tag_index+itag,1) = 0.0
+          end select
+       end do
+       ! floor water gets the same tagged fraction as the initial water of the run
+       if (scm_state%qv_tag_init_mode == 2) then
+          physics%Model%qvtag_floor_frac = 1.0
+       else
+          physics%Model%qvtag_floor_frac = 0.0
+       end if       
+     end block
+  end if
+  
   ! When asked to calculate 3-dim. tendencies, set Stateout variables to
   ! Statein variables here in order to capture the first call to dycore
   if (physics%Model%ldiag3d) then
@@ -247,12 +293,14 @@ subroutine scm_main_sub()
 
     call calc_pres_exner_geopotential(1, scm_state)
 
+    if (.not. scm_state%debug_disable_forcing) then
     if (scm_state%input_type == 0) then
       call apply_forcing_forward_Euler(scm_state, in_spinup)
     else
       call apply_forcing_DEPHY(scm_state, in_spinup)
     end if
 
+    end if
     !apply_forcing_forward_Euler updates state variables time level 1, so must copy this data to time_level 2 (where cdata points)
     scm_state%state_T(:,:,2) = scm_state%state_T(:,:,1)
     scm_state%state_tracer(:,:,:,2) = scm_state%state_tracer(:,:,:,1)

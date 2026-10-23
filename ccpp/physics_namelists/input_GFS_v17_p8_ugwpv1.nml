@@ -5,6 +5,7 @@
   qdiag3d      = .true.
   print_diff_pgr = .false.
   fhcyc        = 24
+  tagging = .true.	
   use_ufo      = .true.
   pre_rad      = .false.
   imp_physics  = 8

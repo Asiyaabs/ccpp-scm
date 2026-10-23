@@ -1,0 +1,1 @@
+/glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/data/physics_input_data/aeroclim.m05.nc

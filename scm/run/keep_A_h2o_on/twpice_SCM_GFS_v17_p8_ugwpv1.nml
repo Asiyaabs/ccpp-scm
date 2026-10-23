@@ -1,0 +1,17 @@
+&case_config
+    debug_disable_forcing = .false.
+    case_name = 'twpice'
+    column_area = 2000000000.0
+    input_type = 1
+    reference_profile_choice = 1
+    sfc_roughness_length_cm = 0.02
+    qv_tag_init_mode = 2
+    n_itt_out = 6
+    n_itt_diag = 6
+    dt = 600.0
+    output_dir = 'output_twpice_SCM_GFS_v17_p8_ugwpv1'
+/
+&physics_config
+    physics_nml = 'input_GFS_v17_p8_ugwpv1.nml'
+    physics_suite = 'SCM_GFS_v17_p8_ugwpv1'
+/

@@ -1232,6 +1232,8 @@ module GFS_typedefs
     logical              :: hybedmf         !< flag for hybrid edmf pbl scheme
     logical              :: satmedmf        !< flag for scale-aware TKE-based moist edmf
                                             !< vertical turbulent mixing scheme
+    logical              :: tagging       !< flag to enable water tagging (dye-tracking) framework
+    real(kind=kind_phys) :: qvtag_floor_frac !< tagged fraction of MP vapor-floor water (1 if init mode 2, else 0)
     logical              :: tte_edmf        !< flag for scale-aware TTE-based moist edmf
                                             !< vertical turbulent mixing scheme
     logical              :: shinhong        !< flag for scale-aware Shinhong vertical turbulent mixing scheme
@@ -1542,6 +1544,7 @@ module GFS_typedefs
     logical, pointer :: is_photochem(:) => null()!< flags for which processes should be summed as photochemical
 
     integer              :: ntqv            !< tracer index for water vapor (specific humidity)
+    integer              :: nqvtag          !< tracer index for tagged water vapor (specific humidity); 0 if tagging disabled
     integer              :: ntoz            !< tracer index for ozone mixing ratio
     integer              :: ntcw            !< tracer index for cloud condensate (or liquid water)
     integer              :: ntiw            !< tracer index for ice water
@@ -3899,6 +3902,7 @@ module GFS_typedefs
                                                                       !< vertical turbulent mixing scheme
     logical              :: tte_edmf       = .false.                  !< flag for scale-aware TTE-based moist edmf
                                                                       !< vertical turbulent mixing scheme
+    logical              :: tagging        = .false.                  !< flag to enable water tagging
     logical              :: shinhong       = .false.                  !< flag for scale-aware Shinhong vertical turbulent mixing scheme
     logical              :: do_ysu         = .false.                  !< flag for YSU vertical turbulent mixing scheme
     logical              :: acm            = .false.                  !< flag for ACM vertical turbulent mixing scheme
@@ -4346,7 +4350,8 @@ module GFS_typedefs
                                do_myjsfc, do_myjpbl,                                        &
                                hwrf_samfdeep, hwrf_samfshal,progsigma,progomega,betascu,    &
                                betamcu, betadcu,h2o_phys, pdfcld, shcnvcw, redrag,          &
-                               hybedmf, satmedmf, tte_edmf, sigmab_coldstart,               &
+                               !hybedmf, satmedmf, tte_edmf, sigmab_coldstart,              &
+                               hybedmf, satmedmf, tagging, tte_edmf, sigmab_coldstart,      &
                                shinhong, do_ysu, dspheat, lheatstrg, lseaspray, cnvcld,     &
                                xr_cnvcld, random_clds, shal_cnv, imfshalcnv, imfdeepcnv,    &
                                isatmedmf, conv_cf_opt, do_deep, jcap, cscale,               &
@@ -4526,9 +4531,11 @@ module GFS_typedefs
       error stop
     else
       open (unit=nlunit, file=fn_nml, action='READ', status='OLD', iostat=ios)
+    print*,trim(fn_nml),ios
     endif
     rewind(nlunit)
     read (nlunit, nml=gfs_physics_nml)
+    print*,tagging
     close (nlunit)
     ! Set length (number of lines) in namelist for internal reads
     Model%input_nml_file_length = 0
@@ -5346,6 +5353,8 @@ module GFS_typedefs
     Model%hybedmf           = hybedmf
     Model%satmedmf          = satmedmf
     Model%tte_edmf          = tte_edmf
+    Model%tagging           = tagging
+    Model%qvtag_floor_frac  = 0.0
     Model%shinhong          = shinhong
     Model%do_ysu            = do_ysu
     Model%acm               = acm
@@ -5602,6 +5611,12 @@ module GFS_typedefs
     allocate (Model%tracer_names(Model%ntrac))
     Model%tracer_names(:)  = tracer_names(:)
     Model%ntqv             = get_tracer_index(Model%tracer_names, 'sphum')
+    if (Model%tagging) then
+       Model%nqvtag = get_tracer_index(Model%tracer_names, 'qv_tag')
+    else
+       Model%nqvtag = 0
+    end if
+    
 #ifdef MULTI_GASES
     Model%nto              = get_tracer_index(Model%tracer_names, 'spo')
     Model%nto2             = get_tracer_index(Model%tracer_names, 'spo2')

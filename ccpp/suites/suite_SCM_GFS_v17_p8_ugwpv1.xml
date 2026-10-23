@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <suite name="SCM_GFS_v17_p8_ugwpv1" version="1">
   <!-- <init></init> -->
@@ -28,7 +28,7 @@
       <scheme>GFS_suite_interstitial_1</scheme>
       <scheme>GFS_surface_generic_pre</scheme>
       <scheme>GFS_surface_composites_pre</scheme>
-      <scheme>dcyc2t3</scheme>
+        <scheme>dcyc2t3</scheme>
       <scheme>GFS_surface_composites_inter</scheme>
       <scheme>GFS_suite_interstitial_2</scheme>
     </subcycle>
@@ -69,14 +69,14 @@
       <scheme>samfshalcnv</scheme>
       <scheme>GFS_SCNV_generic_post</scheme>
       <scheme>GFS_suite_interstitial_4</scheme>
-      <scheme>cnvc90</scheme>
+      <!--<scheme>cnvc90</scheme>-->
       </subcycle>
       <subcycle loop="1">
-        <scheme>mp_thompson</scheme>
+	<scheme>mp_thompson</scheme>
       </subcycle>
-        <subcycle loop="1">
-        <scheme>mp_thompson_post</scheme>
-        <scheme>GFS_MP_generic_post</scheme>
+      <subcycle loop="1">
+	<scheme>mp_thompson_post</scheme>
+	<scheme>GFS_MP_generic_post</scheme>
         <scheme>maximum_hourly_diagnostics</scheme>
         <scheme>GFS_physics_post</scheme>
       </subcycle>

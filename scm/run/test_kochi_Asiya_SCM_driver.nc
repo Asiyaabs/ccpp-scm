@@ -1,0 +1,1 @@
+/glade/u/home/asiyab/SWI_repos/ccpp-scm/scm/data/processed_case_input/test_kochi_Asiya_SCM_driver.nc

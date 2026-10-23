@@ -205,6 +205,7 @@ module CCPP_typedefs
     integer                             :: ntrwx                         !<
     integer                             :: ntk                           !<
     integer                             :: ntkev                         !<
+    integer                             :: nqvtagv                       !<
     integer                             :: nvdiff                        !<
     real (kind=kind_phys), pointer      :: oa4(:,:)           => null()  !<
     real (kind=kind_phys), pointer      :: oc(:)              => null()  !<
@@ -230,6 +231,18 @@ module CCPP_typedefs
     real (kind=kind_phys), pointer      :: rainmp(:)          => null()  !<
     real (kind=kind_phys), pointer      :: raincd(:)          => null()  !<
     real (kind=kind_phys), pointer      :: raincs(:)          => null()  !<
+    real (kind=kind_phys), pointer      :: raincd_tag(:)      => null()  !< tagged deep convective precip (m per step)
+    real (kind=kind_phys), pointer      :: raincs_tag(:)      => null()  !< tagged shallow convective precip (m per step)
+    real (kind=kind_phys), pointer      :: rainmp_tag(:)      => null()  !< tagged explicit (MP) rain (m per step)
+    real (kind=kind_phys), pointer      :: snowmp_tag(:)      => null()  !< tagged explicit (MP) snow+graupel+ice (m per step)
+    real (kind=kind_phys), pointer      :: precc(:)           => null()  !< CESM PRECC  convective precip, rain+snow (m per step)
+    real (kind=kind_phys), pointer      :: precsc(:)          => null()  !< CESM PRECSC convective snow (m per step)
+    real (kind=kind_phys), pointer      :: precl(:)           => null()  !< CESM PRECL  large-scale precip, all phases (m per step)
+    real (kind=kind_phys), pointer      :: precsl(:)          => null()  !< CESM PRECSL large-scale snow+graupel+ice (m per step)
+    real (kind=kind_phys), pointer      :: precrc_tag(:)      => null()  !< iCESM PRECRC tagged convective rain (m per step)
+    real (kind=kind_phys), pointer      :: precsc_tag(:)      => null()  !< iCESM PRECSC tagged convective snow (m per step)
+    real (kind=kind_phys), pointer      :: precrl_tag(:)      => null()  !< iCESM PRECRL tagged large-scale rain (m per step)
+    real (kind=kind_phys), pointer      :: precsl_tag(:)      => null()  !< iCESM PRECSL tagged large-scale snow+graupel+ice (m per step)
     real (kind=kind_phys), pointer      :: rainmcadj(:)       => null()  !<
     real (kind=kind_phys), pointer      :: rainp(:,:)         => null()  !<
     real (kind=kind_phys), pointer      :: rb(:)              => null()  !<
@@ -581,6 +594,18 @@ contains
     allocate (Interstitial%qss_water       (ixs:ixe))
     allocate (Interstitial%raincd          (ixs:ixe))
     allocate (Interstitial%raincs          (ixs:ixe))
+    allocate (Interstitial%raincd_tag      (ixs:ixe))
+    allocate (Interstitial%raincs_tag      (ixs:ixe))
+    allocate (Interstitial%rainmp_tag      (ixs:ixe))
+    allocate (Interstitial%snowmp_tag      (ixs:ixe))
+    allocate (Interstitial%precc           (ixs:ixe))
+    allocate (Interstitial%precsc          (ixs:ixe))
+    allocate (Interstitial%precl           (ixs:ixe))
+    allocate (Interstitial%precsl          (ixs:ixe))
+    allocate (Interstitial%precrc_tag      (ixs:ixe))
+    allocate (Interstitial%precsc_tag      (ixs:ixe))
+    allocate (Interstitial%precrl_tag      (ixs:ixe))
+    allocate (Interstitial%precsl_tag      (ixs:ixe))
     allocate (Interstitial%rainmcadj       (ixs:ixe))
     allocate (Interstitial%rainp           (ixs:ixe,Model%levs))
     allocate (Interstitial%rb              (ixs:ixe))
@@ -942,6 +967,18 @@ contains
     deallocate (Interstitial%qss_water)
     deallocate (Interstitial%raincd)
     deallocate (Interstitial%raincs)
+    deallocate (Interstitial%raincd_tag)
+    deallocate (Interstitial%raincs_tag)
+    deallocate (Interstitial%rainmp_tag)
+    deallocate (Interstitial%snowmp_tag)
+    deallocate (Interstitial%precc)
+    deallocate (Interstitial%precsc)
+    deallocate (Interstitial%precl)
+    deallocate (Interstitial%precsl)
+    deallocate (Interstitial%precrc_tag)
+    deallocate (Interstitial%precsc_tag)
+    deallocate (Interstitial%precrl_tag)
+    deallocate (Interstitial%precsl_tag)
     deallocate (Interstitial%rainmcadj)
     deallocate (Interstitial%rainp)
     deallocate (Interstitial%rb)
@@ -1144,6 +1181,7 @@ contains
     Interstitial%itc              = 0
     Interstitial%ntk              = 0
     Interstitial%ntkev            = 0
+    Interstitial%nqvtagv          = 0
     Interstitial%tracers_total    = 0
     Interstitial%otspt(:,:)       = .true.
     Interstitial%otsptflag(:)     = .true.
@@ -1165,6 +1203,12 @@ contains
       else
         Interstitial%nvdiff = 9
       endif
+
+      if (Model%tagging) then
+        Interstitial%nvdiff = Interstitial%nvdiff + 6
+        Interstitial%nqvtagv = Interstitial%nvdiff - 5
+      endif
+     
       if (Model%satmedmf) Interstitial%nvdiff = Interstitial%nvdiff + 1
     elseif ( Model%imp_physics == Model%imp_physics_nssl ) then
       if (Model%me == Model%master)  write(0,*) 'nssl_settings1: nvdiff,ntrac = ', Interstitial%nvdiff, Model%ntrac
@@ -1261,6 +1305,9 @@ contains
       if (Model%ntke > 0) Interstitial%nvdiff = Interstitial%nvdiff + 1    !  adding tke to the list
     endif
 
+    print *, 'DBG SIZES: ntrac=', Model%ntrac, ' nvdiff=', Interstitial%nvdiff, &
+         ' nqvtagv=', Interstitial%nqvtagv
+    
     if (Model%ntke > 0) Interstitial%ntkev = Interstitial%nvdiff
 
     if (Model%ntiw > 0) then
@@ -1300,7 +1347,9 @@ contains
                   n /= Model%nthl  .and. n /= Model%nthnc .and. n /= Model%ntgv    .and. &
                   n /= Model%nthv  .and. n /= Model%ntccn .and. n /= Model%ntccna  .and. &
                   n /= Model%ntrz  .and. n /= Model%ntgz  .and. n /= Model%nthz    .and. &
-                  n /= Model%ntsigma .and.  n /= Model%ntomega)
+                  !n /= Model%ntsigma .and.  n /= Model%ntomega)
+                  n /= Model%ntsigma .and.  n /= Model%ntomega                     .and. &
+                  .not. (Model%nqvtag > 0 .and. n > Model%nqvtag .and. n <= Model%nqvtag+5))
         Interstitial%otsptflag(n) = ltest
         if ( ltest ) then
           tracers = tracers + 1
@@ -1497,6 +1546,18 @@ contains
     Interstitial%raddt           = clear_val
     Interstitial%raincd          = clear_val
     Interstitial%raincs          = clear_val
+    Interstitial%raincd_tag      = clear_val
+    Interstitial%raincs_tag      = clear_val
+    Interstitial%rainmp_tag      = clear_val
+    Interstitial%snowmp_tag      = clear_val
+    Interstitial%precc           = clear_val
+    Interstitial%precsc          = clear_val
+    Interstitial%precl           = clear_val
+    Interstitial%precsl          = clear_val
+    Interstitial%precrc_tag      = clear_val
+    Interstitial%precsc_tag      = clear_val
+    Interstitial%precrl_tag      = clear_val
+    Interstitial%precsl_tag      = clear_val
     Interstitial%rainmcadj       = clear_val
     Interstitial%rainp           = clear_val
     Interstitial%rb              = clear_val

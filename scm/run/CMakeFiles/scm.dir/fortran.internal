@@ -1,0 +1,16 @@
+# The fortran modules provided by this target.
+provides
+ ccpp_static_api.mod
+ data_qc.mod
+ missing_values.mod
+ netcdf_def.mod
+ netcdf_put.mod
+ netcdf_read.mod
+ scm_forcing.mod
+ scm_input.mod
+ scm_main.mod
+ scm_output.mod
+ scm_setup.mod
+ scm_time_integration.mod
+ scm_utils.mod
+ scm_vgrid.mod

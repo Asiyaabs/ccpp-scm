@@ -1,7 +1,9 @@
 &case_config
+  debug_disable_forcing = .false.
     case_name = 'twpice'
     column_area = 2000000000.0
     input_type = 1
     reference_profile_choice = 1
     sfc_roughness_length_cm = 0.02
+    qv_tag_init_mode = 0
 /

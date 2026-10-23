@@ -1,0 +1,25 @@
+Waiting on job launch; 7650470.desched1 with qsub arguments:
+    qsub  -l select=1:ncpus=1 -A UALB0055 -q develop@desched1 -l walltime=00:10:00
+
+WARNING: The SCM_ROOT environment variable is not set. Using default value:
+/glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev
+INFO: SCM-run: Using single provided case
+INFO: Using default namelist for suite=SCM_GFS_v17_p8_ugwpv1
+INFO: Using default tracer file for suite=SCM_GFS_v17_p8_ugwpv1
+INFO: | twpice | SCM_GFS_v17_p8_ugwpv1 | input_GFS_v17_p8_ugwpv1.nml |
+INFO: Executing process 1 of 1: case=twpice, suite=SCM_GFS_v17_p8_ugwpv1, namelist=input_GFS_v17_p8_ugwpv1.nml
+INFO: Parsing case configuration namelist /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/etc/case_config/twpice.nml
+INFO: Creating experiment configuration namelist input_experiment.nml in the run directory from /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/etc/case_config/twpice.nml using SCM_GFS_v17_p8_ugwpv1 and input_GFS_v17_p8_ugwpv1.nml
+INFO: Using 600.0s as the timestep with an instantaneous output period of 3600.0s and a diagnostic output period of 3600.0s
+INFO: Passing control to "(cd /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run && time  /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/scm)"
+INFO: Process "(cd /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run && time  /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/scm)" returned with status 0
+INFO: Process "(case=twpice, suite=SCM_GFS_v17_p8_ugwpv1, namelist=input_GFS_v17_p8_ugwpv1.nml" completed successfully
+INFO:     Elapsed time: 76.453s
+
+Passing Summary:
+-------------------------------------------------------------------------
+| Passing Case | Suite                 | Namelist                    | Status |
+-------------------------------------------------------------------------
+| twpice | SCM_GFS_v17_p8_ugwpv1 | input_GFS_v17_p8_ugwpv1.nml | 0      |
+-------------------------------------------------------------------------
+[1/1] passing cases

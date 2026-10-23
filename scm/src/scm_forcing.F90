@@ -752,7 +752,8 @@ subroutine apply_forcing_leapfrog(scm_state)
   type(scm_state_type), intent(inout) :: scm_state
 
   real(kind=dp) :: old_u(scm_state%n_cols, scm_state%n_levels), old_v(scm_state%n_cols, scm_state%n_levels), &
-    old_T(scm_state%n_cols, scm_state%n_levels), old_qv(scm_state%n_cols, scm_state%n_levels)
+       old_T(scm_state%n_cols, scm_state%n_levels), old_qv(scm_state%n_cols, scm_state%n_levels)
+  real(kind=dp) :: old_qv_tag_val
   real(kind=dp) :: w_ls_i(scm_state%n_cols, scm_state%n_levels+1), zi(scm_state%n_cols, scm_state%n_levels+1)
   real(kind=dp) :: theta(scm_state%n_cols, scm_state%n_levels)
 
@@ -914,8 +915,18 @@ subroutine apply_forcing_leapfrog(scm_state)
       scm_state%state_u(i,k,1) = old_u(i,k) + 2.0*scm_state%dt*scm_state%u_force_tend(i,k)
       scm_state%state_v(i,k,1) = old_v(i,k) + 2.0*scm_state%dt*scm_state%v_force_tend(i,k)
       scm_state%state_T(i,k,1) = scm_state%state_T(i,k,1) + 2.0*scm_state%dt*(scm_state%T_force_tend(i,k))
+      if (scm_state%tagging .and. scm_state%qv_tag_index > 0) then
+        old_qv_tag_val = scm_state%state_tracer(i,k,scm_state%qv_tag_index,1)
+      end if
       scm_state%state_tracer(i,k,scm_state%water_vapor_index,1) = scm_state%state_tracer(i,k,scm_state%water_vapor_index,1) + &
         2.0*scm_state%dt*(scm_state%qv_force_tend(i,k))
+      if (scm_state%tagging .and. scm_state%qv_tag_index > 0) then
+        if (scm_state%qv_force_tend(i,k) < 0.0 .and. old_qv(i,k) > 0.0) then
+          scm_state%state_tracer(i,k,scm_state%qv_tag_index,1) = old_qv_tag_val * &
+            (scm_state%state_tracer(i,k,scm_state%water_vapor_index,1) / old_qv(i,k))
+        end if
+      end if
+  
       ! scm_state%state_u(i,k,1) = old_u(i,k) + scm_state%dt*scm_state%u_force_tend(i,k)
       ! scm_state%state_v(i,k,1) = old_v(i,k) + scm_state%dt*scm_state%v_force_tend(i,k)
       ! scm_state%state_T(i,k,1) = scm_state%state_T(i,k,1) + scm_state%dt*(scm_state%T_force_tend(i,k))
@@ -933,7 +944,8 @@ subroutine apply_forcing_forward_Euler(scm_state, in_spinup)
   logical, intent(in) :: in_spinup
 
   real(kind=dp) :: old_u(scm_state%n_cols, scm_state%n_levels), old_v(scm_state%n_cols, scm_state%n_levels), &
-    old_T(scm_state%n_cols, scm_state%n_levels), old_qv(scm_state%n_cols, scm_state%n_levels)
+       old_T(scm_state%n_cols, scm_state%n_levels), old_qv(scm_state%n_cols, scm_state%n_levels)
+  real(kind=dp) :: old_qv_tag_val
   real(kind=dp) :: w_ls_i(scm_state%n_cols, scm_state%n_levels+1), zi(scm_state%n_cols, scm_state%n_levels+1)
   real(kind=dp) :: theta(scm_state%n_cols, scm_state%n_levels)
 
@@ -1108,12 +1120,23 @@ subroutine apply_forcing_forward_Euler(scm_state, in_spinup)
       !!   \f[
       !!   x^{\tau + 1} = x^{\tau} + \Delta t\frac{\partial x}{\partial t}|^\tau_{forcing}
       !!   \f]
-      !!   \f$x^{\tau}\f$ is the value at the previous time step and \f$\frac{\partial x}{\partial t}|^\tau_{forcing}\f$ is the sum of forcing terms calculated in this time step.
+       !!   \f$x^{\tau}\f$ is the value at the previous time step and \f$\frac{\partial x}{\partial t}|^\tau_{forcing}\f$ is the sum of forcing terms calculated in this time step.
+
       scm_state%state_u(i,k,1) = old_u(i,k) + scm_state%dt*scm_state%u_force_tend(i,k)
       scm_state%state_v(i,k,1) = old_v(i,k) + scm_state%dt*scm_state%v_force_tend(i,k)
       scm_state%state_T(i,k,1) = scm_state%state_T(i,k,1) + scm_state%dt*(scm_state%T_force_tend(i,k))
+      if (scm_state%tagging .and. scm_state%qv_tag_index > 0) then
+        old_qv_tag_val = scm_state%state_tracer(i,k,scm_state%qv_tag_index,1)
+      end if
       scm_state%state_tracer(i,k,scm_state%water_vapor_index,1) = scm_state%state_tracer(i,k,scm_state%water_vapor_index,1) + &
         scm_state%dt*(scm_state%qv_force_tend(i,k))
+      if (scm_state%tagging .and. scm_state%qv_tag_index > 0) then
+        if (scm_state%qv_force_tend(i,k) < 0.0 .and. old_qv(i,k) > 0.0) then
+          scm_state%state_tracer(i,k,scm_state%qv_tag_index,1) = old_qv_tag_val * &
+            (scm_state%state_tracer(i,k,scm_state%water_vapor_index,1) / old_qv(i,k))
+        end if
+      end if
+      
     end do
   end do
   !> @}
@@ -1127,7 +1150,8 @@ subroutine apply_forcing_DEPHY(scm_state, in_spinup)
   logical, intent(in) :: in_spinup
 
   real(kind=dp) :: old_u(scm_state%n_cols, scm_state%n_levels), old_v(scm_state%n_cols, scm_state%n_levels), &
-    old_T(scm_state%n_cols, scm_state%n_levels), old_qv(scm_state%n_cols, scm_state%n_levels)
+       old_T(scm_state%n_cols, scm_state%n_levels), old_qv(scm_state%n_cols, scm_state%n_levels)
+  real(kind=dp) :: old_qv_tag_val
   real(kind=dp) :: theta(scm_state%n_cols, scm_state%n_levels)
 
   real(kind=dp) :: spinup_relax_time, omega_asc, omega_des, w_asc, w_des, gradient_asc, gradient_des, rho, adiabatic_exp_comp_term, &
@@ -1425,11 +1449,21 @@ subroutine apply_forcing_DEPHY(scm_state, in_spinup)
       scm_state%state_u(i,k,1) = old_u(i,k) + scm_state%dt*scm_state%u_force_tend(i,k)
       scm_state%state_v(i,k,1) = old_v(i,k) + scm_state%dt*scm_state%v_force_tend(i,k)
       scm_state%state_T(i,k,1) = scm_state%state_T(i,k,1) + scm_state%dt*(scm_state%T_force_tend(i,k))
+      if (scm_state%tagging .and. scm_state%qv_tag_index > 0) then
+        old_qv_tag_val = scm_state%state_tracer(i,k,scm_state%qv_tag_index,1)
+      end if
       scm_state%state_tracer(i,k,scm_state%water_vapor_index,1) = scm_state%state_tracer(i,k,scm_state%water_vapor_index,1) + &
         scm_state%dt*(scm_state%qv_force_tend(i,k))
+      if (scm_state%tagging .and. scm_state%qv_tag_index > 0) then
+        if (scm_state%qv_force_tend(i,k) < 0.0 .and. old_qv(i,k) > 0.0) then
+          scm_state%state_tracer(i,k,scm_state%qv_tag_index,1) = old_qv_tag_val * &
+            (scm_state%state_tracer(i,k,scm_state%water_vapor_index,1) / old_qv(i,k))
+        end if
+      end if
     end do
   end do
 
+   
 end subroutine apply_forcing_DEPHY
 
 subroutine set_spinup_nudging(scm_state)

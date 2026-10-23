@@ -1,0 +1,1 @@
+/glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/etc/tracer_config/tracers_GFS_v17_p8_ugwpv1.txt

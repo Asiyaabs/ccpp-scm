@@ -1,0 +1,4 @@
+Waiting on job launch; 6950689.desched1 with qsub arguments:
+    qsub  -V  -l select=1:ncpus=1:mem=55GB -A UALB0055 -q develop@desched1 -l walltime=01:00:00
+
+/bin/bash: ./run_scm.py: No such file or directory

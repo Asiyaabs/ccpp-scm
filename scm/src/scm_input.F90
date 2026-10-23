@@ -45,6 +45,12 @@ subroutine get_config_nml(scm_state)
   real(kind=dp)        :: dt !< time step in seconds
   real(kind=dp)        :: runtime !< total runtime in seconds
   real(kind=dp)        :: runtime_mult !< runtime multiplier
+  integer              :: qv_tag_init_mode !< qv_tag initial condition: 0=zero, 1=uniform 1.0, 2=qv(t=0)
+  character(len=32)    :: qv_tag_names(10)   !< water tag names for output (e.g. 'COL'); only the first is used for now
+  character(len=32)    :: qv_tag_sources(10) !< water tag source rule; only 'surface' is implemented for now
+  integer              :: n_tg
+  logical               :: debug_disable_forcing
+  
   integer              :: n_itt_out !< multiple of timestep for writing output
   integer              :: n_itt_diag !< multiple of timestep for resetting diagnostics (overwrites fhzero from physics namelist if present)
   integer              :: n_levels !< number of model levels (currently only 64 supported)
@@ -86,8 +92,7 @@ subroutine get_config_nml(scm_state)
     n_levels, output_dir, thermo_forcing_type, model_ics, &
     lsm_ics, do_spinup, do_sst_initialize_only, C_RES, spinup_timesteps, mom_forcing_type, relax_time, sfc_type, sfc_flux_spec, &
     sfc_roughness_length_cm, reference_profile_choice, year, month, day, hour, min, &
-    column_area, input_type
-
+    column_area, input_type, qv_tag_init_mode, debug_disable_forcing, qv_tag_names, qv_tag_sources  
   NAMELIST /physics_config/ physics_suite, physics_nml
 
   !>  \section get_config_alg Algorithm
@@ -128,7 +133,13 @@ subroutine get_config_nml(scm_state)
   hour = 3
   min = 0
   input_type = 0
-
+  qv_tag_init_mode = 0
+  qv_tag_names      = ''
+  qv_tag_sources    = ''
+  qv_tag_names(1)   = 'COL'
+  qv_tag_sources(1) = 'surface'
+  debug_disable_forcing = .false.
+  
   open(unit=10, file=experiment_namelist, status='old', action='read', iostat=ioerror)
   if(ioerror /= 0) then
     write(error_unit,'(a,i0)') 'There was an error opening the file ' // experiment_namelist // &
@@ -169,6 +180,21 @@ subroutine get_config_nml(scm_state)
 
   call scm_state%create(n_columns, n_levels, n_soil, n_snow, n_time_levels, tracer_names, tracer_types)
 
+  scm_state%qv_tag_init_mode = qv_tag_init_mode
+  ! qv_tag: tag list (only one 'surface' tag is implemented for now)
+  n_tg = count(len_trim(qv_tag_names) > 0)
+  if (n_tg /= 1 .or. len_trim(qv_tag_names(1)) == 0) then
+    write(*,*) 'qv_tag: exactly one tag in qv_tag_names(1) is supported for now; tags listed = ', n_tg
+    stop
+  end if
+  if (trim(qv_tag_sources(1)) /= 'surface') then
+    write(*,*) 'qv_tag: only qv_tag_sources = ''surface'' is implemented for now; got ', trim(qv_tag_sources(1))
+    stop
+  end if
+  scm_state%n_qv_tags      = n_tg
+  scm_state%qv_tag_names   = qv_tag_names
+  scm_state%qv_tag_sources = qv_tag_sources
+  scm_state%debug_disable_forcing = debug_disable_forcing
   scm_state%experiment_name = experiment_name
   scm_state%npz_type = npz_type
   scm_state%vert_coord_file = vert_coord_file

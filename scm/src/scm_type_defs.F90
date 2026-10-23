@@ -96,7 +96,14 @@ module scm_type_defs
     character(len=32), allocatable    :: tracer_names(:) !<
     integer,           allocatable    :: tracer_types(:) !<
     integer, allocatable              :: blksz(:)
-
+    integer                           :: qv_tag_index
+    logical                           :: tagging
+    integer                           :: qv_tag_init_mode
+    integer                           :: n_qv_tags            !< number of water tags listed (only 1 supported for now)
+    character(len=32)                 :: qv_tag_names(10)     !< water tag names, used in output field names (e.g. COL)
+    character(len=32)                 :: qv_tag_sources(10)   !< water tag source rule (only 'surface' implemented for now)
+    logical                           :: debug_disable_forcing
+    
     logical                           :: sfc_flux_spec !< flag for using specified surface fluxes instead of calling a surface scheme
     integer                           :: mom_forcing_type !< 1: "revealed forcing", 2: "horizontal advective forcing", 3: "relaxation forcing"
     integer                           :: thermo_forcing_type !< 1: "revealed forcing", 2: "horizontal advective forcing", 3: "relaxation forcing"
@@ -509,6 +516,13 @@ module scm_type_defs
     scm_state%smoke_index                     = get_tracer_index(scm_state%tracer_names,"smoke")
     scm_state%dust_index                      = get_tracer_index(scm_state%tracer_names,"dust")
     scm_state%coarsepm_index                  = get_tracer_index(scm_state%tracer_names,"coarsepm")
+    if (physics%Model%tagging) then
+       scm_state%qv_tag_index = get_tracer_index(scm_state%tracer_names,"qv_tag")
+    else
+       scm_state%qv_tag_index = 0
+    end if
+    scm_state%tagging = physics%Model%tagging
+    print *, "DEBUG scm_state_create: physics%Model%tagging = ", physics%Model%tagging
     
     scm_state%nwat = 0
     if(scm_state%water_vapor_index /= -99) then

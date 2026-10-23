@@ -1,0 +1,773 @@
+The system is: Linux - 6.4.0-150600.23.53-default - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /glade/u/apps/derecho/25.10/spack/opt/spack/ncarcompilers/1.1.0/intel-oneapi-compilers/2025.2.1/d7a7/bin/icx 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is IntelLLVM, found in "/glade/u/home/asiyab/SWI_repos/ccpp-scm/scm/bin/CMakeFiles/3.23.1/CompilerIdC/a.out"
+
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" succeeded.
+Compiler: /glade/u/apps/derecho/25.10/spack/opt/spack/ncarcompilers/1.1.0/intel-oneapi-compilers/2025.2.1/d7a7/bin/ifx 
+Build flags: 
+Id flags: -v 
+
+The output was:
+0
+ifx version 2023.2.0
+/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin/fpp    -D__INTEL_LLVM_COMPILER=20230200 -D__INTEL_LLVM_COMPILER_UPDATE=0 -D__INTEL_COMPILER=20230200 -D__INTEL_COMPILER_UPDATE=0 -D__unix__ -D__unix -D__linux__ -D__linux -D__gnu_linux__ -Dunix -Dlinux -D__ELF__ -D__x86_64 -D__x86_64__ -D__amd64 -D__amd64__ -D__INTEL_COMPILER_BUILD_DATE=20230721 -D__CRAY_X86_MILAN -D__CRAYXT_COMPUTE_LINUX_TARGET -I. -I/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include -I/glade/u/apps/derecho/23.09/opt/view/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-fortran-4.6.1-bds4ndu/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-c-4.9.2-njuismn/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/c-blosc-1.21.5-uoxtiqu/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zstd-1.5.2-z32seuu/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/snappy-1.1.10-x7yaer7/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/openblas-0.3.24-2zphhkk/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/curl-8.4.0-ylicq7b/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/nghttp2-1.57.0-744axjg/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/hdf5-1.14.0-nff76s4/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/python-3.10.13-amsag3y/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/util-linux-uuid-2.38.1-nu2z27d/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/sqlite-3.43.2-sawa33r/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zlib-1.2.13-53oqwlx/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/libxcrypt-4.4.35-mjdbffm/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/gettext-0.21.1-nr6oykc/include -I/opt/cray/libfabric/1.15.2.0/include -I/opt/cray/pe/mpich/8.1.25/ofi/intel/19.0/include -I/opt/cray/pe/gcc/12.2.0/snos/include -I/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/include -I/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include/intel64 -I/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include -I/usr/local/include -I/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/include -I/usr/include -fixed -4Ycpp -4Ncvf -f_com=yes -MX CMakeFortranCompilerId.F /glade/derecho/scratch/asiyab/tmp/ifx0328135480TeIoRQ/ifxWk1oYR.i
+#include "..." search starts here:
+#include <...> search starts here:
+ .
+ /glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include
+ /glade/u/apps/derecho/23.09/opt/view/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-fortran-4.6.1-bds4ndu/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-c-4.9.2-njuismn/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/c-blosc-1.21.5-uoxtiqu/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zstd-1.5.2-z32seuu/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/snappy-1.1.10-x7yaer7/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/openblas-0.3.24-2zphhkk/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/curl-8.4.0-ylicq7b/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/nghttp2-1.57.0-744axjg/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/hdf5-1.14.0-nff76s4/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/python-3.10.13-amsag3y/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/util-linux-uuid-2.38.1-nu2z27d/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/sqlite-3.43.2-sawa33r/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zlib-1.2.13-53oqwlx/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/libxcrypt-4.4.35-mjdbffm/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/gettext-0.21.1-nr6oykc/include
+ /opt/cray/libfabric/1.15.2.0/include
+ /opt/cray/pe/mpich/8.1.25/ofi/intel/19.0/include
+ /opt/cray/pe/gcc/12.2.0/snos/include
+ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/include
+ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include/intel64
+ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include
+ /usr/local/include
+ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/include
+ /usr/include
+End of search list.
+/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm/xfortcom    -triple x86_64-unknown-linux-gnu -emit-obj "-verify nomodule" -main-file-name CMakeFortranCompilerId.F -mllvm --relocation-model=static "-options-string -I/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include -I/glade/u/apps/derecho/23.09/opt/view/include -Wl,-rpath,/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib -Wl,-rpath,/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/x64 -Wl,-rpath,/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/host/linux64/lib -Wl,-rpath,/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/linux64/lib -Wl,-rpath,/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin --gcc-toolchain=/usr -march=core-avx2 -mtune=core-avx2 -D__CRAY_X86_MILAN -D__CRAYXT_COMPUTE_LINUX_TARGET -v -Wl,--disable-new-dtags -L/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/lib -L/glade/u/apps/derecho/23.09/opt/view/lib64 -L/glade/u/apps/derecho/23.09/opt/view/lib -Wl,-rpath,/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/lib -Wl,-rpath,/glade/u/apps/derecho/23.09/opt/view/lib64 -Wl,-rpath,/glade/u/apps/derecho/23.09/opt/view/lib -Wl,-rpath=/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/linux/compiler/lib/intel64 -Wl,--as-needed,-limf,--no-as-needed -Wl,--as-needed,-lm,--no-as-needed -Wl,--as-needed,-lpthread,--no-as-needed -Wl,--disable-new-dtags " -mframe-pointer=none -omp_simd -target-cpu core-avx2 -target-linker-version 2.43.1.20241209 -fveclib=SVML -mllvm -loopopt=1 -floopopt-pipeline=light -mllvm -disable-hir-generate-mkl-call -mllvm -paropt=11 -fintel-libirc-allowed -o /glade/derecho/scratch/asiyab/tmp/ifx0328135480TeIoRQ/ifx60Vi4P.o -D__INTEL_LLVM_COMPILER=20230200 -D__INTEL_LLVM_COMPILER_UPDATE=0 -D__unix__ -D__unix -D__linux__ -D__linux -D__gnu_linux__ -Dunix -Dlinux -D__ELF__ -D__x86_64 -D__x86_64__ -D__amd64 -D__amd64__ -D__INTEL_COMPILER_BUILD_DATE=20230721 -D__INTEL_COMPILER=20230200 -D__INTEL_COMPILER_UPDATE=0 -I. -I/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include -I/glade/u/apps/derecho/23.09/opt/view/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-fortran-4.6.1-bds4ndu/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-c-4.9.2-njuismn/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/c-blosc-1.21.5-uoxtiqu/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zstd-1.5.2-z32seuu/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/snappy-1.1.10-x7yaer7/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/openblas-0.3.24-2zphhkk/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/curl-8.4.0-ylicq7b/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/nghttp2-1.57.0-744axjg/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/hdf5-1.14.0-nff76s4/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/python-3.10.13-amsag3y/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/util-linux-uuid-2.38.1-nu2z27d/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/sqlite-3.43.2-sawa33r/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zlib-1.2.13-53oqwlx/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/libxcrypt-4.4.35-mjdbffm/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/gettext-0.21.1-nr6oykc/include -I/opt/cray/libfabric/1.15.2.0/include -I/opt/cray/pe/mpich/8.1.25/ofi/intel/19.0/include -I/opt/cray/pe/gcc/12.2.0/snos/include -I/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/include -I/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include/intel64 -I/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include -I/usr/local/include -I/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/include -I/usr/include -D__CRAY_X86_MILAN -D__CRAYXT_COMPUTE_LINUX_TARGET -omp_simd -O2 "-reentrancy threaded" "-unroll 2" -simd -offload_host /glade/derecho/scratch/asiyab/tmp/ifx0328135480TeIoRQ/ifxWk1oYR.i
+#include "..." search starts here:
+#include <...> search starts here:
+ .
+ /glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include
+ /glade/u/apps/derecho/23.09/opt/view/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-fortran-4.6.1-bds4ndu/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-c-4.9.2-njuismn/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/c-blosc-1.21.5-uoxtiqu/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zstd-1.5.2-z32seuu/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/snappy-1.1.10-x7yaer7/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/openblas-0.3.24-2zphhkk/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/curl-8.4.0-ylicq7b/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/nghttp2-1.57.0-744axjg/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/hdf5-1.14.0-nff76s4/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/python-3.10.13-amsag3y/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/util-linux-uuid-2.38.1-nu2z27d/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/sqlite-3.43.2-sawa33r/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zlib-1.2.13-53oqwlx/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/libxcrypt-4.4.35-mjdbffm/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/gettext-0.21.1-nr6oykc/include
+ /opt/cray/libfabric/1.15.2.0/include
+ /opt/cray/pe/mpich/8.1.25/ofi/intel/19.0/include
+ /opt/cray/pe/gcc/12.2.0/snos/include
+ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/include
+ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include/intel64
+ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include
+ /usr/local/include
+ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/include
+ /usr/include
+End of search list.
+ld    /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/crtbegin.o --eh-frame-hdr --build-id -dynamic-linker /lib64/ld-linux-x86-64.so.2 -m elf_x86_64 -L/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/lib -L/glade/u/apps/derecho/23.09/opt/view/lib64 -L/glade/u/apps/derecho/23.09/opt/view/lib -o a.out /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin/for_main.o -L/opt/cray/libfabric/1.15.2.0/lib64 -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/lib/linux -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/lib/x86_64-unknown-linux-gnu -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib -L/opt/cray/libfabric/1.15.2.0/lib64/../lib64 -L/opt/cray/libfabric/1.15.2.0/lib64/../lib64/ -L/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/ -L/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/../../../../lib64 -L/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/../../../../lib64/ -L/lib/../lib64 -L/lib/../lib64/ -L/usr/lib/../lib64 -L/usr/lib/../lib64/ -L/opt/cray/libfabric/1.15.2.0/lib64 -L/opt/cray/libfabric/1.15.2.0/lib64/ -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin/ -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/ -L/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/../../../ -L/lib64 -L/lib/ -L/usr/lib64 -L/usr/lib -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/x64 -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/host/linux64/lib -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/linux64/lib -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin /glade/derecho/scratch/asiyab/tmp/ifx0328135480TeIoRQ/ifx60Vi4P.o --disable-new-dtags -rpath /glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/lib -rpath /glade/u/apps/derecho/23.09/opt/view/lib64 -rpath /glade/u/apps/derecho/23.09/opt/view/lib -rpath=/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/linux/compiler/lib/intel64 --as-needed -limf --no-as-needed --as-needed -lm --no-as-needed --as-needed -lpthread --no-as-needed --disable-new-dtags -Bdynamic -Bstatic -lifport -lifcoremt -Bdynamic -limf -Bstatic -lsvml -Bdynamic -lm -Bstatic -lipgo -lirc -Bdynamic -lpthread -Bstatic -lsvml -Bdynamic -lc -lgcc -lgcc_s -Bstatic -lirc_s -Bdynamic -ldl -lc /opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/crtend.o /usr/lib/../lib64/crtn.o
+
+
+Compilation of the Fortran compiler identification source "CMakeFortranCompilerId.F" produced "a.out"
+
+The Fortran compiler identification is IntelLLVM, found in "/glade/u/home/asiyab/SWI_repos/ccpp-scm/scm/bin/CMakeFiles/3.23.1/CompilerIdFortran/a.out"
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /glade/u/home/asiyab/SWI_repos/ccpp-scm/scm/bin/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_fdf0f/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_fdf0f.dir/build.make CMakeFiles/cmTC_fdf0f.dir/build
+gmake[1]: Entering directory '/glade/u/home/asiyab/SWI_repos/ccpp-scm/scm/bin/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_fdf0f.dir/CMakeCCompilerABI.c.o
+/glade/u/apps/derecho/25.10/spack/opt/spack/ncarcompilers/1.1.0/intel-oneapi-compilers/2025.2.1/d7a7/bin/icx   -v -MD -MT CMakeFiles/cmTC_fdf0f.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_fdf0f.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_fdf0f.dir/CMakeCCompilerABI.c.o -c /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/cmake-3.23.1-oyzi2py/share/cmake-3.23/Modules/CMakeCCompilerABI.c
+Intel(R) oneAPI DPC++/C++ Compiler 2023.2.0 (2023.2.0.20230721)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm
+Configuration file: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm/../bin/icx.cfg
+Found candidate GCC installation: /usr/lib64/gcc/x86_64-suse-linux/12
+Found candidate GCC installation: /usr/lib64/gcc/x86_64-suse-linux/13
+Found candidate GCC installation: /usr/lib64/gcc/x86_64-suse-linux/14
+Found candidate GCC installation: /usr/lib64/gcc/x86_64-suse-linux/7
+Selected GCC installation: /usr/lib64/gcc/x86_64-suse-linux/14
+Candidate multilib: .;@m64
+Selected multilib: .;@m64
+ (in-process)
+ "/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm/clang" -cc1 -triple x86_64-unknown-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model static -fveclib=SVML -mframe-pointer=none -menable-no-infs -menable-no-nans -fapprox-func -funsafe-math-optimizations -fno-signed-zeros -mreassociate -freciprocal-math -fdenormal-fp-math=preserve-sign,preserve-sign -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -funwind-tables=2 -target-cpu core-avx2 -mllvm -x86-enable-unaligned-vector-move=true -tune-cpu core-avx2 -debugger-tuning=gdb -v -fcoverage-compilation-dir=/glade/u/home/asiyab/SWI_repos/ccpp-scm/scm/bin/CMakeFiles/CMakeTmp -resource-dir /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17 -dependency-file CMakeFiles/cmTC_fdf0f.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_fdf0f.dir/CMakeCCompilerABI.c.o -sys-header-deps -I /glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include -I /glade/u/apps/derecho/23.09/opt/view/include -D __CRAY_X86_MILAN -D __CRAYXT_COMPUTE_LINUX_TARGET -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-fortran-4.6.1-bds4ndu/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-c-4.9.2-njuismn/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/c-blosc-1.21.5-uoxtiqu/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zstd-1.5.2-z32seuu/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/snappy-1.1.10-x7yaer7/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/openblas-0.3.24-2zphhkk/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/curl-8.4.0-ylicq7b/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/nghttp2-1.57.0-744axjg/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/hdf5-1.14.0-nff76s4/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/python-3.10.13-amsag3y/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/util-linux-uuid-2.38.1-nu2z27d/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/sqlite-3.43.2-sawa33r/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zlib-1.2.13-53oqwlx/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/libxcrypt-4.4.35-mjdbffm/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/gettext-0.21.1-nr6oykc/include -I/opt/cray/libfabric/1.15.2.0/include -I/opt/cray/pe/mpich/8.1.25/ofi/intel/19.0/include -I/opt/cray/pe/gcc/12.2.0/snos/include -I/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/include -internal-isystem /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm/../compiler/include -internal-isystem /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/include -internal-isystem /usr/local/include -internal-isystem /usr/lib64/gcc/x86_64-suse-linux/14/../../../../x86_64-suse-linux/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -O2 -fdebug-compilation-dir=/glade/u/home/asiyab/SWI_repos/ccpp-scm/scm/bin/CMakeFiles/CMakeTmp -ferror-limit 19 -fheinous-gnu-extensions -fgnuc-version=4.2.1 -vectorize-loops -vectorize-slp -D__GCC_HAVE_DWARF2_CFI_ASM=1 -fintel-compatibility -fintel-libirc-allowed -mllvm -disable-hir-generate-mkl-call -mllvm -loopopt=1 -floopopt-pipeline=light -mllvm -intel-abi-compatible=true -o CMakeFiles/cmTC_fdf0f.dir/CMakeCCompilerABI.c.o -x c /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/cmake-3.23.1-oyzi2py/share/cmake-3.23/Modules/CMakeCCompilerABI.c
+clang -cc1 version 17.0.0 based upon LLVM 17.0.0git default target x86_64-unknown-linux-gnu
+ignoring nonexistent directory "/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include
+ /glade/u/apps/derecho/23.09/opt/view/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-fortran-4.6.1-bds4ndu/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-c-4.9.2-njuismn/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/c-blosc-1.21.5-uoxtiqu/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zstd-1.5.2-z32seuu/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/snappy-1.1.10-x7yaer7/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/openblas-0.3.24-2zphhkk/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/curl-8.4.0-ylicq7b/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/nghttp2-1.57.0-744axjg/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/hdf5-1.14.0-nff76s4/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/python-3.10.13-amsag3y/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/util-linux-uuid-2.38.1-nu2z27d/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/sqlite-3.43.2-sawa33r/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zlib-1.2.13-53oqwlx/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/libxcrypt-4.4.35-mjdbffm/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/gettext-0.21.1-nr6oykc/include
+ /opt/cray/libfabric/1.15.2.0/include
+ /opt/cray/pe/mpich/8.1.25/ofi/intel/19.0/include
+ /opt/cray/pe/gcc/12.2.0/snos/include
+ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/include
+ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm/../compiler/include
+ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/include
+ /usr/local/include
+ /usr/lib64/gcc/x86_64-suse-linux/14/../../../../x86_64-suse-linux/include
+ /usr/include
+End of search list.
+Linking C executable cmTC_fdf0f
+/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/cmake-3.23.1-oyzi2py/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fdf0f.dir/link.txt --verbose=1
+/glade/u/apps/derecho/25.10/spack/opt/spack/ncarcompilers/1.1.0/intel-oneapi-compilers/2025.2.1/d7a7/bin/icx  -v CMakeFiles/cmTC_fdf0f.dir/CMakeCCompilerABI.c.o -o cmTC_fdf0f 
+Intel(R) oneAPI DPC++/C++ Compiler 2023.2.0 (2023.2.0.20230721)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm
+Configuration file: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm/../bin/icx.cfg
+Found candidate GCC installation: /usr/lib64/gcc/x86_64-suse-linux/12
+Found candidate GCC installation: /usr/lib64/gcc/x86_64-suse-linux/13
+Found candidate GCC installation: /usr/lib64/gcc/x86_64-suse-linux/14
+Found candidate GCC installation: /usr/lib64/gcc/x86_64-suse-linux/7
+Selected GCC installation: /usr/lib64/gcc/x86_64-suse-linux/14
+Candidate multilib: .;@m64
+Selected multilib: .;@m64
+ "/usr/lib64/gcc/x86_64-suse-linux/14/../../../../x86_64-suse-linux/bin/ld" -z relro --hash-style=both --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_fdf0f /usr/lib64/gcc/x86_64-suse-linux/14/../../../../lib64/crt1.o /usr/lib64/gcc/x86_64-suse-linux/14/../../../../lib64/crti.o /usr/lib64/gcc/x86_64-suse-linux/14/crtbegin.o -L/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/lib -L/glade/u/apps/derecho/23.09/opt/view/lib64 -L/glade/u/apps/derecho/23.09/opt/view/lib -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm/../lib -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin -L/usr/lib64/gcc/x86_64-suse-linux/14 -L/usr/lib64/gcc/x86_64-suse-linux/14/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib64/gcc/x86_64-suse-linux/14/../../../../x86_64-suse-linux/lib -L/usr/lib64/gcc/x86_64-suse-linux/14/../../.. -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm/../lib -L/lib -L/usr/lib -L/opt/cray/libfabric/1.15.2.0/lib64 -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/x64 -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/host/linux64/lib -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/linux64/lib -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin CMakeFiles/cmTC_fdf0f.dir/CMakeCCompilerABI.c.o --disable-new-dtags -rpath /glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/lib -rpath /glade/u/apps/derecho/23.09/opt/view/lib64 -rpath /glade/u/apps/derecho/23.09/opt/view/lib -rpath=/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/linux/compiler/lib/intel64 --as-needed -limf --no-as-needed --as-needed -lm --no-as-needed --as-needed -lifcoremt --no-as-needed --as-needed -lifport --no-as-needed --as-needed -lpthread --no-as-needed --disable-new-dtags -Bstatic -lsvml -Bdynamic -Bstatic -lirng -Bdynamic -Bstatic -limf -Bdynamic -lm -lgcc --as-needed -lgcc_s --no-as-needed -Bstatic -lirc -Bdynamic -ldl -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed -Bstatic -lirc_s -Bdynamic /usr/lib64/gcc/x86_64-suse-linux/14/crtend.o /usr/lib64/gcc/x86_64-suse-linux/14/../../../../lib64/crtn.o
+gmake[1]: Leaving directory '/glade/u/home/asiyab/SWI_repos/ccpp-scm/scm/bin/CMakeFiles/CMakeTmp'
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include]
+    add: [/glade/u/apps/derecho/23.09/opt/view/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-fortran-4.6.1-bds4ndu/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-c-4.9.2-njuismn/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/c-blosc-1.21.5-uoxtiqu/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zstd-1.5.2-z32seuu/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/snappy-1.1.10-x7yaer7/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/openblas-0.3.24-2zphhkk/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/curl-8.4.0-ylicq7b/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/nghttp2-1.57.0-744axjg/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/hdf5-1.14.0-nff76s4/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/python-3.10.13-amsag3y/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/util-linux-uuid-2.38.1-nu2z27d/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/sqlite-3.43.2-sawa33r/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zlib-1.2.13-53oqwlx/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/libxcrypt-4.4.35-mjdbffm/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/gettext-0.21.1-nr6oykc/include]
+    add: [/opt/cray/libfabric/1.15.2.0/include]
+    add: [/opt/cray/pe/mpich/8.1.25/ofi/intel/19.0/include]
+    add: [/opt/cray/pe/gcc/12.2.0/snos/include]
+    add: [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/include]
+    add: [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm/../compiler/include]
+    add: [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/include]
+    add: [/usr/local/include]
+    add: [/usr/lib64/gcc/x86_64-suse-linux/14/../../../../x86_64-suse-linux/include]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include] ==> [/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include]
+  collapse include dir [/glade/u/apps/derecho/23.09/opt/view/include] ==> [/glade/u/apps/derecho/23.09/opt/view/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-fortran-4.6.1-bds4ndu/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-fortran-4.6.1-bds4ndu/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-c-4.9.2-njuismn/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-c-4.9.2-njuismn/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/c-blosc-1.21.5-uoxtiqu/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/c-blosc-1.21.5-uoxtiqu/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zstd-1.5.2-z32seuu/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zstd-1.5.2-z32seuu/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/snappy-1.1.10-x7yaer7/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/snappy-1.1.10-x7yaer7/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/openblas-0.3.24-2zphhkk/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/openblas-0.3.24-2zphhkk/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/curl-8.4.0-ylicq7b/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/curl-8.4.0-ylicq7b/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/nghttp2-1.57.0-744axjg/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/nghttp2-1.57.0-744axjg/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/hdf5-1.14.0-nff76s4/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/hdf5-1.14.0-nff76s4/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/python-3.10.13-amsag3y/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/python-3.10.13-amsag3y/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/util-linux-uuid-2.38.1-nu2z27d/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/util-linux-uuid-2.38.1-nu2z27d/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/sqlite-3.43.2-sawa33r/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/sqlite-3.43.2-sawa33r/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zlib-1.2.13-53oqwlx/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zlib-1.2.13-53oqwlx/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/libxcrypt-4.4.35-mjdbffm/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/libxcrypt-4.4.35-mjdbffm/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/gettext-0.21.1-nr6oykc/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/gettext-0.21.1-nr6oykc/include]
+  collapse include dir [/opt/cray/libfabric/1.15.2.0/include] ==> [/opt/cray/libfabric/1.15.2.0/include]
+  collapse include dir [/opt/cray/pe/mpich/8.1.25/ofi/intel/19.0/include] ==> [/opt/cray/pe/mpich/8.1.25/ofi/intel/19.0/include]
+  collapse include dir [/opt/cray/pe/gcc/12.2.0/snos/include] ==> [/opt/cray/pe/gcc/12.2.0/snos/include]
+  collapse include dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/include] ==> [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/include]
+  collapse include dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm/../compiler/include] ==> [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include]
+  collapse include dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/include] ==> [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/lib64/gcc/x86_64-suse-linux/14/../../../../x86_64-suse-linux/include] ==> [/usr/x86_64-suse-linux/include]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include;/glade/u/apps/derecho/23.09/opt/view/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-fortran-4.6.1-bds4ndu/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-c-4.9.2-njuismn/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/c-blosc-1.21.5-uoxtiqu/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zstd-1.5.2-z32seuu/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/snappy-1.1.10-x7yaer7/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/openblas-0.3.24-2zphhkk/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/curl-8.4.0-ylicq7b/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/nghttp2-1.57.0-744axjg/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/hdf5-1.14.0-nff76s4/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/python-3.10.13-amsag3y/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/util-linux-uuid-2.38.1-nu2z27d/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/sqlite-3.43.2-sawa33r/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zlib-1.2.13-53oqwlx/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/libxcrypt-4.4.35-mjdbffm/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/gettext-0.21.1-nr6oykc/include;/opt/cray/libfabric/1.15.2.0/include;/opt/cray/pe/mpich/8.1.25/ofi/intel/19.0/include;/opt/cray/pe/gcc/12.2.0/snos/include;/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/include;/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include;/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/include;/usr/local/include;/usr/x86_64-suse-linux/include;/usr/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /glade/u/home/asiyab/SWI_repos/ccpp-scm/scm/bin/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_fdf0f/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_fdf0f.dir/build.make CMakeFiles/cmTC_fdf0f.dir/build]
+  ignore line: [gmake[1]: Entering directory '/glade/u/home/asiyab/SWI_repos/ccpp-scm/scm/bin/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_fdf0f.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/glade/u/apps/derecho/25.10/spack/opt/spack/ncarcompilers/1.1.0/intel-oneapi-compilers/2025.2.1/d7a7/bin/icx   -v -MD -MT CMakeFiles/cmTC_fdf0f.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_fdf0f.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_fdf0f.dir/CMakeCCompilerABI.c.o -c /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/cmake-3.23.1-oyzi2py/share/cmake-3.23/Modules/CMakeCCompilerABI.c]
+  ignore line: [Intel(R) oneAPI DPC++/C++ Compiler 2023.2.0 (2023.2.0.20230721)]
+  ignore line: [Target: x86_64-unknown-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm]
+  ignore line: [Configuration file: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm/../bin/icx.cfg]
+  ignore line: [Found candidate GCC installation: /usr/lib64/gcc/x86_64-suse-linux/12]
+  ignore line: [Found candidate GCC installation: /usr/lib64/gcc/x86_64-suse-linux/13]
+  ignore line: [Found candidate GCC installation: /usr/lib64/gcc/x86_64-suse-linux/14]
+  ignore line: [Found candidate GCC installation: /usr/lib64/gcc/x86_64-suse-linux/7]
+  ignore line: [Selected GCC installation: /usr/lib64/gcc/x86_64-suse-linux/14]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m64]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m64]
+  ignore line: [ (in-process)]
+  ignore line: [ "/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm/clang" -cc1 -triple x86_64-unknown-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model static -fveclib=SVML -mframe-pointer=none -menable-no-infs -menable-no-nans -fapprox-func -funsafe-math-optimizations -fno-signed-zeros -mreassociate -freciprocal-math -fdenormal-fp-math=preserve-sign preserve-sign -ffp-contract=fast -fno-rounding-math -ffast-math -ffinite-math-only -mconstructor-aliases -funwind-tables=2 -target-cpu core-avx2 -mllvm -x86-enable-unaligned-vector-move=true -tune-cpu core-avx2 -debugger-tuning=gdb -v -fcoverage-compilation-dir=/glade/u/home/asiyab/SWI_repos/ccpp-scm/scm/bin/CMakeFiles/CMakeTmp -resource-dir /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17 -dependency-file CMakeFiles/cmTC_fdf0f.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_fdf0f.dir/CMakeCCompilerABI.c.o -sys-header-deps -I /glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include -I /glade/u/apps/derecho/23.09/opt/view/include -D __CRAY_X86_MILAN -D __CRAYXT_COMPUTE_LINUX_TARGET -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-fortran-4.6.1-bds4ndu/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-c-4.9.2-njuismn/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/c-blosc-1.21.5-uoxtiqu/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zstd-1.5.2-z32seuu/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/snappy-1.1.10-x7yaer7/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/openblas-0.3.24-2zphhkk/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/curl-8.4.0-ylicq7b/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/nghttp2-1.57.0-744axjg/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/hdf5-1.14.0-nff76s4/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/python-3.10.13-amsag3y/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/util-linux-uuid-2.38.1-nu2z27d/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/sqlite-3.43.2-sawa33r/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zlib-1.2.13-53oqwlx/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/libxcrypt-4.4.35-mjdbffm/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/gettext-0.21.1-nr6oykc/include -I/opt/cray/libfabric/1.15.2.0/include -I/opt/cray/pe/mpich/8.1.25/ofi/intel/19.0/include -I/opt/cray/pe/gcc/12.2.0/snos/include -I/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/include -internal-isystem /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm/../compiler/include -internal-isystem /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/include -internal-isystem /usr/local/include -internal-isystem /usr/lib64/gcc/x86_64-suse-linux/14/../../../../x86_64-suse-linux/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -O2 -fdebug-compilation-dir=/glade/u/home/asiyab/SWI_repos/ccpp-scm/scm/bin/CMakeFiles/CMakeTmp -ferror-limit 19 -fheinous-gnu-extensions -fgnuc-version=4.2.1 -vectorize-loops -vectorize-slp -D__GCC_HAVE_DWARF2_CFI_ASM=1 -fintel-compatibility -fintel-libirc-allowed -mllvm -disable-hir-generate-mkl-call -mllvm -loopopt=1 -floopopt-pipeline=light -mllvm -intel-abi-compatible=true -o CMakeFiles/cmTC_fdf0f.dir/CMakeCCompilerABI.c.o -x c /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/cmake-3.23.1-oyzi2py/share/cmake-3.23/Modules/CMakeCCompilerABI.c]
+  ignore line: [clang -cc1 version 17.0.0 based upon LLVM 17.0.0git default target x86_64-unknown-linux-gnu]
+  ignore line: [ignoring nonexistent directory "/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include]
+  ignore line: [ /glade/u/apps/derecho/23.09/opt/view/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-fortran-4.6.1-bds4ndu/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-c-4.9.2-njuismn/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/c-blosc-1.21.5-uoxtiqu/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zstd-1.5.2-z32seuu/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/snappy-1.1.10-x7yaer7/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/openblas-0.3.24-2zphhkk/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/curl-8.4.0-ylicq7b/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/nghttp2-1.57.0-744axjg/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/hdf5-1.14.0-nff76s4/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/python-3.10.13-amsag3y/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/util-linux-uuid-2.38.1-nu2z27d/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/sqlite-3.43.2-sawa33r/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zlib-1.2.13-53oqwlx/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/libxcrypt-4.4.35-mjdbffm/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/gettext-0.21.1-nr6oykc/include]
+  ignore line: [ /opt/cray/libfabric/1.15.2.0/include]
+  ignore line: [ /opt/cray/pe/mpich/8.1.25/ofi/intel/19.0/include]
+  ignore line: [ /opt/cray/pe/gcc/12.2.0/snos/include]
+  ignore line: [ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/include]
+  ignore line: [ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm/../compiler/include]
+  ignore line: [ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/lib64/gcc/x86_64-suse-linux/14/../../../../x86_64-suse-linux/include]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [Linking C executable cmTC_fdf0f]
+  ignore line: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/cmake-3.23.1-oyzi2py/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fdf0f.dir/link.txt --verbose=1]
+  ignore line: [/glade/u/apps/derecho/25.10/spack/opt/spack/ncarcompilers/1.1.0/intel-oneapi-compilers/2025.2.1/d7a7/bin/icx  -v CMakeFiles/cmTC_fdf0f.dir/CMakeCCompilerABI.c.o -o cmTC_fdf0f ]
+  ignore line: [Intel(R) oneAPI DPC++/C++ Compiler 2023.2.0 (2023.2.0.20230721)]
+  ignore line: [Target: x86_64-unknown-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm]
+  ignore line: [Configuration file: /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm/../bin/icx.cfg]
+  ignore line: [Found candidate GCC installation: /usr/lib64/gcc/x86_64-suse-linux/12]
+  ignore line: [Found candidate GCC installation: /usr/lib64/gcc/x86_64-suse-linux/13]
+  ignore line: [Found candidate GCC installation: /usr/lib64/gcc/x86_64-suse-linux/14]
+  ignore line: [Found candidate GCC installation: /usr/lib64/gcc/x86_64-suse-linux/7]
+  ignore line: [Selected GCC installation: /usr/lib64/gcc/x86_64-suse-linux/14]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m64]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m64]
+  link line: [ "/usr/lib64/gcc/x86_64-suse-linux/14/../../../../x86_64-suse-linux/bin/ld" -z relro --hash-style=both --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_fdf0f /usr/lib64/gcc/x86_64-suse-linux/14/../../../../lib64/crt1.o /usr/lib64/gcc/x86_64-suse-linux/14/../../../../lib64/crti.o /usr/lib64/gcc/x86_64-suse-linux/14/crtbegin.o -L/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/lib -L/glade/u/apps/derecho/23.09/opt/view/lib64 -L/glade/u/apps/derecho/23.09/opt/view/lib -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm/../lib -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin -L/usr/lib64/gcc/x86_64-suse-linux/14 -L/usr/lib64/gcc/x86_64-suse-linux/14/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib64/gcc/x86_64-suse-linux/14/../../../../x86_64-suse-linux/lib -L/usr/lib64/gcc/x86_64-suse-linux/14/../../.. -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm/../lib -L/lib -L/usr/lib -L/opt/cray/libfabric/1.15.2.0/lib64 -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/x64 -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/host/linux64/lib -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/linux64/lib -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin CMakeFiles/cmTC_fdf0f.dir/CMakeCCompilerABI.c.o --disable-new-dtags -rpath /glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/lib -rpath /glade/u/apps/derecho/23.09/opt/view/lib64 -rpath /glade/u/apps/derecho/23.09/opt/view/lib -rpath=/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/linux/compiler/lib/intel64 --as-needed -limf --no-as-needed --as-needed -lm --no-as-needed --as-needed -lifcoremt --no-as-needed --as-needed -lifport --no-as-needed --as-needed -lpthread --no-as-needed --disable-new-dtags -Bstatic -lsvml -Bdynamic -Bstatic -lirng -Bdynamic -Bstatic -limf -Bdynamic -lm -lgcc --as-needed -lgcc_s --no-as-needed -Bstatic -lirc -Bdynamic -ldl -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed -Bstatic -lirc_s -Bdynamic /usr/lib64/gcc/x86_64-suse-linux/14/crtend.o /usr/lib64/gcc/x86_64-suse-linux/14/../../../../lib64/crtn.o]
+    arg [/usr/lib64/gcc/x86_64-suse-linux/14/../../../../x86_64-suse-linux/bin/ld] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [--hash-style=both] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_fdf0f] ==> ignore
+    arg [/usr/lib64/gcc/x86_64-suse-linux/14/../../../../lib64/crt1.o] ==> obj [/usr/lib64/gcc/x86_64-suse-linux/14/../../../../lib64/crt1.o]
+    arg [/usr/lib64/gcc/x86_64-suse-linux/14/../../../../lib64/crti.o] ==> obj [/usr/lib64/gcc/x86_64-suse-linux/14/../../../../lib64/crti.o]
+    arg [/usr/lib64/gcc/x86_64-suse-linux/14/crtbegin.o] ==> obj [/usr/lib64/gcc/x86_64-suse-linux/14/crtbegin.o]
+    arg [-L/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/lib] ==> dir [/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/lib]
+    arg [-L/glade/u/apps/derecho/23.09/opt/view/lib64] ==> dir [/glade/u/apps/derecho/23.09/opt/view/lib64]
+    arg [-L/glade/u/apps/derecho/23.09/opt/view/lib] ==> dir [/glade/u/apps/derecho/23.09/opt/view/lib]
+    arg [-L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin] ==> dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin]
+    arg [-L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm/../lib] ==> dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm/../lib]
+    arg [-L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin] ==> dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin]
+    arg [-L/usr/lib64/gcc/x86_64-suse-linux/14] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/14]
+    arg [-L/usr/lib64/gcc/x86_64-suse-linux/14/../../../../lib64] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/14/../../../../lib64]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/usr/lib64/gcc/x86_64-suse-linux/14/../../../../x86_64-suse-linux/lib] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/14/../../../../x86_64-suse-linux/lib]
+    arg [-L/usr/lib64/gcc/x86_64-suse-linux/14/../../..] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/14/../../..]
+    arg [-L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm/../lib] ==> dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm/../lib]
+    arg [-L/lib] ==> dir [/lib]
+    arg [-L/usr/lib] ==> dir [/usr/lib]
+    arg [-L/opt/cray/libfabric/1.15.2.0/lib64] ==> dir [/opt/cray/libfabric/1.15.2.0/lib64]
+    arg [-L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin] ==> dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin]
+    arg [-L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib] ==> dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib]
+    arg [-rpath] ==> ignore
+    arg [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/x64] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/host/linux64/lib] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/linux64/lib] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin] ==> ignore
+    arg [CMakeFiles/cmTC_fdf0f.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [--disable-new-dtags] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/lib] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/glade/u/apps/derecho/23.09/opt/view/lib64] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/glade/u/apps/derecho/23.09/opt/view/lib] ==> ignore
+    arg [-rpath=/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/linux/compiler/lib/intel64] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-limf] ==> lib [imf]
+    arg [--no-as-needed] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-lm] ==> lib [m]
+    arg [--no-as-needed] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-lifcoremt] ==> lib [ifcoremt]
+    arg [--no-as-needed] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-lifport] ==> lib [ifport]
+    arg [--no-as-needed] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-lpthread] ==> lib [pthread]
+    arg [--no-as-needed] ==> ignore
+    arg [--disable-new-dtags] ==> ignore
+    arg [-Bstatic] ==> search static
+    arg [-lsvml] ==> lib [svml]
+    arg [-Bdynamic] ==> search dynamic
+    arg [-Bstatic] ==> search static
+    arg [-lirng] ==> lib [irng]
+    arg [-Bdynamic] ==> search dynamic
+    arg [-Bstatic] ==> search static
+    arg [-limf] ==> lib [imf]
+    arg [-Bdynamic] ==> search dynamic
+    arg [-lm] ==> lib [m]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [-Bstatic] ==> search static
+    arg [-lirc] ==> lib [irc]
+    arg [-Bdynamic] ==> search dynamic
+    arg [-ldl] ==> lib [dl]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [-Bstatic] ==> search static
+    arg [-lirc_s] ==> lib [irc_s]
+    arg [-Bdynamic] ==> search dynamic
+    arg [/usr/lib64/gcc/x86_64-suse-linux/14/crtend.o] ==> obj [/usr/lib64/gcc/x86_64-suse-linux/14/crtend.o]
+    arg [/usr/lib64/gcc/x86_64-suse-linux/14/../../../../lib64/crtn.o] ==> obj [/usr/lib64/gcc/x86_64-suse-linux/14/../../../../lib64/crtn.o]
+  collapse obj [/usr/lib64/gcc/x86_64-suse-linux/14/../../../../lib64/crt1.o] ==> [/usr/lib64/crt1.o]
+  collapse obj [/usr/lib64/gcc/x86_64-suse-linux/14/../../../../lib64/crti.o] ==> [/usr/lib64/crti.o]
+  collapse obj [/usr/lib64/gcc/x86_64-suse-linux/14/../../../../lib64/crtn.o] ==> [/usr/lib64/crtn.o]
+  collapse library dir [/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/lib] ==> [/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/lib]
+  collapse library dir [/glade/u/apps/derecho/23.09/opt/view/lib64] ==> [/glade/u/apps/derecho/23.09/opt/view/lib64]
+  collapse library dir [/glade/u/apps/derecho/23.09/opt/view/lib] ==> [/glade/u/apps/derecho/23.09/opt/view/lib]
+  collapse library dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin] ==> [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin]
+  collapse library dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm/../lib] ==> [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib]
+  collapse library dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin] ==> [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin]
+  collapse library dir [/usr/lib64/gcc/x86_64-suse-linux/14] ==> [/usr/lib64/gcc/x86_64-suse-linux/14]
+  collapse library dir [/usr/lib64/gcc/x86_64-suse-linux/14/../../../../lib64] ==> [/usr/lib64]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/usr/lib64/gcc/x86_64-suse-linux/14/../../../../x86_64-suse-linux/lib] ==> [/usr/x86_64-suse-linux/lib]
+  collapse library dir [/usr/lib64/gcc/x86_64-suse-linux/14/../../..] ==> [/usr/lib64]
+  collapse library dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm/../lib] ==> [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib]
+  collapse library dir [/lib] ==> [/lib]
+  collapse library dir [/usr/lib] ==> [/usr/lib]
+  collapse library dir [/opt/cray/libfabric/1.15.2.0/lib64] ==> [/opt/cray/libfabric/1.15.2.0/lib64]
+  collapse library dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin] ==> [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin]
+  collapse library dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib] ==> [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib]
+  implicit libs: [imf;m;ifcoremt;ifport;pthread;svml;irng;imf;m;gcc;gcc_s;irc;dl;gcc;gcc_s;c;gcc;gcc_s;irc_s]
+  implicit objs: [/usr/lib64/crt1.o;/usr/lib64/crti.o;/usr/lib64/gcc/x86_64-suse-linux/14/crtbegin.o;/usr/lib64/gcc/x86_64-suse-linux/14/crtend.o;/usr/lib64/crtn.o]
+  implicit dirs: [/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/lib;/glade/u/apps/derecho/23.09/opt/view/lib64;/glade/u/apps/derecho/23.09/opt/view/lib;/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin;/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib;/usr/lib64/gcc/x86_64-suse-linux/14;/usr/lib64;/lib64;/usr/x86_64-suse-linux/lib;/lib;/usr/lib;/opt/cray/libfabric/1.15.2.0/lib64]
+  implicit fwks: []
+
+
+Detecting Fortran compiler ABI info compiled with the following output:
+Change Dir: /glade/u/home/asiyab/SWI_repos/ccpp-scm/scm/bin/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_45f5c/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_45f5c.dir/build.make CMakeFiles/cmTC_45f5c.dir/build
+gmake[1]: Entering directory '/glade/u/home/asiyab/SWI_repos/ccpp-scm/scm/bin/CMakeFiles/CMakeTmp'
+Building Fortran object CMakeFiles/cmTC_45f5c.dir/CMakeFortranCompilerABI.F90.o
+/glade/u/apps/derecho/25.10/spack/opt/spack/ncarcompilers/1.1.0/intel-oneapi-compilers/2025.2.1/d7a7/bin/ifx   -v -c /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/cmake-3.23.1-oyzi2py/share/cmake-3.23/Modules/CMakeFortranCompilerABI.F90 -o CMakeFiles/cmTC_45f5c.dir/CMakeFortranCompilerABI.F90.o
+ifx version 2023.2.0
+/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin/fpp    -D__INTEL_LLVM_COMPILER=20230200 -D__INTEL_LLVM_COMPILER_UPDATE=0 -D__INTEL_COMPILER=20230200 -D__INTEL_COMPILER_UPDATE=0 -D__unix__ -D__unix -D__linux__ -D__linux -D__gnu_linux__ -Dunix -Dlinux -D__ELF__ -D__x86_64 -D__x86_64__ -D__amd64 -D__amd64__ -D__INTEL_COMPILER_BUILD_DATE=20230721 -D__CRAY_X86_MILAN -D__CRAYXT_COMPUTE_LINUX_TARGET -I. -I/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include -I/glade/u/apps/derecho/23.09/opt/view/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-fortran-4.6.1-bds4ndu/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-c-4.9.2-njuismn/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/c-blosc-1.21.5-uoxtiqu/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zstd-1.5.2-z32seuu/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/snappy-1.1.10-x7yaer7/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/openblas-0.3.24-2zphhkk/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/curl-8.4.0-ylicq7b/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/nghttp2-1.57.0-744axjg/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/hdf5-1.14.0-nff76s4/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/python-3.10.13-amsag3y/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/util-linux-uuid-2.38.1-nu2z27d/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/sqlite-3.43.2-sawa33r/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zlib-1.2.13-53oqwlx/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/libxcrypt-4.4.35-mjdbffm/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/gettext-0.21.1-nr6oykc/include -I/opt/cray/libfabric/1.15.2.0/include -I/opt/cray/pe/mpich/8.1.25/ofi/intel/19.0/include -I/opt/cray/pe/gcc/12.2.0/snos/include -I/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/include -I/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include/intel64 -I/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include -I/usr/local/include -I/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/include -I/usr/include -4Ycpp -4Ncvf -f_com=yes -MX /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/cmake-3.23.1-oyzi2py/share/cmake-3.23/Modules/CMakeFortranCompilerABI.F90 /glade/derecho/scratch/asiyab/tmp/ifx05264786160qr8Fh/ifxOfmPVU.i90
+#include "..." search starts here:
+#include <...> search starts here:
+ .
+ /glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include
+ /glade/u/apps/derecho/23.09/opt/view/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-fortran-4.6.1-bds4ndu/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-c-4.9.2-njuismn/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/c-blosc-1.21.5-uoxtiqu/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zstd-1.5.2-z32seuu/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/snappy-1.1.10-x7yaer7/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/openblas-0.3.24-2zphhkk/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/curl-8.4.0-ylicq7b/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/nghttp2-1.57.0-744axjg/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/hdf5-1.14.0-nff76s4/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/python-3.10.13-amsag3y/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/util-linux-uuid-2.38.1-nu2z27d/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/sqlite-3.43.2-sawa33r/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zlib-1.2.13-53oqwlx/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/libxcrypt-4.4.35-mjdbffm/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/gettext-0.21.1-nr6oykc/include
+ /opt/cray/libfabric/1.15.2.0/include
+ /opt/cray/pe/mpich/8.1.25/ofi/intel/19.0/include
+ /opt/cray/pe/gcc/12.2.0/snos/include
+ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/include
+ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include/intel64
+ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include
+ /usr/local/include
+ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/include
+ /usr/include
+End of search list.
+/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm/xfortcom    -triple x86_64-unknown-linux-gnu -emit-obj "-verify nomodule" -main-file-name /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/cmake-3.23.1-oyzi2py/share/cmake-3.23/Modules/CMakeFortranCompilerABI.F90 -mllvm --relocation-model=static "-options-string -I/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include -I/glade/u/apps/derecho/23.09/opt/view/include -Wl,-rpath,/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib -Wl,-rpath,/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/x64 -Wl,-rpath,/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/host/linux64/lib -Wl,-rpath,/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/linux64/lib -Wl,-rpath,/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin --gcc-toolchain=/usr -march=core-avx2 -mtune=core-avx2 -D__CRAY_X86_MILAN -D__CRAYXT_COMPUTE_LINUX_TARGET -v -c -o CMakeFiles/cmTC_45f5c.dir/CMakeFortranCompilerABI.F90.o " -mframe-pointer=none -omp_simd -target-cpu core-avx2 -target-linker-version 2.43.1.20241209 -fveclib=SVML -mllvm -loopopt=1 -floopopt-pipeline=light -mllvm -disable-hir-generate-mkl-call -mllvm -paropt=11 -fintel-libirc-allowed -o CMakeFiles/cmTC_45f5c.dir/CMakeFortranCompilerABI.F90.o -D__INTEL_LLVM_COMPILER=20230200 -D__INTEL_LLVM_COMPILER_UPDATE=0 -D__unix__ -D__unix -D__linux__ -D__linux -D__gnu_linux__ -Dunix -Dlinux -D__ELF__ -D__x86_64 -D__x86_64__ -D__amd64 -D__amd64__ -D__INTEL_COMPILER_BUILD_DATE=20230721 -D__INTEL_COMPILER=20230200 -D__INTEL_COMPILER_UPDATE=0 -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/cmake-3.23.1-oyzi2py/share/cmake-3.23/Modules -I. -I/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include -I/glade/u/apps/derecho/23.09/opt/view/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-fortran-4.6.1-bds4ndu/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-c-4.9.2-njuismn/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/c-blosc-1.21.5-uoxtiqu/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zstd-1.5.2-z32seuu/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/snappy-1.1.10-x7yaer7/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/openblas-0.3.24-2zphhkk/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/curl-8.4.0-ylicq7b/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/nghttp2-1.57.0-744axjg/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/hdf5-1.14.0-nff76s4/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/python-3.10.13-amsag3y/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/util-linux-uuid-2.38.1-nu2z27d/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/sqlite-3.43.2-sawa33r/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zlib-1.2.13-53oqwlx/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/libxcrypt-4.4.35-mjdbffm/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/gettext-0.21.1-nr6oykc/include -I/opt/cray/libfabric/1.15.2.0/include -I/opt/cray/pe/mpich/8.1.25/ofi/intel/19.0/include -I/opt/cray/pe/gcc/12.2.0/snos/include -I/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/include -I/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include/intel64 -I/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include -I/usr/local/include -I/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/include -I/usr/include -D__CRAY_X86_MILAN -D__CRAYXT_COMPUTE_LINUX_TARGET -omp_simd -O2 "-reentrancy threaded" "-unroll 2" -simd -offload_host /glade/derecho/scratch/asiyab/tmp/ifx05264786160qr8Fh/ifxOfmPVU.i90
+#include "..." search starts here:
+#include <...> search starts here:
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/cmake-3.23.1-oyzi2py/share/cmake-3.23/Modules
+ .
+ /glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include
+ /glade/u/apps/derecho/23.09/opt/view/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-fortran-4.6.1-bds4ndu/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-c-4.9.2-njuismn/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/c-blosc-1.21.5-uoxtiqu/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zstd-1.5.2-z32seuu/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/snappy-1.1.10-x7yaer7/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/openblas-0.3.24-2zphhkk/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/curl-8.4.0-ylicq7b/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/nghttp2-1.57.0-744axjg/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/hdf5-1.14.0-nff76s4/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/python-3.10.13-amsag3y/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/util-linux-uuid-2.38.1-nu2z27d/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/sqlite-3.43.2-sawa33r/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zlib-1.2.13-53oqwlx/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/libxcrypt-4.4.35-mjdbffm/include
+ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/gettext-0.21.1-nr6oykc/include
+ /opt/cray/libfabric/1.15.2.0/include
+ /opt/cray/pe/mpich/8.1.25/ofi/intel/19.0/include
+ /opt/cray/pe/gcc/12.2.0/snos/include
+ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/include
+ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include/intel64
+ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include
+ /usr/local/include
+ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/include
+ /usr/include
+End of search list.
+Linking Fortran executable cmTC_45f5c
+/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/cmake-3.23.1-oyzi2py/bin/cmake -E cmake_link_script CMakeFiles/cmTC_45f5c.dir/link.txt --verbose=1
+/glade/u/apps/derecho/25.10/spack/opt/spack/ncarcompilers/1.1.0/intel-oneapi-compilers/2025.2.1/d7a7/bin/ifx  -v CMakeFiles/cmTC_45f5c.dir/CMakeFortranCompilerABI.F90.o -o cmTC_45f5c 
+ifx version 2023.2.0
+ld    /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/crtbegin.o --eh-frame-hdr --build-id -dynamic-linker /lib64/ld-linux-x86-64.so.2 -m elf_x86_64 -L/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/lib -L/glade/u/apps/derecho/23.09/opt/view/lib64 -L/glade/u/apps/derecho/23.09/opt/view/lib -o cmTC_45f5c /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin/for_main.o -L/opt/cray/libfabric/1.15.2.0/lib64 -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/lib/linux -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/lib/x86_64-unknown-linux-gnu -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib -L/opt/cray/libfabric/1.15.2.0/lib64/../lib64 -L/opt/cray/libfabric/1.15.2.0/lib64/../lib64/ -L/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/ -L/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/../../../../lib64 -L/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/../../../../lib64/ -L/lib/../lib64 -L/lib/../lib64/ -L/usr/lib/../lib64 -L/usr/lib/../lib64/ -L/opt/cray/libfabric/1.15.2.0/lib64 -L/opt/cray/libfabric/1.15.2.0/lib64/ -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin/ -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/ -L/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/../../../ -L/lib64 -L/lib/ -L/usr/lib64 -L/usr/lib -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/x64 -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/host/linux64/lib -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/linux64/lib -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin CMakeFiles/cmTC_45f5c.dir/CMakeFortranCompilerABI.F90.o --disable-new-dtags -rpath /glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/lib -rpath /glade/u/apps/derecho/23.09/opt/view/lib64 -rpath /glade/u/apps/derecho/23.09/opt/view/lib -rpath=/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/linux/compiler/lib/intel64 --as-needed -limf --no-as-needed --as-needed -lm --no-as-needed --as-needed -lpthread --no-as-needed --disable-new-dtags -Bdynamic -Bstatic -lifport -lifcoremt -Bdynamic -limf -Bstatic -lsvml -Bdynamic -lm -Bstatic -lipgo -lirc -Bdynamic -lpthread -Bstatic -lsvml -Bdynamic -lc -lgcc -lgcc_s -Bstatic -lirc_s -Bdynamic -ldl -lc /opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/crtend.o /usr/lib/../lib64/crtn.o
+gmake[1]: Leaving directory '/glade/u/home/asiyab/SWI_repos/ccpp-scm/scm/bin/CMakeFiles/CMakeTmp'
+
+
+
+Parsed Fortran implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [.]
+    add: [/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include]
+    add: [/glade/u/apps/derecho/23.09/opt/view/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-fortran-4.6.1-bds4ndu/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-c-4.9.2-njuismn/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/c-blosc-1.21.5-uoxtiqu/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zstd-1.5.2-z32seuu/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/snappy-1.1.10-x7yaer7/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/openblas-0.3.24-2zphhkk/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/curl-8.4.0-ylicq7b/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/nghttp2-1.57.0-744axjg/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/hdf5-1.14.0-nff76s4/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/python-3.10.13-amsag3y/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/util-linux-uuid-2.38.1-nu2z27d/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/sqlite-3.43.2-sawa33r/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zlib-1.2.13-53oqwlx/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/libxcrypt-4.4.35-mjdbffm/include]
+    add: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/gettext-0.21.1-nr6oykc/include]
+    add: [/opt/cray/libfabric/1.15.2.0/include]
+    add: [/opt/cray/pe/mpich/8.1.25/ofi/intel/19.0/include]
+    add: [/opt/cray/pe/gcc/12.2.0/snos/include]
+    add: [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/include]
+    add: [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include/intel64]
+    add: [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include]
+    add: [/usr/local/include]
+    add: [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/include]
+    add: [/usr/include]
+  end of search list found
+  skipping relative include dir [.]
+  collapse include dir [/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include] ==> [/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include]
+  collapse include dir [/glade/u/apps/derecho/23.09/opt/view/include] ==> [/glade/u/apps/derecho/23.09/opt/view/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-fortran-4.6.1-bds4ndu/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-fortran-4.6.1-bds4ndu/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-c-4.9.2-njuismn/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-c-4.9.2-njuismn/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/c-blosc-1.21.5-uoxtiqu/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/c-blosc-1.21.5-uoxtiqu/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zstd-1.5.2-z32seuu/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zstd-1.5.2-z32seuu/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/snappy-1.1.10-x7yaer7/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/snappy-1.1.10-x7yaer7/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/openblas-0.3.24-2zphhkk/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/openblas-0.3.24-2zphhkk/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/curl-8.4.0-ylicq7b/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/curl-8.4.0-ylicq7b/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/nghttp2-1.57.0-744axjg/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/nghttp2-1.57.0-744axjg/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/hdf5-1.14.0-nff76s4/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/hdf5-1.14.0-nff76s4/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/python-3.10.13-amsag3y/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/python-3.10.13-amsag3y/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/util-linux-uuid-2.38.1-nu2z27d/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/util-linux-uuid-2.38.1-nu2z27d/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/sqlite-3.43.2-sawa33r/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/sqlite-3.43.2-sawa33r/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zlib-1.2.13-53oqwlx/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zlib-1.2.13-53oqwlx/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/libxcrypt-4.4.35-mjdbffm/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/libxcrypt-4.4.35-mjdbffm/include]
+  collapse include dir [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/gettext-0.21.1-nr6oykc/include] ==> [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/gettext-0.21.1-nr6oykc/include]
+  collapse include dir [/opt/cray/libfabric/1.15.2.0/include] ==> [/opt/cray/libfabric/1.15.2.0/include]
+  collapse include dir [/opt/cray/pe/mpich/8.1.25/ofi/intel/19.0/include] ==> [/opt/cray/pe/mpich/8.1.25/ofi/intel/19.0/include]
+  collapse include dir [/opt/cray/pe/gcc/12.2.0/snos/include] ==> [/opt/cray/pe/gcc/12.2.0/snos/include]
+  collapse include dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/include] ==> [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/include]
+  collapse include dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include/intel64] ==> [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include/intel64]
+  collapse include dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include] ==> [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/include] ==> [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/include]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include;/glade/u/apps/derecho/23.09/opt/view/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-fortran-4.6.1-bds4ndu/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-c-4.9.2-njuismn/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/c-blosc-1.21.5-uoxtiqu/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zstd-1.5.2-z32seuu/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/snappy-1.1.10-x7yaer7/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/openblas-0.3.24-2zphhkk/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/curl-8.4.0-ylicq7b/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/nghttp2-1.57.0-744axjg/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/hdf5-1.14.0-nff76s4/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/python-3.10.13-amsag3y/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/util-linux-uuid-2.38.1-nu2z27d/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/sqlite-3.43.2-sawa33r/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zlib-1.2.13-53oqwlx/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/libxcrypt-4.4.35-mjdbffm/include;/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/gettext-0.21.1-nr6oykc/include;/opt/cray/libfabric/1.15.2.0/include;/opt/cray/pe/mpich/8.1.25/ofi/intel/19.0/include;/opt/cray/pe/gcc/12.2.0/snos/include;/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/include;/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include/intel64;/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include;/usr/local/include;/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/include;/usr/include]
+
+
+Parsed Fortran implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /glade/u/home/asiyab/SWI_repos/ccpp-scm/scm/bin/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_45f5c/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_45f5c.dir/build.make CMakeFiles/cmTC_45f5c.dir/build]
+  ignore line: [gmake[1]: Entering directory '/glade/u/home/asiyab/SWI_repos/ccpp-scm/scm/bin/CMakeFiles/CMakeTmp']
+  ignore line: [Building Fortran object CMakeFiles/cmTC_45f5c.dir/CMakeFortranCompilerABI.F90.o]
+  ignore line: [/glade/u/apps/derecho/25.10/spack/opt/spack/ncarcompilers/1.1.0/intel-oneapi-compilers/2025.2.1/d7a7/bin/ifx   -v -c /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/cmake-3.23.1-oyzi2py/share/cmake-3.23/Modules/CMakeFortranCompilerABI.F90 -o CMakeFiles/cmTC_45f5c.dir/CMakeFortranCompilerABI.F90.o]
+  ignore line: [ifx version 2023.2.0]
+  ignore line: [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin/fpp    -D__INTEL_LLVM_COMPILER=20230200 -D__INTEL_LLVM_COMPILER_UPDATE=0 -D__INTEL_COMPILER=20230200 -D__INTEL_COMPILER_UPDATE=0 -D__unix__ -D__unix -D__linux__ -D__linux -D__gnu_linux__ -Dunix -Dlinux -D__ELF__ -D__x86_64 -D__x86_64__ -D__amd64 -D__amd64__ -D__INTEL_COMPILER_BUILD_DATE=20230721 -D__CRAY_X86_MILAN -D__CRAYXT_COMPUTE_LINUX_TARGET -I. -I/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include -I/glade/u/apps/derecho/23.09/opt/view/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-fortran-4.6.1-bds4ndu/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-c-4.9.2-njuismn/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/c-blosc-1.21.5-uoxtiqu/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zstd-1.5.2-z32seuu/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/snappy-1.1.10-x7yaer7/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/openblas-0.3.24-2zphhkk/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/curl-8.4.0-ylicq7b/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/nghttp2-1.57.0-744axjg/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/hdf5-1.14.0-nff76s4/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/python-3.10.13-amsag3y/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/util-linux-uuid-2.38.1-nu2z27d/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/sqlite-3.43.2-sawa33r/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zlib-1.2.13-53oqwlx/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/libxcrypt-4.4.35-mjdbffm/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/gettext-0.21.1-nr6oykc/include -I/opt/cray/libfabric/1.15.2.0/include -I/opt/cray/pe/mpich/8.1.25/ofi/intel/19.0/include -I/opt/cray/pe/gcc/12.2.0/snos/include -I/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/include -I/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include/intel64 -I/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include -I/usr/local/include -I/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/include -I/usr/include -4Ycpp -4Ncvf -f_com=yes -MX /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/cmake-3.23.1-oyzi2py/share/cmake-3.23/Modules/CMakeFortranCompilerABI.F90 /glade/derecho/scratch/asiyab/tmp/ifx05264786160qr8Fh/ifxOfmPVU.i90]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ .]
+  ignore line: [ /glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include]
+  ignore line: [ /glade/u/apps/derecho/23.09/opt/view/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-fortran-4.6.1-bds4ndu/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-c-4.9.2-njuismn/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/c-blosc-1.21.5-uoxtiqu/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zstd-1.5.2-z32seuu/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/snappy-1.1.10-x7yaer7/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/openblas-0.3.24-2zphhkk/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/curl-8.4.0-ylicq7b/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/nghttp2-1.57.0-744axjg/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/hdf5-1.14.0-nff76s4/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/python-3.10.13-amsag3y/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/util-linux-uuid-2.38.1-nu2z27d/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/sqlite-3.43.2-sawa33r/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zlib-1.2.13-53oqwlx/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/libxcrypt-4.4.35-mjdbffm/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/gettext-0.21.1-nr6oykc/include]
+  ignore line: [ /opt/cray/libfabric/1.15.2.0/include]
+  ignore line: [ /opt/cray/pe/mpich/8.1.25/ofi/intel/19.0/include]
+  ignore line: [ /opt/cray/pe/gcc/12.2.0/snos/include]
+  ignore line: [ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/include]
+  ignore line: [ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include/intel64]
+  ignore line: [ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/include]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/bin-llvm/xfortcom    -triple x86_64-unknown-linux-gnu -emit-obj "-verify nomodule" -main-file-name /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/cmake-3.23.1-oyzi2py/share/cmake-3.23/Modules/CMakeFortranCompilerABI.F90 -mllvm --relocation-model=static "-options-string -I/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include -I/glade/u/apps/derecho/23.09/opt/view/include -Wl -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib -Wl -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/x64 -Wl -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/host/linux64/lib -Wl -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/linux64/lib -Wl -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin --gcc-toolchain=/usr -march=core-avx2 -mtune=core-avx2 -D__CRAY_X86_MILAN -D__CRAYXT_COMPUTE_LINUX_TARGET -v -c -o CMakeFiles/cmTC_45f5c.dir/CMakeFortranCompilerABI.F90.o " -mframe-pointer=none -omp_simd -target-cpu core-avx2 -target-linker-version 2.43.1.20241209 -fveclib=SVML -mllvm -loopopt=1 -floopopt-pipeline=light -mllvm -disable-hir-generate-mkl-call -mllvm -paropt=11 -fintel-libirc-allowed -o CMakeFiles/cmTC_45f5c.dir/CMakeFortranCompilerABI.F90.o -D__INTEL_LLVM_COMPILER=20230200 -D__INTEL_LLVM_COMPILER_UPDATE=0 -D__unix__ -D__unix -D__linux__ -D__linux -D__gnu_linux__ -Dunix -Dlinux -D__ELF__ -D__x86_64 -D__x86_64__ -D__amd64 -D__amd64__ -D__INTEL_COMPILER_BUILD_DATE=20230721 -D__INTEL_COMPILER=20230200 -D__INTEL_COMPILER_UPDATE=0 -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/cmake-3.23.1-oyzi2py/share/cmake-3.23/Modules -I. -I/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include -I/glade/u/apps/derecho/23.09/opt/view/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-fortran-4.6.1-bds4ndu/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-c-4.9.2-njuismn/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/c-blosc-1.21.5-uoxtiqu/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zstd-1.5.2-z32seuu/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/snappy-1.1.10-x7yaer7/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/openblas-0.3.24-2zphhkk/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/curl-8.4.0-ylicq7b/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/nghttp2-1.57.0-744axjg/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/hdf5-1.14.0-nff76s4/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/python-3.10.13-amsag3y/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/util-linux-uuid-2.38.1-nu2z27d/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/sqlite-3.43.2-sawa33r/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zlib-1.2.13-53oqwlx/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/libxcrypt-4.4.35-mjdbffm/include -I/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/gettext-0.21.1-nr6oykc/include -I/opt/cray/libfabric/1.15.2.0/include -I/opt/cray/pe/mpich/8.1.25/ofi/intel/19.0/include -I/opt/cray/pe/gcc/12.2.0/snos/include -I/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/include -I/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include/intel64 -I/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include -I/usr/local/include -I/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/include -I/usr/include -D__CRAY_X86_MILAN -D__CRAYXT_COMPUTE_LINUX_TARGET -omp_simd -O2 "-reentrancy threaded" "-unroll 2" -simd -offload_host /glade/derecho/scratch/asiyab/tmp/ifx05264786160qr8Fh/ifxOfmPVU.i90]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/cmake-3.23.1-oyzi2py/share/cmake-3.23/Modules]
+  ignore line: [ .]
+  ignore line: [ /glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/include]
+  ignore line: [ /glade/u/apps/derecho/23.09/opt/view/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-fortran-4.6.1-bds4ndu/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/netcdf-c-4.9.2-njuismn/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/c-blosc-1.21.5-uoxtiqu/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zstd-1.5.2-z32seuu/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/snappy-1.1.10-x7yaer7/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/openblas-0.3.24-2zphhkk/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/curl-8.4.0-ylicq7b/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/nghttp2-1.57.0-744axjg/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/hdf5-1.14.0-nff76s4/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/python-3.10.13-amsag3y/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/util-linux-uuid-2.38.1-nu2z27d/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/sqlite-3.43.2-sawa33r/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/zlib-1.2.13-53oqwlx/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/libxcrypt-4.4.35-mjdbffm/include]
+  ignore line: [ /glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/gettext-0.21.1-nr6oykc/include]
+  ignore line: [ /opt/cray/libfabric/1.15.2.0/include]
+  ignore line: [ /opt/cray/pe/mpich/8.1.25/ofi/intel/19.0/include]
+  ignore line: [ /opt/cray/pe/gcc/12.2.0/snos/include]
+  ignore line: [ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/include]
+  ignore line: [ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include/intel64]
+  ignore line: [ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/include]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [Linking Fortran executable cmTC_45f5c]
+  ignore line: [/glade/work/epicufsrt/contrib/spack-stack/derecho/spack-stack-1.6.0/envs/unified-env/install/intel/2021.10.0/cmake-3.23.1-oyzi2py/bin/cmake -E cmake_link_script CMakeFiles/cmTC_45f5c.dir/link.txt --verbose=1]
+  ignore line: [/glade/u/apps/derecho/25.10/spack/opt/spack/ncarcompilers/1.1.0/intel-oneapi-compilers/2025.2.1/d7a7/bin/ifx  -v CMakeFiles/cmTC_45f5c.dir/CMakeFortranCompilerABI.F90.o -o cmTC_45f5c ]
+  ignore line: [ifx version 2023.2.0]
+  link line: [ld    /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/crtbegin.o --eh-frame-hdr --build-id -dynamic-linker /lib64/ld-linux-x86-64.so.2 -m elf_x86_64 -L/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/lib -L/glade/u/apps/derecho/23.09/opt/view/lib64 -L/glade/u/apps/derecho/23.09/opt/view/lib -o cmTC_45f5c /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin/for_main.o -L/opt/cray/libfabric/1.15.2.0/lib64 -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/lib/linux -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/lib/x86_64-unknown-linux-gnu -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib -L/opt/cray/libfabric/1.15.2.0/lib64/../lib64 -L/opt/cray/libfabric/1.15.2.0/lib64/../lib64/ -L/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/ -L/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/../../../../lib64 -L/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/../../../../lib64/ -L/lib/../lib64 -L/lib/../lib64/ -L/usr/lib/../lib64 -L/usr/lib/../lib64/ -L/opt/cray/libfabric/1.15.2.0/lib64 -L/opt/cray/libfabric/1.15.2.0/lib64/ -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin/ -L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/ -L/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/../../../ -L/lib64 -L/lib/ -L/usr/lib64 -L/usr/lib -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/x64 -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/host/linux64/lib -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/linux64/lib -rpath /glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin CMakeFiles/cmTC_45f5c.dir/CMakeFortranCompilerABI.F90.o --disable-new-dtags -rpath /glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/lib -rpath /glade/u/apps/derecho/23.09/opt/view/lib64 -rpath /glade/u/apps/derecho/23.09/opt/view/lib -rpath=/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/linux/compiler/lib/intel64 --as-needed -limf --no-as-needed --as-needed -lm --no-as-needed --as-needed -lpthread --no-as-needed --disable-new-dtags -Bdynamic -Bstatic -lifport -lifcoremt -Bdynamic -limf -Bstatic -lsvml -Bdynamic -lm -Bstatic -lipgo -lirc -Bdynamic -lpthread -Bstatic -lsvml -Bdynamic -lc -lgcc -lgcc_s -Bstatic -lirc_s -Bdynamic -ldl -lc /opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/crtend.o /usr/lib/../lib64/crtn.o]
+    arg [ld] ==> ignore
+    arg [/usr/lib/../lib64/crt1.o] ==> obj [/usr/lib/../lib64/crt1.o]
+    arg [/usr/lib/../lib64/crti.o] ==> obj [/usr/lib/../lib64/crti.o]
+    arg [/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/crtbegin.o] ==> obj [/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/crtbegin.o]
+    arg [--eh-frame-hdr] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-L/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/lib] ==> dir [/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/lib]
+    arg [-L/glade/u/apps/derecho/23.09/opt/view/lib64] ==> dir [/glade/u/apps/derecho/23.09/opt/view/lib64]
+    arg [-L/glade/u/apps/derecho/23.09/opt/view/lib] ==> dir [/glade/u/apps/derecho/23.09/opt/view/lib]
+    arg [-o] ==> ignore
+    arg [cmTC_45f5c] ==> ignore
+    arg [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin/for_main.o] ==> obj [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin/for_main.o]
+    arg [-L/opt/cray/libfabric/1.15.2.0/lib64] ==> dir [/opt/cray/libfabric/1.15.2.0/lib64]
+    arg [-L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin] ==> dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin]
+    arg [-L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib] ==> dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib]
+    arg [-L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin] ==> dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin]
+    arg [-L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/lib/linux] ==> dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/lib/linux]
+    arg [-L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/lib/x86_64-unknown-linux-gnu] ==> dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/lib/x86_64-unknown-linux-gnu]
+    arg [-L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib] ==> dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib]
+    arg [-L/opt/cray/libfabric/1.15.2.0/lib64/../lib64] ==> dir [/opt/cray/libfabric/1.15.2.0/lib64/../lib64]
+    arg [-L/opt/cray/libfabric/1.15.2.0/lib64/../lib64/] ==> dir [/opt/cray/libfabric/1.15.2.0/lib64/../lib64/]
+    arg [-L/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/] ==> dir [/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/]
+    arg [-L/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/../../../../lib64] ==> dir [/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/../../../../lib64]
+    arg [-L/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/../../../../lib64/] ==> dir [/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/../../../../lib64/]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/lib/../lib64/] ==> dir [/lib/../lib64/]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/usr/lib/../lib64/] ==> dir [/usr/lib/../lib64/]
+    arg [-L/opt/cray/libfabric/1.15.2.0/lib64] ==> dir [/opt/cray/libfabric/1.15.2.0/lib64]
+    arg [-L/opt/cray/libfabric/1.15.2.0/lib64/] ==> dir [/opt/cray/libfabric/1.15.2.0/lib64/]
+    arg [-L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin/] ==> dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin/]
+    arg [-L/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/] ==> dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/]
+    arg [-L/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/../../../] ==> dir [/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/../../../]
+    arg [-L/lib64] ==> dir [/lib64]
+    arg [-L/lib/] ==> dir [/lib/]
+    arg [-L/usr/lib64] ==> dir [/usr/lib64]
+    arg [-L/usr/lib] ==> dir [/usr/lib]
+    arg [-rpath] ==> ignore
+    arg [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/x64] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/host/linux64/lib] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/oclfpga/linux64/lib] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin] ==> ignore
+    arg [CMakeFiles/cmTC_45f5c.dir/CMakeFortranCompilerABI.F90.o] ==> ignore
+    arg [--disable-new-dtags] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/lib] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/glade/u/apps/derecho/23.09/opt/view/lib64] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/glade/u/apps/derecho/23.09/opt/view/lib] ==> ignore
+    arg [-rpath=/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/linux/compiler/lib/intel64] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-limf] ==> lib [imf]
+    arg [--no-as-needed] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-lm] ==> lib [m]
+    arg [--no-as-needed] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-lpthread] ==> lib [pthread]
+    arg [--no-as-needed] ==> ignore
+    arg [--disable-new-dtags] ==> ignore
+    arg [-Bdynamic] ==> search dynamic
+    arg [-Bstatic] ==> search static
+    arg [-lifport] ==> lib [ifport]
+    arg [-lifcoremt] ==> lib [ifcoremt]
+    arg [-Bdynamic] ==> search dynamic
+    arg [-limf] ==> lib [imf]
+    arg [-Bstatic] ==> search static
+    arg [-lsvml] ==> lib [svml]
+    arg [-Bdynamic] ==> search dynamic
+    arg [-lm] ==> lib [m]
+    arg [-Bstatic] ==> search static
+    arg [-lipgo] ==> lib [ipgo]
+    arg [-lirc] ==> lib [irc]
+    arg [-Bdynamic] ==> search dynamic
+    arg [-lpthread] ==> lib [pthread]
+    arg [-Bstatic] ==> search static
+    arg [-lsvml] ==> lib [svml]
+    arg [-Bdynamic] ==> search dynamic
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-Bstatic] ==> search static
+    arg [-lirc_s] ==> lib [irc_s]
+    arg [-Bdynamic] ==> search dynamic
+    arg [-ldl] ==> lib [dl]
+    arg [-lc] ==> lib [c]
+    arg [/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/crtend.o] ==> obj [/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/crtend.o]
+    arg [/usr/lib/../lib64/crtn.o] ==> obj [/usr/lib/../lib64/crtn.o]
+  collapse obj [/usr/lib/../lib64/crt1.o] ==> [/usr/lib64/crt1.o]
+  collapse obj [/usr/lib/../lib64/crti.o] ==> [/usr/lib64/crti.o]
+  collapse obj [/usr/lib/../lib64/crtn.o] ==> [/usr/lib64/crtn.o]
+  collapse library dir [/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/lib] ==> [/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/lib]
+  collapse library dir [/glade/u/apps/derecho/23.09/opt/view/lib64] ==> [/glade/u/apps/derecho/23.09/opt/view/lib64]
+  collapse library dir [/glade/u/apps/derecho/23.09/opt/view/lib] ==> [/glade/u/apps/derecho/23.09/opt/view/lib]
+  collapse library dir [/opt/cray/libfabric/1.15.2.0/lib64] ==> [/opt/cray/libfabric/1.15.2.0/lib64]
+  collapse library dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin] ==> [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin]
+  collapse library dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib] ==> [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib]
+  collapse library dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin] ==> [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin]
+  collapse library dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/lib/linux] ==> [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/lib/linux]
+  collapse library dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/lib/x86_64-unknown-linux-gnu] ==> [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/lib/x86_64-unknown-linux-gnu]
+  collapse library dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib] ==> [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib]
+  collapse library dir [/opt/cray/libfabric/1.15.2.0/lib64/../lib64] ==> [/opt/cray/libfabric/1.15.2.0/lib64]
+  collapse library dir [/opt/cray/libfabric/1.15.2.0/lib64/../lib64/] ==> [/opt/cray/libfabric/1.15.2.0/lib64]
+  collapse library dir [/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/] ==> [/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0]
+  collapse library dir [/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/../../../../lib64] ==> [/opt/cray/pe/gcc/12.2.0/snos/lib64]
+  collapse library dir [/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/../../../../lib64/] ==> [/opt/cray/pe/gcc/12.2.0/snos/lib64]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/lib/../lib64/] ==> [/lib64]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/usr/lib/../lib64/] ==> [/usr/lib64]
+  collapse library dir [/opt/cray/libfabric/1.15.2.0/lib64] ==> [/opt/cray/libfabric/1.15.2.0/lib64]
+  collapse library dir [/opt/cray/libfabric/1.15.2.0/lib64/] ==> [/opt/cray/libfabric/1.15.2.0/lib64]
+  collapse library dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin/] ==> [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin]
+  collapse library dir [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/] ==> [/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib]
+  collapse library dir [/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/../../../] ==> [/opt/cray/pe/gcc/12.2.0/snos/lib]
+  collapse library dir [/lib64] ==> [/lib64]
+  collapse library dir [/lib/] ==> [/lib]
+  collapse library dir [/usr/lib64] ==> [/usr/lib64]
+  collapse library dir [/usr/lib] ==> [/usr/lib]
+  implicit libs: [imf;m;pthread;ifport;ifcoremt;imf;svml;m;ipgo;irc;pthread;svml;c;gcc;gcc_s;irc_s;dl;c]
+  implicit objs: [/usr/lib64/crt1.o;/usr/lib64/crti.o;/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/crtbegin.o;/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin/for_main.o;/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0/crtend.o;/usr/lib64/crtn.o]
+  implicit dirs: [/glade/u/apps/derecho/23.09/spack/opt/spack/intel-oneapi-compilers-classic/2021.10.0/gcc/7.5.0/4zuc/lib;/glade/u/apps/derecho/23.09/opt/view/lib64;/glade/u/apps/derecho/23.09/opt/view/lib;/opt/cray/libfabric/1.15.2.0/lib64;/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/compiler/lib/intel64_lin;/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib;/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/lib/linux;/glade/u/apps/common/23.08/spack/opt/spack/intel-oneapi-compilers/2023.2.1/compiler/2023.2.1/linux/lib/clang/17/lib/x86_64-unknown-linux-gnu;/opt/cray/pe/gcc/12.2.0/snos/lib/gcc/x86_64-suse-linux/12.2.0;/opt/cray/pe/gcc/12.2.0/snos/lib64;/lib64;/usr/lib64;/opt/cray/pe/gcc/12.2.0/snos/lib;/lib;/usr/lib]
+  implicit fwks: []
+
+

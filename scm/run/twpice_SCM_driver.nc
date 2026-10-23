@@ -1,0 +1,1 @@
+/glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/data/processed_case_input/twpice_SCM_driver.nc

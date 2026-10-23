@@ -1,0 +1,603 @@
+================================================================================
+v2021 UFS PHYSICS                                               
+ &GFS_PHYSICS_NML
+ FHZERO  =   6.00000000000000     ,
+ FHZERO_ARRAY    = 2*0.000000000000000E+000  ,
+ FHZERO_FHOUR    = 2*0.000000000000000E+000  ,
+ LDIAG3D = T,
+ QDIAG3D = T,
+ LSSAV   = F,
+ NAUX2D  =           0,
+ DTEND_SELECT    = *                                                                                                                 
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                               ,
+ NAUX3D  =           0,
+ AUX2D_TIME_AVG  = 20*F,
+ AUX3D_TIME_AVG  = 20*F,
+ FHCYC   =   24.0000000000000     ,
+ THERMODYN_ID    =           1,
+ SFCPRESS_ID     =           1,
+ TEND_OPT_SWRAD  =           4,
+ TEND_OPT_LWRAD  =           4,
+ TEND_OPT_RAD_SCALER     =           2,
+ TEND_OPT_SURFACE        =           2,
+ TEND_OPT_PBL    =           2,
+ TEND_OPT_GWD    =           3,
+ TEND_OPT_PHOTOCHEM      =           1,
+ TEND_OPT_DEEP_CONV      =           1,
+ TEND_OPT_SHAL_CONV      =           1,
+ TEND_OPT_MP     =           1,
+ TEND_OPT_STOCH  =           1,
+ CPLFLX  = F,
+ CPLICE  = F,
+ CPLOCN2ATM      = T,
+ CPLWAV  = F,
+ CPLWAV2ATM      = F,
+ CPLAQM  = F,
+ CPLCHM  = F,
+ CPLLND  = F,
+ CPLLND2ATM      = F,
+ CPL_IMP_MRG     = F,
+ CPL_IMP_DBG     = F,
+ CPL_FIRE        = F,
+ RRFS_SD = F,
+ USE_CICE_ALB    = T,
+ LSIDEA  = F,
+ USE_MED_FLUX    = F,
+ USE_CDEPS_INLINE        = F,
+ FHSWR   =   1200.00000000000     ,
+ FHLWR   =   1200.00000000000     ,
+ LEVR    =         -99,
+ NFXR    =          45,
+ IAERCLM = F,
+ IFLIP   =           1,
+ ISOL    =           2,
+ ICO2    =           2,
+ IALB    =           2,
+ ISOT    =           1,
+ IEMS    =           2,
+ IAER    =        1011,
+ ICLIQ_SW        =           2,
+ IOVR    =           3,
+ ICTM    =           1,
+ ISUBC_SW        =           2,
+ ISUBC_LW        =           2,
+ LCRICK  = F,
+ LCNORM  = F,
+ LWHTR   = T,
+ SWHTR   = T,
+ NHFRAD  =           0,
+ IDCOR   =           1,
+ DCORR_CON       =   2.50000000000000     ,
+ XR_CON  =  -999.000000000000     ,
+ XR_EXP  =  -999.000000000000     ,
+ DO_RRTMGP       = F,
+ ACTIVE_GASES    = h2o_co2_o3_n2o_ch4_o2                                                                                             
+               ,
+ NGASES  =           6,
+ RRTMGP_ROOT     = ../data/physics_input_data/                                                                                       
+               ,
+ LW_FILE_GAS     = rrtmgp-gas-lw-g128.nc                                                                                             
+               ,
+ LW_FILE_CLOUDS  = rrtmgp-clouds-lw-g128.nc                                                                                          
+               ,
+ RRTMGP_NBANDSLW =          16,
+ RRTMGP_NGPTSLW  =         128,
+ SW_FILE_GAS     = rrtmgp-gas-sw-g112.nc                                                                                             
+               ,
+ SW_FILE_CLOUDS  = rrtmgp-clouds-sw-g112.nc                                                                                          
+               ,
+ RRTMGP_NBANDSSW =          14,
+ RRTMGP_NGPTSSW  =         112,
+ RRTMGP_NRGHICE  =           3,
+ RRTMGP_NGAUSS_ANG       =           1,
+ DO_GPSW_GLW     = F,
+ USE_LW_JACOBIAN = F,
+ DOGP_LWSCAT     = T,
+ DAMP_LW_FLUXADJ = F,
+ LFNC_K  =  -999.000000000000     ,
+ LFNC_P0 =  -999.000000000000     ,
+ IOVR_CONVCLD    =           1,
+ DOGP_SGS_CNV    = F,
+ DOGP_SGS_MYNN   = F,
+ RRTMGP_LW_PHYS_BLKSZ    =           1,
+ RRTMGP_SW_PHYS_BLKSZ    =           1,
+ ICCN    =           0,
+ MRAEROSOL       = F,
+ IMP_PHYSICS     =           8,
+ PSAUTCO =  8.000000000000000E-004,  5.000000000000000E-004,
+ PRAUTCO = 2*1.500000000000000E-004  ,
+ EVPCO   =  2.000000000000000E-005,
+ WMINCO  = 2*1.000000000000000E-005  ,
+ FPRCP   =           2,
+ PDFFLAG =           4,
+ MG_DCS  =   200.000000000000     ,
+ MG_QCVAR        =   1.00000000000000     ,
+ MG_TS_AUTO_ICE  = 2*180.000000000000        ,
+ MG_RHMINI       =   1.01000000000000     ,
+ EFFR_IN = T,
+ TF      =   258.160000000000     ,
+ TCR     =   273.160000000000     ,
+ MICROP_UNIFORM  = T,
+ DO_CLDICE       = T,
+ HETFRZ_CLASSNUC = F,
+ MG_DO_GRAUPEL   = T,
+ MG_DO_HAIL      = F,
+ MG_NCCONS       = F,
+ MG_NICONS       = F,
+ MG_NGCONS       = F,
+ MG_NCNST        =   100000000.000000     ,
+ MG_NINST        =   150000.000000000     ,
+ MG_NGNST        =   100000.000000000     ,
+ SED_SUPERSAT    = T,
+ DO_SB_PHYSICS   = T,
+ MG_ALF  =   1.00000000000000     ,
+ MG_QCMIN        = 2*1.000000000000000E-009  ,
+ MG_DO_ICE_GMAO  = F,
+ MG_DO_LIQ_LIU   = T,
+ LTAEROSOL       = F,
+ LTHAILAWARE     = F,
+ LRADAR  = T,
+ NSFULLRADAR_DIAG        =  -999.000000000000     ,
+ LREFRES = F,
+ TTENDLIM        =  -999.000000000000     ,
+ EXT_DIAG_THOMPSON       = F,
+ NT_C_L  =   150000000.000000     ,
+ NT_C_O  =   50000000.0000000     ,
+ AV_I    =  -999.000000000000     ,
+ XNC_MAX =   1000000.00000000     ,
+ SSATI_MIN       =  0.150000000000000     ,
+ NT_I_MAX        =   4999000.00000000     ,
+ RR_MIN  =   1000.00000000000     ,
+ FS_FAC_RAIN     =   1.00000000000000     ,
+ FS_FAC_SNOW     =   1.00000000000000     ,
+ DT_INNER        =   150.000000000000     ,
+ LGFDLMPRAD      = F,
+ SEDI_SEMI       = T,
+ DECFL   =          10,
+ NSSL_CCCN       =   600000000.000000     ,
+ NSSL_ALPHAH     =  0.000000000000000E+000,
+ NSSL_ALPHAHL    =   1.00000000000000     ,
+ NSSL_ALPHAR     =  0.000000000000000E+000,
+ NSSL_EHW0       =  0.900000000000000     ,
+ NSSL_EHLW0      =  0.900000000000000     ,
+ NSSL_INVERTCCN  = T,
+ NSSL_HAIL_ON    = F,
+ NSSL_CCN_ON     = T,
+ NSSL_3MOMENT    = F,
+ AVG_MAX_LENGTH  =   3600.00000000000     ,
+ LSM     =           2,
+ LSOIL   =           4,
+ LSOIL_LSM       =           4,
+ LSNOW_LSM       =           3,
+ KICE    =           2,
+ RDLAI   = F,
+ NMTVR   =          14,
+ IVEGSRC =           1,
+ USE_UFO = T,
+ IOPT_THCND      =           1,
+ UA_PHYS = F,
+ USEMONALB       = T,
+ AOASIS  =   1.00000000000000     ,
+ FASDAS  =           0,
+ EXTICEDEN       = F,
+ NVEGCAT =          20,
+ NSOILCAT        =          16,
+ IOPT_DVEG       =           4,
+ IOPT_CRS        =           2,
+ IOPT_BTR        =           1,
+ IOPT_RUN        =           1,
+ IOPT_SFC        =           3,
+ IOPT_FRZ        =           1,
+ IOPT_INF        =           1,
+ IOPT_RAD        =           3,
+ IOPT_ALB        =           1,
+ IOPT_SNF        =           4,
+ IOPT_TBOT       =           2,
+ IOPT_STC        =           3,
+ IOPT_TRS        =           2,
+ IOPT_DIAG       =           2,
+ ADD_FIRE_HEAT_FLUX      = F,
+ MOSAIC_LU       =           0,
+ MOSAIC_SOIL     =           0,
+ ISNCOND_OPT     =           1,
+ ISNCOVR_OPT     =           1,
+ LCURR_SF        = F,
+ PERT_CD = F,
+ NTSFLG  =           0,
+ SFENTH  =  0.000000000000000E+000,
+ LKM     =           0,
+ IOPT_LAKE       =           2,
+ LAKEDEPTH_THRESHOLD     =   1.00000000000000     ,
+ LAKEFRAC_THRESHOLD      =  0.000000000000000E+000,
+ CLM_LAKE_DEPTH_DEFAULT  =   50.0000000000000     ,
+ CLM_LAKE_USE_LAKEDEPTH  = T,
+ CLM_LAKE_DEBUG  = F,
+ CLM_DEBUG_PRINT = F,
+ USE_LAKE2M      = F,
+ RAS     = F,
+ TRANS_TRAC      = T,
+ OLD_MONIN       = F,
+ CNVGWD  = T,
+ MSTRAT  = F,
+ MOIST_ADJ       = F,
+ CSCNV   = F,
+ CAL_PRE = F,
+ DO_AW   = F,
+ DO_SHOC = F,
+ SHOCAFTCNV      = F,
+ SHOC_CLD        = F,
+ OZ_PHYS = F,
+ OZ_PHYS_2015    = T,
+ DO_MYNNEDMF     = F,
+ DO_MYNNSFCLAY   = F,
+ BL_MYNN_CLOUDPDF        =           2,
+ BL_MYNN_EDMF    =           1,
+ BL_MYNN_EDMF_MOM        =           1,
+ BL_MYNN_EDMF_TKE        =           0,
+ BL_MYNN_MIXLENGTH       =           1,
+ BL_MYNN_CLOUDMIX        =           1,
+ BL_MYNN_MIXQT   =           0,
+ BL_MYNN_OUTPUT  =           0,
+ ICLOUD_BL       =           1,
+ BL_MYNN_TKEADVECT       = T,
+ BL_MYNN_CLOSURE =   2.60000000000000     ,
+ TKE_BUDGET      =           0,
+ ISFTCFLX        =           0,
+ IZ0TLND =           0,
+ SFCLAY_COMPUTE_FLUX     = F,
+ SFCLAY_COMPUTE_DIAG     = F,
+ GWD_OPT =           2,
+ DO_UGWP_V0      = F,
+ DO_UGWP_V0_OROG_ONLY    = F,
+ DO_UGWP_V0_NST_ONLY     = F,
+ DO_GSL_DRAG_LS_BL       = T,
+ DO_GSL_DRAG_SS  = F,
+ DO_GSL_DRAG_TOFD        = T,
+ DO_GWD_OPT_PSL  = T,
+ DO_NGW_EC       = F,
+ DO_UGWP_V1      = T,
+ DO_UGWP_V1_OROG_ONLY    = F,
+ DO_UGWP_V1_W_GSLDRAG    = F,
+ UGWP_SEQ_UPDATE = F,
+ VAR_RIC =   1.00000000000000     ,
+ COEF_RIC_L      =  0.160000000000000     ,
+ COEF_RIC_S      =  0.250000000000000     ,
+ HURR_PBL        = F,
+ DO_MYJSFC       = F,
+ DO_MYJPBL       = F,
+ HWRF_SAMFDEEP   = F,
+ HWRF_SAMFSHAL   = F,
+ PROGSIGMA       = T,
+ PROGOMEGA       = F,
+ BETASCU =   8.00000000000000     ,
+ BETAMCU =   1.00000000000000     ,
+ BETADCU =   2.00000000000000     ,
+ H2O_PHYS        = T,
+ PDFCLD  = F,
+ SHCNVCW = F,
+ REDRAG  = T,
+ HYBEDMF = F,
+ SATMEDMF        = T,
+ TAGGING = T,
+ TTE_EDMF        = F,
+ SIGMAB_COLDSTART        = F,
+ SHINHONG        = F,
+ DO_YSU  = F,
+ DSPHEAT = T,
+ LHEATSTRG       = T,
+ LSEASPRAY       = T,
+ CNVCLD  = T,
+ XR_CNVCLD       = T,
+ RANDOM_CLDS     = F,
+ SHAL_CNV        = T,
+ IMFSHALCNV      =           2,
+ IMFDEEPCNV      =           2,
+ ISATMEDMF       =           1,
+ CONV_CF_OPT     =           0,
+ DO_DEEP = T,
+ JCAP    =           1,
+ CSCALE  =   1.00000000000000     ,
+ CS_PARM =   8.00000000000000     ,   4.00000000000000     ,   1000.00000000000     ,   3500.00000000000     ,
+    20.0000000000000     ,   1.00000000000000     ,  -999.000000000000     ,   1.00000000000000     ,  0.600000000000000     ,
+   0.000000000000000E+000,
+ FLGMIN  =  0.180000000000000     ,  0.220000000000000     ,
+ CGWF    =  0.500000000000000     ,  5.000000000000000E-002,
+ CCWF    = 2*1.00000000000000        ,
+ CDMBGWD =   2.50000000000000     ,   7.50000000000000     , 2*1.00000000000000        ,
+ ALPHA_FD        =   12.0000000000000     ,
+ PSL_GWD_DX_FACTOR       =   6.00000000000000     ,
+ SUP     =   1.00000000000000     ,
+ CTEI_RM = 2*10.0000000000000        ,
+ CRTRH   = 3*0.900000000000000       ,
+ DLQF    = 2*0.150000000000000       ,
+ RBCR    =  0.250000000000000     ,
+ SHOC_PARM       =   7000.00000000000     ,   1.00000000000000     ,   4.28571430000000     ,  0.700000000000000     ,
+   -999.000000000000     ,
+ PSAURAS = 2*1.000000000000000E-003  ,
+ PRAURAS = 2*2.000000000000000E-003  ,
+ WMINRAS = 2*1.000000000000000E-006  ,
+ DO_SPPT = F,
+ DO_SHUM = F,
+ DO_SKEB = F,
+ DO_SPP  = F,
+ N_VAR_SPP       =           0,
+ LNDP_TYPE       =           0,
+ N_VAR_LNDP      =           0,
+ LNDP_EACH_STEP  = F,
+ PERT_MP = F,
+ PERT_CLDS       = F,
+ PERT_RADTEND    = T,
+ SA3DTKE = F,
+ PRSLRD0 =  0.000000000000000E+000,
+ RAL_TS  =  0.000000000000000E+000,
+ LDIAG_UGWP      = F,
+ DO_UGWP = F,
+ DO_TOFD = F,
+ SPEC_ADV        = T,
+ RHGRD   =   1.00000000000000     ,
+ ICLOUD  =           0,
+ CLAM_DEEP       =  0.100000000000000     ,
+ C0S_DEEP        =  2.000000000000000E-003,
+ C1_DEEP =  2.000000000000000E-003,
+ BETAL_DEEP      =  5.000000000000000E-002,
+ BETAS_DEEP      =  5.000000000000000E-002,
+ EVEF    =  9.000000000000000E-002,
+ EVFACT_DEEP     =  0.300000000000000     ,
+ EVFACTL_DEEP    =  0.300000000000000     ,
+ PGCON_DEEP      =  0.550000000000000     ,
+ ASOLFAC_DEEP    =  0.958000000000000     ,
+ CAT_ADJ_DEEP    =   1.00000000000000     ,
+ CLAM_SHAL       =  0.300000000000000     ,
+ C0S_SHAL        =  2.000000000000000E-003,
+ C1_SHAL =  5.000000000000000E-004,
+ PGCON_SHAL      =  0.550000000000000     ,
+ ASOLFAC_SHAL    =  0.958000000000000     ,
+ CAT_ADJ_SHAL    =   1.00000000000000     ,
+ NST_ANL = T,
+ LSEA    =           0,
+ NSTF_NAME       =           2,           1, 3*0,
+ FRAC_GRID       = T,
+ MIN_LAKEICE     =  0.150000000000000     ,
+ MIN_SEAICE      =  1.000000000000000E-006,
+ MIN_LAKE_HEIGHT =   250.000000000000     ,
+ IGNORE_LAKE     = T,
+ FRAC_ICE        = T,
+ SFC_Z0_TYPE     =           0,
+ USE_OCEANUV     = F,
+ THSFC_LOC       = T,
+ DIAG_FLUX       = F,
+ DIAG_LOG        = F,
+ XKZM_M  =   1.00000000000000     ,
+ XKZM_H  =   1.00000000000000     ,
+ XKZM_S  =   1.00000000000000     ,
+ XKZMINV =  0.300000000000000     ,
+ MONINQ_FAC      =   1.00000000000000     ,
+ DSPFAC  =   1.00000000000000     ,
+ BL_UPFR =  0.130000000000000     ,
+ BL_DNFR =  0.100000000000000     ,
+ RLMX    =   300.000000000000     ,
+ ELMX    =   300.000000000000     ,
+ SFC_RLM =           0,
+ TC_PBL  =           0,
+ USE_LPT =           0,
+ H0FACU  =  0.250000000000000     ,
+ H0FACS  =   1.00000000000000     ,
+ NCA     =           1,
+ NCELLS  =           5,
+ NLIVES  =          12,
+ NCA_G   =           1,
+ NCELLS_G        =           1,
+ NLIVES_G        =         100,
+ NFRACSEED       =  0.500000000000000     ,
+ NSEED   =           1,
+ NSEED_G =         100,
+ NTHRESH =   18.0000000000000     ,
+ DO_CA   = F,
+ CA_ADVECT       = F,
+ CA_SGS  = T,
+ CA_GLOBAL       = F,
+ ISEED_CA        =  1448371824,
+ CA_SMOOTH       = F,
+ NSPINUP =           1,
+ CA_AMPLITUDE    =  0.350000000000000     ,
+ NSMOOTH =         100,
+ CA_CLOSURE      = F,
+ CA_ENTR = F,
+ CA_TRIGGER      = T,
+ INCREMENT_FILE_ON_NATIVE_GRID   = F,
+ IAU_DELTHRS     =  0.000000000000000E+000,
+ IAUFHRS = 7*-1.00000000000000       ,
+ IAU_INC_FILES   =                                                                                                                   
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                   ,
+ IAU_FILTER_INCREMENTS   = F,
+ IAU_DRYMASSFIXER        = F,
+ IAU_REGIONAL    = F,
+ IAU_INC_SCALE   =   1.00000000000000     ,
+ DEBUG   = F,
+ PRE_RAD = F,
+ PRINT_DIFF_PGR  = F,
+ MAX_LON =        5000,
+ MAX_LAT =        2000,
+ MIN_LON =         192,
+ MIN_LAT =          94,
+ RHCMAX  =  0.999999900000000     ,
+ HUGE    =  9.969209968386869E+036,
+ PHYS_VERSION    = v2021 UFS PHYSICS                                               ,
+ FSCAV_AERO      =                                                                                                                   
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
+                                                                               ,
+ DUST_DRYLIMIT_FACTOR    =   1.00000000000000     ,
+ DUST_MOIST_CORRECTION   =   1.00000000000000     ,
+ DUST_MOIST_OPT  =           1,
+ DUST_ALPHA      =  0.000000000000000E+000,
+ DUST_GAMMA      =  0.000000000000000E+000,
+ WETDEP_LS_ALPHA =  0.500000000000000     ,
+ SEAS_OPT        =           2,
+ DUST_OPT        =           1,
+ DRYDEP_OPT      =           1,
+ COARSEPM_SETTLING       =           1,
+ PLUME_WIND_EFF  =           1,
+ EBB_DCYCLE      =           1,
+ EXTENDED_SD_DIAGS       = F,
+ WETDEP_LS_OPT   =           1,
+ HWP_METHOD      =           2,
+ AERO_IND_FDB    = F,
+ AERO_DIR_FDB    = F,
+ RRFS_SMOKE_DEBUG        = F,
+ DO_PLUMERISE    = F,
+ PLUMERISEFIRE_FRQ       =          60,
+ ADDSMOKE_FLAG   =           1,
+ ENH_MIX = F,
+ MIX_CHEM        = F,
+ SMOKE_DIR_FDB_COEF      =  0.330000000000000     ,  0.670000000000000     ,  2.000000000000000E-002,  0.130000000000000     ,
+   0.850000000000000     ,  5.000000000000000E-002,  0.950000000000000     ,
+ DO_SMOKE_TRANSPORT      = T,
+ SMOKE_CONV_WET_COEF     = 3*0.500000000000000       ,
+ N_DBG_LINES     =           3,
+ ADD_FIRE_MOIST_FLUX     = F,
+ SC_FACTOR       =   1.00000000000000     ,
+ ICHOICE =           0,
+ ICHOICEM        =          13,
+ ICHOICE_S       =           3,
+ GF_COLDSTART    = F,
+ FH_DFI_RADAR    = 5*-20000000000.0000       ,
+ RADAR_TTEN_LIMITS       = 2*1000000000000.00        ,
+ DO_CAP_SUPPRESS = T,
+ DO_CANOPY       = F,
+ LIGHTNING_THREAT        = F,
+ DO_CCPP_SUITE_SIM       = F
+ /
+  ================================================================== 
+ CCPP cires_ugwp_namelist_extended_v1
+ &CIRES_UGWP_NML
+ KNOB_UGWP_SOLVER        =           2,
+ KNOB_UGWP_SOURCE        = 2*1, 2*0,
+ KNOB_UGWP_WVSPEC        =           1, 3*25,
+ KNOB_UGWP_AZDIR =           2, 3*4,
+ KNOB_UGWP_STOCH = 4*0,
+ KNOB_UGWP_EFFAC = 4*1.00000000000000        ,
+ KNOB_UGWP_DOAXYZ        =           1,
+ KNOB_UGWP_DOHEAT        =           1,
+ KNOB_UGWP_DOKDIS        =           2,
+ KNOB_UGWP_NDX4LH        =           4,
+ KNOB_UGWP_VERSION       =           1,
+ KNOB_UGWP_PALAUNCH      =   27500.0000000000     ,
+ KNOB_UGWP_NSLOPE        =           1,
+ KNOB_UGWP_LZMAX =   15750.0000000000     ,
+ KNOB_UGWP_LZMIN =   750.000000000000     ,
+ KNOB_UGWP_LZSTAR        =   2000.00000000000     ,
+ KNOB_UGWP_LHMET =   200000.000000000     ,
+ KNOB_UGWP_TAUAMP        =  5.000000000000000E-004,
+ KNOB_UGWP_TAUMIN        =  2.500000000000000E-004,
+ KNOB_UGWP_TLIMB = T,
+ KNOB_UGWP_OROSOLV       = pss-1986
+ /
+  ================================================================== 

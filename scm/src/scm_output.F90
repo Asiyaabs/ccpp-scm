@@ -171,7 +171,7 @@ subroutine output_init_state(ncid, time_inst_id, hor_dim_id, vert_dim_id, vert_d
   
   integer, intent(in) :: ncid, time_inst_id, hor_dim_id, vert_dim_id, vert_dim_i_id
   type(scm_state_type), intent(in) :: scm_state
-  
+  character(len=64) :: tgn   ! qv_tag: tag name used in precipitation field names  
   integer :: dummy_id
   
   !> - Define the pressure-related variables.
@@ -180,22 +180,63 @@ subroutine output_init_state(ncid, time_inst_id, hor_dim_id, vert_dim_id, vert_d
   call NetCDF_def_var(ncid, 'sigma',   NF90_FLOAT, "sigma (p/p_s) on model layer centers",    "none", dummy_id, (/ hor_dim_id, vert_dim_id,   time_inst_id /))
   call NetCDF_def_var(ncid, 'sigma_i', NF90_FLOAT, "sigma (p/p_s) on model layer interfaces", "none", dummy_id, (/ hor_dim_id, vert_dim_i_id, time_inst_id /))
   call NetCDF_def_var(ncid, 'pres_s',  NF90_FLOAT, "surface pressure",                        "Pa",   dummy_id, (/ hor_dim_id,                time_inst_id /))
-  
+
+  print *, "DEBUG output_init_state: scm_state%tagging = ", scm_state%tagging
   !> - Define the state variables.
   call NetCDF_def_var(ncid, 'qv', NF90_FLOAT, "water vapor specific humidity on model layer centers",                "kg kg-1", dummy_id, (/ hor_dim_id, vert_dim_id,   time_inst_id /))
+  if (scm_state%tagging) then
+    call NetCDF_def_var(ncid, 'qv_tag', NF90_FLOAT, "tagged water vapor specific humidity", &
+                         "kg kg-1", dummy_id, (/ hor_dim_id, vert_dim_id, time_inst_id /))
+  end if
+  if (scm_state%tagging) then
+    call NetCDF_def_var(ncid, 'ql_tag', NF90_FLOAT, "tagged cloud liquid water mixing ratio", "kg kg-1", dummy_id, (/ hor_dim_id, vert_dim_id, time_inst_id /))
+    call NetCDF_def_var(ncid, 'qi_tag', NF90_FLOAT, "tagged cloud ice mixing ratio",          "kg kg-1", dummy_id, (/ hor_dim_id, vert_dim_id, time_inst_id /))
+    call NetCDF_def_var(ncid, 'qr_tag', NF90_FLOAT, "tagged rain water mixing ratio",         "kg kg-1", dummy_id, (/ hor_dim_id, vert_dim_id, time_inst_id /))
+    call NetCDF_def_var(ncid, 'qs_tag', NF90_FLOAT, "tagged snow mixing ratio",               "kg kg-1", dummy_id, (/ hor_dim_id, vert_dim_id, time_inst_id /))
+    call NetCDF_def_var(ncid, 'qg_tag', NF90_FLOAT, "tagged graupel mixing ratio",            "kg kg-1", dummy_id, (/ hor_dim_id, vert_dim_id, time_inst_id /))
+  end if
+
   call NetCDF_def_var(ncid, 'T',  NF90_FLOAT, "absolute temperature on model layer centers",                         "K",       dummy_id, (/ hor_dim_id, vert_dim_id,   time_inst_id /))
   call NetCDF_def_var(ncid, 'u',  NF90_FLOAT, "x-wind on model layer centers",                                       "m s-1",   dummy_id, (/ hor_dim_id, vert_dim_id,   time_inst_id /))
   call NetCDF_def_var(ncid, 'v',  NF90_FLOAT, "y-wind on model layer centers",                                       "m s-1",   dummy_id, (/ hor_dim_id, vert_dim_id,   time_inst_id /))
   call NetCDF_def_var(ncid, 'ql', NF90_FLOAT, "suspended resolved liquid cloud water on model layer centers",        "kg kg-1", dummy_id, (/ hor_dim_id, vert_dim_id,   time_inst_id /))
   call NetCDF_def_var(ncid, 'qi', NF90_FLOAT, "suspended resolved ice cloud water on model layer centers",           "kg kg-1", dummy_id, (/ hor_dim_id, vert_dim_id,   time_inst_id /))
   call NetCDF_def_var(ncid, 'qc', NF90_FLOAT, "suspended (resolved + SGS) total cloud water on model layer centers", "kg kg-1", dummy_id, (/ hor_dim_id, vert_dim_id,   time_inst_id /))
+
+  if (scm_state%rain_index > 0)    call NetCDF_def_var(ncid, 'qr', NF90_FLOAT, "rain water mixing ratio on model layer centers",    "kg kg-1", dummy_id, (/ hor_dim_id, vert_dim_id, time_inst_id /))
+  if (scm_state%snow_index > 0)    call NetCDF_def_var(ncid, 'qs', NF90_FLOAT, "snow water mixing ratio on model layer centers",    "kg kg-1", dummy_id, (/ hor_dim_id, vert_dim_id, time_inst_id /))
+  if (scm_state%graupel_index > 0) call NetCDF_def_var(ncid, 'qg', NF90_FLOAT, "graupel mixing ratio on model layer centers",       "kg kg-1", dummy_id, (/ hor_dim_id, vert_dim_id, time_inst_id /))
+  
   if (scm_state%sigmab_index > 0) then
     call NetCDF_def_var(ncid, 'sigmab', NF90_FLOAT, "updraft area fraction at lowest model layer",                    "frac",     dummy_id, (/ hor_dim_id,                 time_inst_id /))
   end if
+
   if (scm_state%omegab_index > 0) then
     call NetCDF_def_var(ncid, 'omegab', NF90_FLOAT, "prognostic convective updraft velocity",                       "m s-1",     dummy_id, (/ hor_dim_id, vert_dim_id,   time_inst_id /))
   end if
   
+
+  ! qv_tag: CESM/iCESM-style precipitation rates (m s-1, liquid water equivalent)
+  call NetCDF_def_var(ncid, 'PRECC',  NF90_FLOAT, "convective precipitation rate (liquid + ice), CESM PRECC",            "m s-1", dummy_id, (/ hor_dim_id, time_inst_id /))
+  call NetCDF_def_var(ncid, 'PRECSC', NF90_FLOAT, "convective snow rate (water equivalent), CESM PRECSC",                "m s-1", dummy_id, (/ hor_dim_id, time_inst_id /))
+  call NetCDF_def_var(ncid, 'PRECL',  NF90_FLOAT, "large-scale (microphysics) precipitation rate (liquid + ice), CESM PRECL", "m s-1", dummy_id, (/ hor_dim_id, time_inst_id /))
+  call NetCDF_def_var(ncid, 'PRECSL', NF90_FLOAT, "large-scale snow + graupel + ice rate (water equivalent), CESM PRECSL", "m s-1", dummy_id, (/ hor_dim_id, time_inst_id /))
+  call NetCDF_def_var(ncid, 'PRECT',  NF90_FLOAT, "total precipitation rate (PRECC + PRECL), CESM PRECT",                "m s-1", dummy_id, (/ hor_dim_id, time_inst_id /))
+  if (scm_state%tagging) then
+     tgn = trim(scm_state%qv_tag_names(1))
+     call NetCDF_def_var(ncid, 'PRECRC_'//trim(tgn)//'r', NF90_FLOAT, &
+          "tagged convective rain rate, tag "//trim(tgn)//" (source: "//trim(scm_state%qv_tag_sources(1))//" evaporation in this SCM column)", &
+          "m s-1", dummy_id, (/ hor_dim_id, time_inst_id /))
+     call NetCDF_def_var(ncid, 'PRECSC_'//trim(tgn)//'s', NF90_FLOAT, &
+          "tagged convective snow rate, tag "//trim(tgn)//" (source: "//trim(scm_state%qv_tag_sources(1))//" evaporation in this SCM column)", &
+          "m s-1", dummy_id, (/ hor_dim_id, time_inst_id /))
+     call NetCDF_def_var(ncid, 'PRECRL_'//trim(tgn)//'R', NF90_FLOAT, &
+          "tagged large-scale rain rate, tag "//trim(tgn)//" (source: "//trim(scm_state%qv_tag_sources(1))//" evaporation in this SCM column)", &
+          "m s-1", dummy_id, (/ hor_dim_id, time_inst_id /))
+     call NetCDF_def_var(ncid, 'PRECSL_'//trim(tgn)//'S', NF90_FLOAT, &
+          "tagged large-scale snow + graupel + ice rate, tag "//trim(tgn)//" (source: "//trim(scm_state%qv_tag_sources(1))//" evaporation in this SCM column)", &
+          "m s-1", dummy_id, (/ hor_dim_id, time_inst_id /))
+  end if
 end subroutine output_init_state
 
 subroutine output_init_forcing(ncid, time_inst_id, hor_dim_id, vert_dim_id)
@@ -287,6 +328,8 @@ subroutine output_init_interstitial(ncid, time_inst_id, time_rad_id, hor_dim_id,
   call NetCDF_def_var(ncid, 'mp_prcp_inst',   NF90_FLOAT, "instantaneous surface liquid water equivalent thickness of total precipitation from microphysics scheme",       "m", dummy_id, (/ hor_dim_id, time_inst_id /))
   call NetCDF_def_var(ncid, 'dcnv_prcp_inst', NF90_FLOAT, "instantaneous surface liquid water equivalent thickness of total precipitation from deep convection scheme",    "m", dummy_id, (/ hor_dim_id, time_inst_id /))
   call NetCDF_def_var(ncid, 'scnv_prcp_inst', NF90_FLOAT, "instantaneous surface liquid water equivalent thickness of total precipitation from shallow convection scheme", "m", dummy_id, (/ hor_dim_id, time_inst_id /))
+  call NetCDF_def_var(ncid, 'dcnv_prcp_tag_inst', NF90_FLOAT, "instantaneous surface liquid water equivalent thickness of tagged precipitation from deep convection scheme",    "m", dummy_id, (/ hor_dim_id, time_inst_id /))
+  call NetCDF_def_var(ncid, 'scnv_prcp_tag_inst', NF90_FLOAT, "instantaneous surface liquid water equivalent thickness of tagged precipitation from shallow convection scheme", "m", dummy_id, (/ hor_dim_id, time_inst_id /))
   
   call NetCDF_def_var(ncid, 'rad_cloud_fraction', NF90_FLOAT, "instantaneous cloud fraction used in radiation (radiation timesteps only)",                   "fraction", dummy_id, (/ hor_dim_id, vert_dim_rad_id, time_rad_id /))
   call NetCDF_def_var(ncid, 'rad_cloud_lwp',      NF90_FLOAT, "instantaneous cloud liquid water path used in radiation (radiation timesteps only)",          "g m-2",    dummy_id, (/ hor_dim_id, vert_dim_rad_id, time_rad_id /))
@@ -341,6 +384,37 @@ subroutine output_init_diag(ncid, time_inst_id, time_diag_id, time_rad_id, hor_d
   call output_init_tendency(ncid, 'dq_dt_micro',     "moisture tendency due to microphysics scheme",              "kg kg-1 s-1", hor_dim_id, vert_dim_id, time_diag_id, physics%Model%dtidx(100+physics%Model%ntqv,physics%Model%index_of_process_mp))
   call output_init_tendency(ncid, 'dq_dt_phys',      "moisture tendency due to all physics schemes",              "kg kg-1 s-1", hor_dim_id, vert_dim_id, time_diag_id, physics%Model%dtidx(100+physics%Model%ntqv,physics%Model%index_of_process_physics))
   call output_init_tendency(ncid, 'dq_dt_nonphys',   "moisture tendency due to all processes other than physics", "kg kg-1 s-1", hor_dim_id, vert_dim_id, time_diag_id, physics%Model%dtidx(100+physics%Model%ntqv,physics%Model%index_of_process_non_physics))
+  if (physics%Model%tagging) then
+    call output_init_tendency(ncid, 'dqvtag_dt_pbl',      "tagged water vapor tendency due to PBL scheme",                       "kg kg-1 s-1", hor_dim_id, vert_dim_id, time_diag_id, physics%Model%dtidx(100+physics%Model%nqvtag,physics%Model%index_of_process_pbl))
+    call output_init_tendency(ncid, 'dqvtag_dt_deepconv', "tagged water vapor tendency due to deep convection scheme",           "kg kg-1 s-1", hor_dim_id, vert_dim_id, time_diag_id, physics%Model%dtidx(100+physics%Model%nqvtag,physics%Model%index_of_process_dcnv))
+    call output_init_tendency(ncid, 'dqvtag_dt_shalconv', "tagged water vapor tendency due to shallow convection scheme",        "kg kg-1 s-1", hor_dim_id, vert_dim_id, time_diag_id, physics%Model%dtidx(100+physics%Model%nqvtag,physics%Model%index_of_process_scnv))
+    call output_init_tendency(ncid, 'dqvtag_dt_micro',    "tagged water vapor tendency due to microphysics scheme",              "kg kg-1 s-1", hor_dim_id, vert_dim_id, time_diag_id, physics%Model%dtidx(100+physics%Model%nqvtag,physics%Model%index_of_process_mp))
+    call output_init_tendency(ncid, 'dqvtag_dt_phys',     "tagged water vapor tendency due to all physics schemes",              "kg kg-1 s-1", hor_dim_id, vert_dim_id, time_diag_id, physics%Model%dtidx(100+physics%Model%nqvtag,physics%Model%index_of_process_physics))
+    call output_init_tendency(ncid, 'dqvtag_dt_nonphys',  "tagged water vapor tendency due to all processes other than physics", "kg kg-1 s-1", hor_dim_id, vert_dim_id, time_diag_id, physics%Model%dtidx(100+physics%Model%nqvtag,physics%Model%index_of_process_non_physics))
+  end if
+  block
+    character(len=2),  parameter :: tsp(5) = [character(len=2) :: 'ql','qi','qr','qs','qg']
+    character(len=24), parameter :: dsp(5) = [character(len=24) :: 'cloud liquid water','cloud ice','rain','snow','graupel']
+    character(len=12), parameter :: pnm(7) = [character(len=12) :: 'pbl','deepconv','shalconv','micro','convtrans','phys','nonphys']
+    character(len=40), parameter :: pds(7) = [character(len=40) :: 'PBL scheme','deep convection scheme','shallow convection scheme', &
+                                              'microphysics scheme','convective transport','all physics schemes','all processes other than physics']
+    integer :: isp, ipr, pidx(7), rsp(5)
+    pidx = (/ physics%Model%index_of_process_pbl, physics%Model%index_of_process_dcnv, physics%Model%index_of_process_scnv, &
+              physics%Model%index_of_process_mp, physics%Model%index_of_process_conv_trans, &
+              physics%Model%index_of_process_physics, physics%Model%index_of_process_non_physics /)
+    rsp = (/ physics%Model%ntcw, physics%Model%ntiw, physics%Model%ntrw, physics%Model%ntsw, physics%Model%ntgl /)
+    do isp = 1, 5
+      do ipr = 1, 7
+        call output_init_tendency(ncid, 'd'//trim(tsp(isp))//'_dt_'//trim(pnm(ipr)), &
+             trim(dsp(isp))//' tendency due to '//trim(pds(ipr)), "kg kg-1 s-1", &
+             hor_dim_id, vert_dim_id, time_diag_id, physics%Model%dtidx(100+rsp(isp),pidx(ipr)))
+        if (physics%Model%tagging) call output_init_tendency(ncid, 'd'//trim(tsp(isp))//'tag_dt_'//trim(pnm(ipr)), &
+             'tagged '//trim(dsp(isp))//' tendency due to '//trim(pds(ipr)), "kg kg-1 s-1", &
+             hor_dim_id, vert_dim_id, time_diag_id, physics%Model%dtidx(100+physics%Model%nqvtag+isp,pidx(ipr)))
+      end do
+    end do
+  end block
+  
   call output_init_tendency(ncid, 'doz_dt_pbl',      "ozone tendency due to PBL scheme",                          "kg kg-1 s-1", hor_dim_id, vert_dim_id, time_diag_id, physics%Model%dtidx(100+physics%Model%ntoz,physics%Model%index_of_process_pbl))
   call output_init_tendency(ncid, 'doz_dt_prodloss', "ozone tendency due to ozone production/loss",               "kg kg-1 s-1", hor_dim_id, vert_dim_id, time_diag_id, physics%Model%dtidx(100+physics%Model%ntoz,physics%Model%index_of_process_prod_loss))
   call output_init_tendency(ncid, 'doz_dt_oz',       "ozone tendency due to ozone",                               "kg kg-1 s-1", hor_dim_id, vert_dim_id, time_diag_id, physics%Model%dtidx(100+physics%Model%ntoz,physics%Model%index_of_process_ozmix))
@@ -500,11 +574,25 @@ subroutine output_append_state(ncid, scm_state, physics)
   call NetCDF_put_var(ncid, "pres_s",  scm_state%pres_surf(:), scm_state%itt_out)
   
   call NetCDF_put_var(ncid, "qv",      scm_state%state_tracer(:,:,scm_state%water_vapor_index,1), scm_state%itt_out)
+  if (physics%Model%tagging) then
+     call NetCDF_put_var(ncid, "qv_tag", scm_state%state_tracer(:,:,scm_state%qv_tag_index,1), scm_state%itt_out)
+     call NetCDF_put_var(ncid, "ql_tag", scm_state%state_tracer(:,:,scm_state%qv_tag_index+1,1), scm_state%itt_out)
+    call NetCDF_put_var(ncid, "qi_tag", scm_state%state_tracer(:,:,scm_state%qv_tag_index+2,1), scm_state%itt_out)
+    call NetCDF_put_var(ncid, "qr_tag", scm_state%state_tracer(:,:,scm_state%qv_tag_index+3,1), scm_state%itt_out)
+    call NetCDF_put_var(ncid, "qs_tag", scm_state%state_tracer(:,:,scm_state%qv_tag_index+4,1), scm_state%itt_out)
+    call NetCDF_put_var(ncid, "qg_tag", scm_state%state_tracer(:,:,scm_state%qv_tag_index+5,1), scm_state%itt_out)
+  end if
+
+
   call NetCDF_put_var(ncid, "T",       scm_state%state_T(:,:,1), scm_state%itt_out)
   call NetCDF_put_var(ncid, "u",       scm_state%state_u(:,:,1), scm_state%itt_out)
   call NetCDF_put_var(ncid, "v",       scm_state%state_v(:,:,1), scm_state%itt_out)
   call NetCDF_put_var(ncid, "ql",      scm_state%state_tracer(:,:,scm_state%cloud_water_index,1), scm_state%itt_out)
   call NetCDF_put_var(ncid, "qi",      scm_state%state_tracer(:,:,scm_state%cloud_ice_index,1), scm_state%itt_out)
+  if (scm_state%rain_index > 0)    call NetCDF_put_var(ncid, "qr", scm_state%state_tracer(:,:,scm_state%rain_index,1),    scm_state%itt_out)
+  if (scm_state%snow_index > 0)    call NetCDF_put_var(ncid, "qs", scm_state%state_tracer(:,:,scm_state%snow_index,1),    scm_state%itt_out)
+  if (scm_state%graupel_index > 0) call NetCDF_put_var(ncid, "qg", scm_state%state_tracer(:,:,scm_state%graupel_index,1), scm_state%itt_out)
+  
   if (scm_state%sigmab_index > 0) then
     call NetCDF_put_var(ncid, "sigmab",  scm_state%state_tracer(:,1,scm_state%sigmab_index,1), scm_state%itt_out)
   endif
@@ -604,6 +692,7 @@ subroutine output_append_interstitial_inst(ncid, scm_state, physics)
     
     integer, intent(in) :: ncid
     type(scm_state_type), intent(in) :: scm_state
+    character(len=64) :: tgn   ! qv_tag: tag name used in precipitation field names
     type(physics_type), intent(in) :: physics
     
     call NetCDF_put_var(ncid, "tau_u",   physics%Interstitial(1)%dusfc1(:), scm_state%itt_out)
@@ -629,6 +718,22 @@ subroutine output_append_interstitial_inst(ncid, scm_state, physics)
     call NetCDF_put_var(ncid, "mp_prcp_inst",    physics%Interstitial(1)%prcpmp(:), scm_state%itt_out)
     call NetCDF_put_var(ncid, "dcnv_prcp_inst",  physics%Interstitial(1)%raincd(:), scm_state%itt_out)
     call NetCDF_put_var(ncid, "scnv_prcp_inst",  physics%Interstitial(1)%raincs(:), scm_state%itt_out)
+    call NetCDF_put_var(ncid, "dcnv_prcp_tag_inst",  physics%Interstitial(1)%raincd_tag(:), scm_state%itt_out)
+    call NetCDF_put_var(ncid, "scnv_prcp_tag_inst",  physics%Interstitial(1)%raincs_tag(:), scm_state%itt_out)
+
+    ! qv_tag: CESM/iCESM-style precipitation rates (m s-1)
+    call NetCDF_put_var(ncid, "PRECC",  physics%Interstitial(1)%precc(:)/scm_state%dt,  scm_state%itt_out)
+    call NetCDF_put_var(ncid, "PRECSC", physics%Interstitial(1)%precsc(:)/scm_state%dt, scm_state%itt_out)
+    call NetCDF_put_var(ncid, "PRECL",  physics%Interstitial(1)%precl(:)/scm_state%dt,  scm_state%itt_out)
+    call NetCDF_put_var(ncid, "PRECSL", physics%Interstitial(1)%precsl(:)/scm_state%dt, scm_state%itt_out)
+    call NetCDF_put_var(ncid, "PRECT",  physics%Sfcprop%tprcp(:)/scm_state%dt,          scm_state%itt_out)
+    if (scm_state%tagging) then
+      tgn = trim(scm_state%qv_tag_names(1))
+      call NetCDF_put_var(ncid, 'PRECRC_'//trim(tgn)//'r', physics%Interstitial(1)%precrc_tag(:)/scm_state%dt, scm_state%itt_out)
+      call NetCDF_put_var(ncid, 'PRECSC_'//trim(tgn)//'s', physics%Interstitial(1)%precsc_tag(:)/scm_state%dt, scm_state%itt_out)
+      call NetCDF_put_var(ncid, 'PRECRL_'//trim(tgn)//'R', physics%Interstitial(1)%precrl_tag(:)/scm_state%dt, scm_state%itt_out)
+      call NetCDF_put_var(ncid, 'PRECSL_'//trim(tgn)//'S', physics%Interstitial(1)%precsl_tag(:)/scm_state%dt, scm_state%itt_out)
+    end if    
 
 end subroutine output_append_interstitial_inst
 
@@ -762,6 +867,37 @@ subroutine output_append_diag_avg(ncid, scm_state, physics)
     call output_append_tendency(ncid, physics, physics%Model%dtidx(100+physics%Model%ntqv,physics%Model%index_of_process_mp),             "dq_dt_micro",     scm_state%itt_diag, inverse_n_diag*inverse_dt)
     call output_append_tendency(ncid, physics, physics%Model%dtidx(100+physics%Model%ntqv,physics%Model%index_of_process_physics),        "dq_dt_phys",      scm_state%itt_diag, inverse_n_diag*inverse_dt)
     call output_append_tendency(ncid, physics, physics%Model%dtidx(100+physics%Model%ntqv,physics%Model%index_of_process_non_physics),    "dq_dt_nonphys",   scm_state%itt_diag, inverse_n_diag*inverse_dt)
+    if (physics%Model%tagging) then
+       call output_append_tendency(ncid, physics, physics%Model%dtidx(100+physics%Model%nqvtag,physics%Model%index_of_process_pbl),         "dqvtag_dt_pbl",      scm_state%itt_diag, inverse_n_diag*inverse_dt)
+       call output_append_tendency(ncid, physics, physics%Model%dtidx(100+physics%Model%nqvtag,physics%Model%index_of_process_dcnv),        "dqvtag_dt_deepconv", scm_state%itt_diag, inverse_n_diag*inverse_dt)
+       call output_append_tendency(ncid, physics, physics%Model%dtidx(100+physics%Model%nqvtag,physics%Model%index_of_process_scnv),        "dqvtag_dt_shalconv", scm_state%itt_diag, inverse_n_diag*inverse_dt)
+       call output_append_tendency(ncid, physics, physics%Model%dtidx(100+physics%Model%nqvtag,physics%Model%index_of_process_mp),          "dqvtag_dt_micro",    scm_state%itt_diag, inverse_n_diag*inverse_dt)
+       call output_append_tendency(ncid, physics, physics%Model%dtidx(100+physics%Model%nqvtag,physics%Model%index_of_process_physics),     "dqvtag_dt_phys",     scm_state%itt_diag, inverse_n_diag*inverse_dt)
+       call output_append_tendency(ncid, physics, physics%Model%dtidx(100+physics%Model%nqvtag,physics%Model%index_of_process_non_physics), "dqvtag_dt_nonphys",  scm_state%itt_diag, inverse_n_diag*inverse_dt)
+    end if
+
+  block
+    character(len=2),  parameter :: tsp(5) = [character(len=2) :: 'ql','qi','qr','qs','qg']
+    character(len=24), parameter :: dsp(5) = [character(len=24) :: 'cloud liquid water','cloud ice','rain','snow','graupel']
+    character(len=12), parameter :: pnm(7) = [character(len=12) :: 'pbl','deepconv','shalconv','micro','convtrans','phys','nonphys']
+    character(len=40), parameter :: pds(7) = [character(len=40) :: 'PBL scheme','deep convection scheme','shallow convection scheme', &
+                                              'microphysics scheme','convective transport','all physics schemes','all processes other than physics']
+    integer :: isp, ipr, pidx(7), rsp(5)
+    pidx = (/ physics%Model%index_of_process_pbl, physics%Model%index_of_process_dcnv, physics%Model%index_of_process_scnv, &
+              physics%Model%index_of_process_mp, physics%Model%index_of_process_conv_trans, &
+              physics%Model%index_of_process_physics, physics%Model%index_of_process_non_physics /)
+    rsp = (/ physics%Model%ntcw, physics%Model%ntiw, physics%Model%ntrw, physics%Model%ntsw, physics%Model%ntgl /)
+    do isp = 1, 5
+      do ipr = 1, 7
+        call output_append_tendency(ncid, physics, physics%Model%dtidx(100+rsp(isp),pidx(ipr)), &
+             'd'//trim(tsp(isp))//'_dt_'//trim(pnm(ipr)), scm_state%itt_diag, inverse_n_diag*inverse_dt)
+        if (physics%Model%tagging) call output_append_tendency(ncid, physics, &
+             physics%Model%dtidx(100+physics%Model%nqvtag+isp,pidx(ipr)), &
+             'd'//trim(tsp(isp))//'tag_dt_'//trim(pnm(ipr)), scm_state%itt_diag, inverse_n_diag*inverse_dt)
+      end do
+    end do
+  end block
+   
     call output_append_tendency(ncid, physics, physics%Model%dtidx(100+physics%Model%ntoz,physics%Model%index_of_process_pbl),            "doz_dt_pbl",      scm_state%itt_diag, inverse_n_diag*inverse_dt)
     call output_append_tendency(ncid, physics, physics%Model%dtidx(100+physics%Model%ntoz,physics%Model%index_of_process_prod_loss),      "doz_dt_prodloss", scm_state%itt_diag, inverse_n_diag*inverse_dt)
     call output_append_tendency(ncid, physics, physics%Model%dtidx(100+physics%Model%ntoz,physics%Model%index_of_process_ozmix),          "doz_dt_oz",       scm_state%itt_diag, inverse_n_diag*inverse_dt)

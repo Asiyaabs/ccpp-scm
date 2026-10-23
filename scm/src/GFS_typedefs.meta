@@ -5755,6 +5755,19 @@
   units = flag
   dimensions = ()
   type = logical
+[qvtag_floor_frac]
+  standard_name = tagged_fraction_of_microphysics_vapor_floor_water
+  long_name = tagged fraction given to water added by the microphysics vapor floor
+  units = frac
+  dimensions = ()
+  type = real
+  kind = kind_phys
+[tagging]
+  standard_name = flag_for_water_tagging
+  long_name = master flag to enable water tagging (dye-tracking) framework
+  units = flag
+  dimensions = ()
+  type = logical  
 [tte_edmf]
   standard_name = flag_for_scale_aware_TTE_moist_EDMF_PBL
   long_name = flag for scale-aware TTE moist EDMF PBL scheme
@@ -6900,6 +6913,29 @@
   units = index
   dimensions = ()
   type = integer
+[nqvtag]
+     standard_name = index_of_tagged_water_vapor_in_tracer_concentration_array
+     long_name = index of tagged water vapor in tracer concentration array
+     units = index
+     dimensions = ()
+     type = integer
+
+[qgrs(:,:,index_of_tagged_water_vapor_in_tracer_concentration_array)]
+     standard_name = physics_timestep_initial_tagged_water_vapor_specific_humidity
+     long_name = tagged water vapor specific humidity at the beginning of the physics timestep
+     units = kg kg-1
+     dimensions = (horizontal_dimension,vertical_layer_dimension)
+     type = real
+     kind = kind_phys
+
+[gq0(:,:,index_of_tagged_water_vapor_in_tracer_concentration_array)]
+     standard_name = tagged_water_vapor_specific_humidity_updated_by_physics
+     long_name = tagged water vapor specific humidity updated by physics
+     units = kg kg-1
+     dimensions = (horizontal_dimension,vertical_layer_dimension)
+     type = real
+     kind = kind_phys
+     
 [ntoz]
   standard_name = index_of_ozone_mixing_ratio_in_tracer_concentration_array
   long_name = tracer index for ozone mixing ratio

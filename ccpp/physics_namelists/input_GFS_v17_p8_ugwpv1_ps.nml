@@ -1,6 +1,7 @@
 &gfs_physics_nml
   fhzero       = 6
   h2o_phys     = .true.
+  tagging      = .true.
   ldiag3d      = .true.
   qdiag3d      = .true.
   print_diff_pgr = .false.

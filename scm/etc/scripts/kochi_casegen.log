@@ -1,0 +1,6 @@
+INFO: Location summary
+ The location as entered is 286.0 deg E 42.0 deg N
+ The closest point in the UFS history file is 286.0546875 deg E 41.99804477924099 deg N, or 4.5243393299392896 km away at a bearing of 92.7360306664936 deg
+ The closest point in the UFS IC files (native grid) is 285.9299047433183 deg E 42.3551919381163 deg N, or 39.915663827594315 km away at a bearing of 351.70323925867945 deg
+ Therefore, the history point (used to define the SCM grid column) is 41.02255074025535 km away from the closest UFS native grid poing at a bearing of 165.4416466547276 deg
+INFO: UFS IC file and history file land masks match: IC=1.0, history=1.0

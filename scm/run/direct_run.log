@@ -1,0 +1,1210 @@
+Waiting on job launch; 7457229.desched1 with qsub arguments:
+    qsub  -l select=1:ncpus=1 -A UALB0055 -q develop@desched1 -l walltime=00:10:00
+
+tracer FOUND:sphum
+tracer FOUND:o3mr
+tracer FOUND:liq_wat
+tracer FOUND:ice_wat
+tracer FOUND:rainwat
+tracer FOUND:snowwat
+tracer FOUND:graupel
+tracer with name hailwat not found
+tracer with name cld_amt not found
+tracer with name water_nc not found
+tracer FOUND:ice_nc
+tracer FOUND:rain_nc
+tracer with name snow_nc not found
+tracer with name graupel_nc not found
+tracer with name hail_nc not found
+tracer with name graupel_vol not found
+tracer with name hail_vol not found
+tracer FOUND:sgs_tke
+tracer FOUND:sigmab
+tracer FOUND:omegab
+tracer with name ccn_nc not found
+tracer with name liq_aero not found
+tracer with name ice_aero not found
+tracer with name q_rimef not found
+tracer with name smoke not found
+tracer with name dust not found
+tracer with name coarsepm not found
+DEBUG scm_state_create: physics%Model%tagging =  F
+var_gfs: computed model top (m)=   90.9884638254980       bottom/top dz=
+16.5238759044367        10122.8526831467
+For (input) PINT=   75.0000000000000       KS=          43 pint(computed)=
+76.1270774775719
+ptop =   1.00000000000000
+KS=          43 PINT (mb)=   76.1270774775719
+1  2.299870340230987E-002   10122.8526831467
+2  5.807713615902607E-002   6326.78292696670
+3  0.110789086252614        4487.08009004731
+4  0.179073131189213        3373.74442860699
+5  0.260423211451628        2677.57494333888
+6  0.353726514094036        2231.31245278240
+7  0.459448655244643        1940.27169807166
+8  0.580025523792907        1763.88336188332
+9  0.719691880533939        1657.78511455200
+10  0.884864375690110        1612.63143438910
+11   1.08184781811884        1568.70762100107
+12   1.31547103082967        1525.98017607108
+13   1.59105999917058        1484.41651368782
+14   1.91445310729165        1443.98493549399
+15   2.29201190413787        1404.65460651166
+16   2.73062688774661        1366.39553162613
+17   3.23771785968625        1329.17853271025
+18   3.82122847689726        1292.97522637183
+19   4.48961471426442        1257.75800230723
+20   5.25182704591857        1223.50000224439
+21   6.11728625425391        1190.17509945952
+22   7.09585288050421        1157.75787885168
+23   8.19779043692070        1126.22361756000
+24   9.43372260561037        1095.54826610895
+25   10.8145847504848        1065.70843006707
+26   12.3515701642485        1036.68135220532
+27   14.0560715598517        1008.44489514136
+28   15.9396183935512        980.977524456579
+29   18.0138106731671        954.258292272934
+30   20.2902499591542        928.266821277171
+31   22.7804683069122        902.983289180131
+32   25.4958559259113        878.388413599347
+33   28.4475883445917        854.463437353450
+34   31.6465538698591        831.190114157052
+35   35.1032821168508        808.550694705304
+36   38.8278743593005        786.527913137455
+37   42.8299364142957        765.104973869122
+38   47.1185147287102        744.265538783191
+39   51.7020362794515        723.993714769640
+40   56.5882528373320        704.274041604709
+41   61.7841900763523        685.091480160223
+42   67.2961019379860        666.431400934071
+43   73.1294305851670        648.279572893061
+44   79.2887722045399        630.622152619711
+45   85.7778488394930        613.445673754584
+46   92.5994863617950        596.737036726248
+47   99.7555986174313        580.483498760943
+48   107.247177713467        564.672664164340
+49   115.074290348294        549.292474868034
+50   123.236080028138        534.331201233495
+51   131.730774958791        519.777433106514
+52   140.555701353505        505.620071115287
+53   149.707301856236        491.848318205532
+54   159.181158743946        478.451671406159
+55   168.972021542610        465.419913819222
+56   179.073838668687        452.743106828037
+57   189.479792691109        440.411582517545
+58   200.182338797836        428.415936301113
+59   211.173246045558        416.747019748165
+60   222.443640970726        405.395933607164
+61   233.984053144325        394.354021018642
+62   245.784462261275        383.612860913076
+63   257.834346367504        373.164261588596
+64   270.122730843163        363.000254463614
+65   282.638237778606        353.113087999625
+66   295.369135400268        343.495221789519
+67   308.303387225806        334.139320806924
+68   321.428700651644        325.038249812183
+69   334.732574700691        316.185067910685
+70   348.202346683342        307.573023259420
+71   361.825237550449        299.195547917724
+72   375.588395742457        291.046252838253
+73   389.478939364134        283.118922994409
+74   403.483996538943        275.407512640476
+75   417.590743820979        267.906140700852
+76   431.786442565283        260.609086284876
+77   446.058473179160        253.510784323809
+78   460.394367197701        246.605821326662
+79   474.781837145962        239.888931251618
+80   489.208804168177        233.354991489900
+81   503.663423420843        226.999018959047
+82   518.134107241549        220.816166302575
+83   532.609546119055        214.801718193166
+84   547.078727502308        208.951087736543
+85   561.530952496855        203.259812973291
+86   575.955850506592        197.723553475964
+87   590.343391886918        192.338087038875
+88   604.683898682275        187.099306458050
+89   618.968053526781        182.003216398881
+90   633.186906791310        177.045930349106
+91   647.331882063962        172.223667654772
+92   661.394780053497        167.532750636938
+93   675.367781007122        162.969601786905
+94   689.243445734930        158.530741037845
+95   703.014715333570        154.212783110745
+96   716.674909701310        150.012434932631
+97   730.217724935652        145.926493125127
+98   743.637229703176        141.951841561407
+99   756.927860669321        138.085448989696
+100   770.084417073499        134.324366721494
+101   783.102054532269        130.665726382777
+102   795.976278150376        127.106737726436
+103   808.653371936263        122.683423253556
+104   821.072756987867        118.260108780677
+105   833.216472512040        113.836794307796
+106   845.066753142085        109.413479834916
+107   856.606071870864        104.990165362037
+108   867.817182935137        100.566850889157
+109   878.683164505506        96.1435364162764
+110   889.187461035082        91.7202219433965
+111   899.313925119381        87.2969074705165
+112   909.046858719979        82.8735929976366
+113   918.371053605177        78.4502785247565
+114   927.271830862274        74.0269640518766
+115   935.735079338108        69.6036495789966
+116   943.747292867219        65.1803351061166
+117   951.295606150360        60.7570206332367
+118   958.367829150089        56.3337061603567
+119   964.952479874857        51.9103916874766
+120   971.038815428227        47.4870772145967
+121   976.616861205781        43.0637627417167
+122   981.677438128665        38.6404482688367
+123   986.212187809718        34.2171337959567
+124   990.213595555637        29.7938193230767
+125   993.675011116558        25.3705048501967
+126   996.590667102888        20.9471903773167
+127   998.955694997978        16.5238759044367
+Hybrid Sigma-P: minimum allowable surface pressure (hpa)=
+141.745234278423
+klev           ak           bk      p_ref
+1      1.00000      0.00000       1.00
+2      3.59974      0.00000       3.60
+3      8.01569      0.00000       8.02
+4     14.14213      0.00000      14.14
+5     21.67250      0.00000      21.67
+6     30.41215      0.00000      30.41
+7     40.33316      0.00000      40.33
+8     51.55657      0.00000      51.56
+9     64.44853      0.00000      64.45
+10     79.48985      0.00000      79.49
+11     97.48303      0.00000      97.48
+12    118.88653      0.00000     118.89
+13    144.20767      0.00000     144.21
+14    174.00433      0.00000     174.00
+15    208.88629      0.00000     208.89
+16    249.51609      0.00000     249.52
+17    296.60929      0.00000     296.61
+18    350.93428      0.00000     350.93
+19    413.31141      0.00000     413.31
+20    484.61153      0.00000     484.61
+21    565.75388      0.00000     565.75
+22    657.70337      0.00000     657.70
+23    761.46720      0.00000     761.47
+24    878.09088      0.00000     878.09
+25   1008.65364      0.00000    1008.65
+26   1154.26331      0.00000    1154.26
+27   1316.05072      0.00000    1316.05
+28   1495.16359      0.00000    1495.16
+29   1692.76009      0.00000    1692.76
+30   1910.00205      0.00000    1910.00
+31   2148.04795      0.00000    2148.05
+32   2408.04572      0.00000    2408.05
+33   2691.12547      0.00000    2691.13
+34   2998.39220      0.00000    2998.39
+35   3330.91857      0.00000    3330.92
+36   3689.73785      0.00000    3689.74
+37   4075.83702      0.00000    4075.84
+38   4490.15026      0.00000    4490.15
+39   4933.55269      0.00000    4933.55
+40   5406.85457      0.00000    5406.85
+41   5910.79600      0.00000    5910.80
+42   6446.04202      0.00000    6446.04
+43   7013.17837      0.00000    7013.18
+44   7612.70775      0.00000    7612.71
+45   8188.20957      0.00057    8245.05
+46   8688.98523      0.00222    8910.52
+47   9123.14474      0.00486    9609.37
+48   9497.72972      0.00844   10341.75
+49   9818.87219      0.01289   11107.69
+50  10091.92812      0.01815   11907.17
+51  10321.59001      0.02418   12740.05
+52  10511.98190      0.03094   13606.11
+53  10666.73989      0.03838   14505.03
+54  10789.08039      0.04647   15436.43
+55  10881.85808      0.05518   16399.80
+56  10947.61532      0.06447   17394.60
+57  10988.62422      0.07432   18420.17
+58  11006.92259      0.08469   19475.79
+59  11004.34472      0.09556   20560.68
+60  10982.54769      0.10691   21673.97
+61  10943.03398      0.11872   22814.76
+62  10887.17082      0.13095   23982.05
+63  10816.20693      0.14359   25174.84
+64  10731.28677      0.15661   26392.03
+65  10633.46298      0.16999   27632.51
+66  10523.70697      0.18371   28895.13
+67  10402.91811      0.19776   30178.69
+68  10271.93171      0.21210   31481.98
+69  10131.52578      0.22672   32803.76
+70   9982.42707      0.24160   34142.76
+71   9825.31611      0.25672   35497.71
+72   9660.83169      0.27207   36867.34
+73   9489.57472      0.28761   38250.34
+74   9312.11156      0.30333   39645.44
+75   9128.97697      0.31922   41051.35
+76   8940.67659      0.33526   42466.79
+77   8747.68917      0.35143   43890.49
+78   8550.46853      0.36771   45321.20
+79   8349.44523      0.38408   46757.67
+80   8145.02807      0.40054   48198.69
+81   7937.60538      0.41705   49643.07
+82   7727.54623      0.43362   51089.62
+83   7515.20141      0.45022   52537.20
+84   7300.90441      0.46684   53984.71
+85   7084.97219      0.48346   55431.04
+86   6867.70599      0.50007   56875.15
+87   6649.39198      0.51667   58316.02
+88   6430.30187      0.53322   59752.66
+89   6210.69353      0.54973   61184.12
+90   5990.81147      0.56619   62609.49
+91   5770.88738      0.58257   64027.89
+92   5551.14058      0.59887   65438.49
+93   5331.77847      0.61509   66840.47
+94   5112.99692      0.63120   68233.09
+95   4894.98071      0.64721   69615.60
+96   4677.90391      0.66309   70987.34
+97   4461.93021      0.67886   72347.64
+98   4247.21334      0.69449   73695.90
+99   4033.89738      0.70998   75031.54
+100   3822.11712      0.72532   76354.03
+101   3611.99836      0.74051   77662.85
+102   3403.65829      0.75554   78957.56
+103   3197.20576      0.77040   80237.70
+104   2994.34514      0.78499   81492.97
+105   2795.41189      0.79926   82721.58
+106   2600.73700      0.81321   83921.72
+107   2410.64631      0.82681   85091.63
+108   2225.45985      0.84004   86229.58
+109   2045.49121      0.85288   87333.85
+110   1871.04679      0.86532   88402.78
+111   1702.42520      0.87732   89434.71
+112   1539.91656      0.88888   90428.07
+113   1383.80185      0.89997   91381.30
+114   1234.35228      0.91059   92292.91
+115   1091.82866      0.92070   93161.46
+116    956.48076      0.93029   93985.56
+117    828.54677      0.93935   94763.90
+118    708.25266      0.94787   95495.22
+119    595.81169      0.95583   96178.34
+120    491.42386      0.96321   96812.15
+121    395.27541      0.97000   97395.61
+122    307.53840      0.97620   97927.76
+123    228.37020      0.98179   98407.73
+124    157.91319      0.98677   98834.71
+125     96.29433      0.99112   99208.01
+126     43.62485      0.99483   99526.99
+127      0.00000      0.99791   99791.14
+128      0.00000      1.00000  100000.00
+NO FLAG: gwd is generic
+FLAG: satmedmf and isatedmf=1 so pbl not generic
+NO FLAG: scnv is generic
+NO FLAG: dcnv is generic
+model init,iaufhrs=  -1.00000000000000       -1.00000000000000
+-1.00000000000000       -1.00000000000000       -1.00000000000000
+-1.00000000000000       -1.00000000000000
+tracer FOUND:sphum
+tracer FOUND:qv_tag
+tracer FOUND:o3mr
+tracer FOUND:liq_wat
+tracer FOUND:ice_wat
+tracer FOUND:rainwat
+tracer FOUND:snowwat
+tracer FOUND:graupel
+tracer with name hailwat not found
+tracer with name cld_amt not found
+tracer with name water_nc not found
+tracer FOUND:ice_nc
+tracer FOUND:rain_nc
+tracer with name snow_nc not found
+tracer with name graupel_nc not found
+tracer with name hail_nc not found
+tracer with name ccn_nc not found
+tracer with name ccna_nc not found
+tracer with name graupel_vol not found
+tracer with name hail_vol not found
+tracer with name rain_ref not found
+tracer with name graupel_ref not found
+tracer with name hail_ref not found
+tracer FOUND:sgs_tke
+tracer FOUND:sigmab
+tracer FOUND:omegab
+tracer with name q_rimef not found
+tracer with name liq_aero not found
+tracer with name ice_aero not found
+dtend selected: gfs_phys dtend_temp_lw = temperature tendency due to long wave radiation (K s-1)
+dtend selected: gfs_phys dtend_temp_sw = temperature tendency due to short wave radiation (K s-1)
+dtend selected: gfs_phys dtend_temp_pbl = temperature tendency due to PBL (K s-1)
+dtend selected: gfs_phys dtend_temp_deepcnv = temperature tendency due to deep convection (K s-1)
+dtend selected: gfs_phys dtend_temp_shalcnv = temperature tendency due to shallow convection (K s-1)
+dtend selected: gfs_phys dtend_temp_mp = temperature tendency due to microphysics (K s-1)
+dtend selected: gfs_phys dtend_temp_orogwd = temperature tendency due to orographic gravity wave drag (K s-1)
+dtend selected: gfs_phys dtend_temp_cnvgwd = temperature tendency due to convective gravity wave drag (K s-1)
+dtend selected: gfs_phys dtend_temp_phys = temperature tendency due to physics (K s-1)
+dtend selected: gfs_dyn dtend_temp_nophys = temperature tendency due to non-physics processes (K s-1)
+dtend selected: gfs_phys dtend_u_pbl = x wind tendency due to PBL (m s-2)
+dtend selected: gfs_phys dtend_v_pbl = y wind tendency due to PBL (m s-2)
+dtend selected: gfs_phys dtend_u_orogwd = x wind tendency due to orographic gravity wave drag (m s-2)
+dtend selected: gfs_phys dtend_v_orogwd = y wind tendency due to orographic gravity wave drag (m s-2)
+dtend selected: gfs_phys dtend_u_deepcnv = x wind tendency due to deep convection (m s-2)
+dtend selected: gfs_phys dtend_v_deepcnv = y wind tendency due to deep convection (m s-2)
+dtend selected: gfs_phys dtend_u_cnvgwd = x wind tendency due to convective gravity wave drag (m s-2)
+dtend selected: gfs_phys dtend_v_cnvgwd = y wind tendency due to convective gravity wave drag (m s-2)
+dtend selected: gfs_phys dtend_u_shalcnv = x wind tendency due to shallow convection (m s-2)
+dtend selected: gfs_phys dtend_v_shalcnv = y wind tendency due to shallow convection (m s-2)
+dtend selected: gfs_phys dtend_u_phys = x wind tendency due to physics (m s-2)
+dtend selected: gfs_phys dtend_v_phys = y wind tendency due to physics (m s-2)
+dtend selected: gfs_dyn dtend_u_nophys = x wind tendency due to non-physics processes (m s-2)
+dtend selected: gfs_dyn dtend_v_nophys = y wind tendency due to non-physics processes (m s-2)
+dtend selected: gfs_phys dtend_qv_shalcnv = water vapor specific humidity tendency due to shallow convection (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_qv_deepcnv = water vapor specific humidity tendency due to deep convection (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_liq_wat_cnvtrans = cloud condensate (or liquid water) tendency due to convective transport (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_ice_wat_cnvtrans = ice water tendency due to convective transport (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_rainwat_cnvtrans = rain water tendency due to convective transport (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_snowwat_cnvtrans = snow water tendency due to convective transport (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_graupel_cnvtrans = graupel tendency due to convective transport (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_ice_nc_shalcnv = ice number concentration tendency due to shallow convection (kg-1 s-1)
+dtend selected: gfs_phys dtend_ice_nc_deepcnv = ice number concentration tendency due to deep convection (kg-1 s-1)
+dtend selected: gfs_phys dtend_ice_nc_cnvtrans = ice number concentration tendency due to convective transport (kg-1 s-1)
+dtend selected: gfs_phys dtend_rain_nc_cnvtrans = rain number concentration tendency due to convective transport (kg-1 s-1)
+dtend selected: gfs_phys dtend_o3_shalcnv = ozone concentration tendency due to shallow convection (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_o3_deepcnv = ozone concentration tendency due to deep convection (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_sgs_tke_shalcnv = turbulent kinetic energy tendency due to shallow convection (J s-1)
+dtend selected: gfs_phys dtend_sgs_tke_deepcnv = turbulent kinetic energy tendency due to deep convection (J s-1)
+dtend selected: gfs_phys dtend_tracer11_shalcnv = tracer 11 of 13 tendency due to shallow convection (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_tracer11_deepcnv = tracer 11 of 13 tendency due to deep convection (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_tracer12_shalcnv = tracer 12 of 13 tendency due to shallow convection (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_tracer12_deepcnv = tracer 12 of 13 tendency due to deep convection (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_tracer13_shalcnv = tracer 13 of 13 tendency due to shallow convection (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_tracer13_deepcnv = tracer 13 of 13 tendency due to deep convection (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_o3_cpl_pbl = cplaqm ozone concentration tendency due to PBL (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_o3_pbl = ozone concentration tendency due to PBL (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_o3_prodloss = ozone concentration tendency due to production and loss rate (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_o3_o3mix = ozone concentration tendency due to ozone mixing ratio (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_o3_temp = ozone concentration tendency due to temperature (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_o3_o3column = ozone concentration tendency due to overhead ozone column (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_o3_photochem = ozone concentration tendency due to photochemical processes (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_o3_phys = ozone concentration tendency due to physics (kg kg-1 s-1)
+dtend selected: gfs_dyn dtend_o3_nophys = ozone concentration tendency due to non-physics processes (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_qv_prodloss = water vapor specific humidity tendency due to production and loss rate (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_qv_o3mix = water vapor specific humidity tendency due to ozone mixing ratio (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_qv_photochem = water vapor specific humidity tendency due to photochemical processes (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_qv_pbl = water vapor specific humidity tendency due to PBL (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_qv_phys = water vapor specific humidity tendency due to physics (kg kg-1 s-1)
+dtend selected: gfs_dyn dtend_qv_nophys = water vapor specific humidity tendency due to non-physics processes (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_qv_mp = water vapor specific humidity tendency due to microphysics (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_liq_wat_pbl = cloud condensate (or liquid water) tendency due to PBL (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_liq_wat_phys = cloud condensate (or liquid water) tendency due to physics (kg kg-1 s-1)
+dtend selected: gfs_dyn dtend_liq_wat_nophys = cloud condensate (or liquid water) tendency due to non-physics processes (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_liq_wat_mp = cloud condensate (or liquid water) tendency due to microphysics (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_ice_wat_pbl = ice water tendency due to PBL (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_ice_wat_phys = ice water tendency due to physics (kg kg-1 s-1)
+dtend selected: gfs_dyn dtend_ice_wat_nophys = ice water tendency due to non-physics processes (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_ice_wat_mp = ice water tendency due to microphysics (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_rainwat_pbl = rain water tendency due to PBL (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_rainwat_phys = rain water tendency due to physics (kg kg-1 s-1)
+dtend selected: gfs_dyn dtend_rainwat_nophys = rain water tendency due to non-physics processes (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_rainwat_mp = rain water tendency due to microphysics (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_snowwat_pbl = snow water tendency due to PBL (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_snowwat_phys = snow water tendency due to physics (kg kg-1 s-1)
+dtend selected: gfs_dyn dtend_snowwat_nophys = snow water tendency due to non-physics processes (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_snowwat_mp = snow water tendency due to microphysics (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_graupel_pbl = graupel tendency due to PBL (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_graupel_phys = graupel tendency due to physics (kg kg-1 s-1)
+dtend selected: gfs_dyn dtend_graupel_nophys = graupel tendency due to non-physics processes (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_graupel_mp = graupel tendency due to microphysics (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_ice_nc_pbl = ice number concentration tendency due to PBL (kg-1 s-1)
+dtend selected: gfs_phys dtend_ice_nc_phys = ice number concentration tendency due to physics (kg-1 s-1)
+dtend selected: gfs_dyn dtend_ice_nc_nophys = ice number concentration tendency due to non-physics processes (kg-1 s-1)
+dtend selected: gfs_phys dtend_ice_nc_mp = ice number concentration tendency due to microphysics (kg-1 s-1)
+dtend selected: gfs_phys dtend_rain_nc_pbl = rain number concentration tendency due to PBL (kg-1 s-1)
+dtend selected: gfs_phys dtend_rain_nc_phys = rain number concentration tendency due to physics (kg-1 s-1)
+dtend selected: gfs_dyn dtend_rain_nc_nophys = rain number concentration tendency due to non-physics processes (kg-1 s-1)
+dtend selected: gfs_phys dtend_rain_nc_mp = rain number concentration tendency due to microphysics (kg-1 s-1)
+dtend selected: gfs_phys dtend_sgs_tke_pbl = turbulent kinetic energy tendency due to PBL (J s-1)
+dtend selected: gfs_phys dtend_sgs_tke_phys = turbulent kinetic energy tendency due to physics (J s-1)
+dtend selected: gfs_dyn dtend_sgs_tke_nophys = turbulent kinetic energy tendency due to non-physics processes (J s-1)
+dtend selected: gfs_phys dtend_tracer11_pbl = tracer 11 of 13 tendency due to PBL (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_tracer11_phys = tracer 11 of 13 tendency due to physics (kg kg-1 s-1)
+dtend selected: gfs_dyn dtend_tracer11_nophys = tracer 11 of 13 tendency due to non-physics processes (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_tracer11_mp = tracer 11 of 13 tendency due to microphysics (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_tracer12_pbl = tracer 12 of 13 tendency due to PBL (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_tracer12_phys = tracer 12 of 13 tendency due to physics (kg kg-1 s-1)
+dtend selected: gfs_dyn dtend_tracer12_nophys = tracer 12 of 13 tendency due to non-physics processes (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_tracer12_mp = tracer 12 of 13 tendency due to microphysics (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_tracer13_pbl = tracer 13 of 13 tendency due to PBL (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_tracer13_phys = tracer 13 of 13 tendency due to physics (kg kg-1 s-1)
+dtend selected: gfs_dyn dtend_tracer13_nophys = tracer 13 of 13 tendency due to non-physics processes (kg kg-1 s-1)
+dtend selected: gfs_phys dtend_tracer13_mp = tracer 13 of 13 tendency due to microphysics (kg kg-1 s-1)
+Reading in o3data from global_o3prdlos.f77
+oz_coeff =            6
+latsozp =           71
+levozp =           53
+timeoz =           12
+in atm phys init, phour=  0.000000000000000E+000 fhour=  0.166666666666667
+zhour=  0.000000000000000E+000 kdt=           1
+dxmax=   18.1991080870045       dxmin=   24.5164135836650       dxinv=
+-0.158295336600173      max_lon=        5000  max_lat=        2000  min_lon=
+192  min_lat=          94  rhc_max=  0.999999900000000       huge=
+9.969209968386869E+036
+New Noah MP Land Surface Model will be used
+The Physics options are
+iopt_dveg  =             4
+iopt_crs   =             2
+iopt_btr   =             1
+iopt_run   =             1
+iopt_sfc   =             3
+iopt_frz   =             1
+iopt_inf   =             1
+iopt_rad   =             3
+iopt_alb   =             1
+iopt_snf   =             4
+iopt_tbot   =             2
+iopt_stc   =             3
+iopt_trs   =             2
+iopt_diag  =             2
+nst_anl= T  use_ufo= T  frac_grid= T  ignore_lake= T  frac_ice= T
+min_lakeice=  0.150000000000000       min_seaice=  1.000000000000000E-006
+min_lake_height=   250.000000000000
+lake model parameters
+lake master flag lkm   :            0
+NSSTM is active
+nstf_name(1)=           2
+nstf_name(2)=           1
+nstf_name(3)=           0
+nstf_name(4)=           0
+nstf_name(5)=           0
+scale & aerosol-aware mass-flux deep conv scheme
+update version (May 2019) of sale-aware TKE-based moist EDMF scheme used
+scale- & aerosol-aware mass-flux shallow conv scheme (2017)
+GSL unified oragraphic gravity wave drag parameterization used
+do_gwd= T
+exponential-decorr cloud overlap for Radiation IOVR=           3
+sub-grid cloud for Shortwave ISUBC_SW=           2
+sub-grid cloud for Longwave ISUBC_LW=           2
+Using Thompson/TEMPO double moment microphysics ltaerosol =  F  mraerosol =  F
+lthailaware =  F  ttendlim =  -999.000000000000       ext_diag_thompson = F
+dt_inner =   150.000000000000       sedi_semi= T  decfl=          10  nt_c_l=
+150000000.000000       nt_c_o=   50000000.0000000       av_i=
+-999.000000000000       xnc_max=   1000000.00000000       ssati_min
+0.150000000000000       Nt_i_max   4999000.00000000       rr_min
+1000.00000000000       fs_fac_rain   1.00000000000000       fs_fac_snow
+1.00000000000000       effr_in = T  lradar = T  nsfullradar_diag =
+-999.000000000000       num_p3d =           3  num_p2d =           1
+num_p3d=           3  num_p2d=           1  crtrh=  0.900000000000000
+0.900000000000000       0.900000000000000       npdf3d=           0  pdfcld= F
+shcnvcw= F  cnvcld= T  ncnvcld3d=           1  do_shoc= F  nshoc3d=
+0  nshoc_2d=           0  shoc_cld= F  nkbfshoc=        -999
+nahdshoc=        -999  nscfshoc=        -999  xr_cnvcld= T  uni_cld= F  ntot3d
+=           4  ntot2d=           1  shocaftcnv= F  indcld=          -1
+shoc_parm=   7000.00000000000        1.00000000000000
+4.28571430000000       0.700000000000000       -999.000000000000       ncnvw=
+4  ncnvc=        -999
+
+basic control parameters
+me                :            0
+master            :            0
+communicator      :   1140850688
+nlunit            :            1
+fn_nml            : input_GFS_v17_p8_ugwpv1.nml
+fhzero            :    6.00000000000000
+fhzero_array      :   0.000000000000000E+000  0.000000000000000E+000
+fhzero_fhour      :   0.000000000000000E+000  0.000000000000000E+000
+n_diag_buckets    :            1
+ldiag3d           :  T
+qdiag3d           :  T
+lssav             :  F
+naux2d            :            0
+naux3d            :            0
+fhcyc             :    24.0000000000000
+thermodyn_id      :            1
+sfcpress_id       :            1
+gen_coord_hybrid  :  F
+hydrostatic       :  T
+
+grid extent parameters
+isc               :            1
+jsc               :            1
+nx                :            1
+ny                :            1
+levs              :          127
+cnx               :            1
+cny               :            1
+lonr              :            1
+latr              :            1
+nblks             :            1
+blksz(1)          :            1
+blksz(nblks)      :            1
+Model%ncols       :            1
+
+coupling parameters
+cplflx            :  F
+cplice            :  F
+cplocn2atm        :  T
+cplwav            :  F
+cplwav2atm        :  F
+cplaqm            :  F
+cplchm            :  F
+cpllnd            :  F
+cpllnd2atm        :  F
+rrfs_sd           :  F
+cpl_fire          :  F
+use_cice_alb      :  T
+cpl_imp_mrg       :  F
+cpl_imp_dbg       :  F
+use_med_flux      :  F
+use_cdeps_inline  :  F
+
+lsidea            :  F
+
+calendars and time parameters and activation triggers
+dtp               :    600.000000000000
+dtf               :    600.000000000000
+frain             :    1.00000000000000
+nscyc             :          144
+nszero            :           36
+idat              :         2006           1          19           0
+3           0           0           0
+idate             :            3           1          19        2006
+
+radiation control parameters
+fhswr             :    1200.00000000000
+fhlwr             :    1200.00000000000
+nsswr             :            2
+nslwr             :            2
+nhfrad            :            0
+levr              :          127
+nfxr              :           45
+ntrcaer           :           15
+lmfshal           :  T
+lmfdeep2          :  T
+nrcm              :            2
+iflip             :            1
+isol              :            2
+ico2              :            2
+ialb              :            2
+iems              :            2
+iaer              :         1011
+iaermdl           :            1
+iaerflg           :            0
+lalw1bd           :  F
+aeros_file        : aerosol.dat
+solar_file        : solarconstant_noaa_a0.txt
+semis_file        : sfc_emissivity_idx.txt
+icliq_sw          :            2
+icice_sw          :            3
+icliq_lw          :            1
+icice_lw          :            3
+iovr              :            3
+idcor             :            1
+dcorr_con         :    2.50000000000000
+ictm              :            1
+isubc_sw          :            2
+isubc_lw          :            2
+iswmode           :            2
+lcrick            :  F
+lcnorm            :  F
+lnoprec           :  F
+lwhtr             :  T
+swhtr             :  T
+rad_hr_units      :            2
+inc_minor_gas     :  T
+ipsd0             :            0
+ipsdlim           :    100000000
+lrseeds           :  F
+nrstreams         :            2
+lextop            :  F
+xr_con            :    2000.00000000000
+xr_exp            :   0.250000000000000
+
+microphysical switch
+imp_physics       :            8
+
+Thompson microphysical parameters
+ltaerosol         :  F
+mraerosol         :  F
+lthailaware       :  F
+lradar            :  T
+nsfullradar_diag  :   -999.000000000000
+lrefres           :  F
+ttendlim          :   -999.000000000000
+ext_diag_thompson :  F
+dt_inner          :    150.000000000000
+sedi_semi         :  T
+decfl             :           10
+nt_c_l            :    150000000.000000
+nt_c_o            :    50000000.0000000
+av_i              :   -999.000000000000
+xnc_max           :    1000000.00000000
+ssati_min         :   0.150000000000000
+Nt_i_max          :    4999000.00000000
+rr_min            :    1000.00000000000
+fs_fac_rain       :    1.00000000000000
+fs_fac_snow       :    1.00000000000000
+
+land/surface model parameters
+lsm               :            2
+lsoil             :            4
+rdlai             :  F
+lsoil_lsm         :            4
+lsnow_lsm         :            3
+lsnow_lsm_lbound  :           -2
+lsnow_lsm_ubound  :            0
+zs  (may be unset):  -0.100000000000000      -0.400000000000000
+-1.00000000000000       -2.00000000000000
+dzs (may be unset):   0.100000000000000       0.300000000000000
+0.600000000000000        1.00000000000000
+iopt_thcnd        :            1
+ua_phys           :  F
+usemonalb         :  T
+aoasis            :    1.00000000000000
+fasdas            :            0
+kice              :            2
+shape(pores)      :           30
+shape(resid)      :           30
+ivegsrc           :            1
+nvegcat           :           20
+isot              :            1
+nsoilcat          :           16
+Noah MP LSM is used, the options are
+iopt_dveg         :            4
+iopt_crs          :            2
+iopt_btr          :            1
+iopt_run          :            1
+iopt_sfc          :            3
+iopt_frz          :            1
+iopt_inf          :            1
+iopt_rad          :            3
+iopt_alb          :            1
+iopt_snf          :            4
+iopt_tbot         :            2
+iopt_stc          :            3
+iopt_trs          :            2
+iopt_diag         :            2
+use_ufo           :  T
+lcurr_sf          :  F
+pert_cd           :  F
+ntsflg            :            0
+sfenth            :   0.000000000000000E+000
+
+flake model parameters
+lkm                :            0
+
+tuning parameters for physical parameterizations
+ras               :  F
+flipv             :  T
+trans_trac        :  T
+old_monin         :  F
+do_gwd            :  T
+cnvgwd            :  T
+do_cnvgwd         :  F
+mstrat            :  F
+moist_adj         :  F
+cscnv             :  F
+cal_pre           :  F
+do_aw             :  F
+flx_form          :  F
+do_shoc           :  F
+shoc_parm         :    7000.00000000000        1.00000000000000
+4.28571430000000       0.700000000000000       -999.000000000000
+shocaftcnv        :  F
+shoc_cld          :  F
+uni_cld           :  F
+oz_phys           :  F
+oz_phys_2015      :  T
+h2o_phys          :  T
+pdfcld            :  F
+shcnvcw           :  F
+redrag            :  T
+hybedmf           :  F
+satmedmf          :  T
+tte_edmf          :  F
+isatmedmf         :            1
+shinhong          :  F
+do_ysu            :  F
+acm               :  F
+dspheat           :  T
+sa3dtke           :  F
+lheatstrg         :  T
+lseaspray         :  T
+cnvcld            :  T
+random_clds       :  F
+shal_cnv          :  T
+imfshalcnv        :            2
+imfdeepcnv        :            2
+do_deep           :  T
+conv_cf_opt        :            0
+nmtvr             :           24
+jcap              :            1
+cscale            :    1.00000000000000
+cs_parm           :    8.00000000000000        4.00000000000000
+1000.00000000000        3500.00000000000        20.0000000000000
+1.00000000000000       -999.000000000000        1.00000000000000
+0.600000000000000       0.000000000000000E+000
+flgmin            :   0.180000000000000       0.220000000000000
+cgwf              :   0.500000000000000       5.000000000000000E-002
+ccwf              :    1.00000000000000        1.00000000000000
+cdmbgwd           :    2.50000000000000        7.50000000000000
+1.00000000000000        1.00000000000000
+alpha_fd          :    12.0000000000000
+psl_gwd_dx_factor :    6.00000000000000
+sup               :    1.00000000000000
+ctei_rm           :    10.0000000000000        10.0000000000000
+crtrh             :   0.900000000000000       0.900000000000000
+0.900000000000000
+dlqf              :   0.150000000000000       0.150000000000000
+seed0             :            0
+rbcr              :   0.250000000000000
+do_mynnedmf       :  F
+do_mynnsfclay     :  F
+diag_flux         :  F
+diag_log          :  F
+do_myjsfc         :  F
+do_myjpbl         :  F
+do_ugwp           :  F
+gwd_opt           :            2
+do_ugwp_v0           :  F
+do_ugwp_v0_orog_only :  F
+do_ugwp_v0_nst_only  :  F
+do_gsl_drag_ls_bl    :  T
+do_gsl_drag_ss       :  F
+do_gsl_drag_tofd     :  T
+do_gwd_opt_psl       :  T
+do_ugwp_v1           :  T
+do_ngw_ec            :  F
+do_ugwp_v1_orog_only :  F
+do_ugwp_v1_w_gsldrag :  F
+hurr_pbl          :  F
+var_ric           :    1.00000000000000
+coef_ric_l        :   0.160000000000000
+coef_ric_s        :   0.250000000000000
+
+Rayleigh friction
+prslrd0           :   0.000000000000000E+000
+ral_ts            :   0.000000000000000E+000
+
+mass flux deep convection
+clam_deep         :   0.100000000000000
+c0s_deep          :   2.000000000000000E-003
+c1_deep           :   2.000000000000000E-003
+betal_deep        :   5.000000000000000E-002
+betas_deep        :   5.000000000000000E-002
+evef              :   9.000000000000000E-002
+evfact_deep       :   0.300000000000000
+evfactl_deep      :   0.300000000000000
+pgcon_deep        :   0.550000000000000
+asolfac_deep      :   0.958000000000000
+cat_adj_deep      :    1.00000000000000
+
+mass flux shallow convection
+clam_shal         :   0.300000000000000
+c0s_shal          :   2.000000000000000E-003
+c1_shal           :   5.000000000000000E-004
+pgcon_shal        :   0.550000000000000
+asolfac_shal      :   0.958000000000000
+cat_adj_shal      :    1.00000000000000
+
+near surface sea temperature model
+nst_anl           :  T
+nstf_name         :            2           1           0           0
+0
+lsea              :            0
+
+surface layer options
+sfc_z0_type       :            0
+use_oceanuv       :  F
+
+vertical diffusion coefficients
+xkzm_m            :    1.00000000000000
+xkzm_h            :    1.00000000000000
+xkzm_s            :    1.00000000000000
+xkzminv           :   0.300000000000000
+moninq_fac        :    1.00000000000000
+dspfac            :    1.00000000000000
+bl_upfr           :   0.130000000000000
+bl_dnfr           :   0.100000000000000
+rlmx              :    300.000000000000
+elmx              :    300.000000000000
+sfc_rlm           :            0
+tc_pbl            :            0
+use_lpt           :            0
+
+parameters for canopy heat storage parametrization
+h0facu            :   0.250000000000000
+h0facs            :    1.00000000000000
+
+stochastic physics
+do_sppt           :  F
+pert_mp         :  F
+pert_clds       :  F
+pert_radtend    :  T
+do_shum           :  F
+do_skeb           :  F
+lndp_type         :            0
+n_var_lndp        :            0
+lndp_each_step    :  F
+do_spp            :  F
+n_var_spp         :            0
+
+convection
+betascu            :    8.00000000000000
+betamcu            :    1.00000000000000
+betadcu            :    2.00000000000000
+sigmab_coldstart   :  F
+
+cellular automata
+nca               :            1
+ncells            :            5
+nlives            :           12
+nca_g             :            0
+ncells_g          :            1
+nlives_g          :          100
+nfracseed         :   0.500000000000000
+nseed_g           :          100
+nseed             :            1
+ca_global         :  F
+ca_sgs            :  T
+do_ca             :  F
+ca_advect         :  F
+iseed_ca          :             1448371824
+ca_smooth         :  F
+nspinup           :            1
+nthresh           :    18.0000000000000
+ca_amplitude      :   0.350000000000000
+nsmooth           :          100
+ca_closure        :  F
+ca_entr           :  F
+ca_trigger        :  T
+
+tracers
+tracer_names      : sphum
+liq_wat                         ice_wat
+rainwat                         snowwat
+graupel                         ice_nc
+rain_nc                         o3mr
+sgs_tke                         sigmab
+omegab                          qv_tag
+ntrac             :           13
+nqrimef           :          -99
+ntqv              :            1
+ntoz              :            9
+ntno2             :            0
+ntno              :            0
+nto3              :            0
+ntcw              :            2
+ntiw              :            3
+ntrw              :            4
+ntsw              :            5
+ntgl              :            6
+nthl              :          -99
+ntclamt           :          -99
+ntlnc             :          -99
+ntinc             :            7
+ntrnc             :            8
+ntsnc             :          -99
+ntgnc             :          -99
+nthnc             :          -99
+ntccn             :          -99
+ntccna            :          -99
+ntgv              :          -99
+nthv              :          -99
+ntrz              :          -99
+ntgz              :          -99
+nthz              :          -99
+ntke              :           10
+ntsigma           :           11
+ntomega           :           12
+nto               :            0
+nto2              :            0
+ntwa              :          -99
+ntia              :          -99
+ntfsmoke          :            0
+ntsmoke           :            0
+ntdust            :            0
+ntcoarsepm        :            0
+nchem             :            0
+ndvel             :            0
+ntchm             :            0
+ntchs             :          -99
+ntche             :          -99
+ndchm             :            0
+ndchs             :          -99
+ndche             :          -99
+fscav             :
+
+derived totals for phy_f*d
+ntot2d            :            1
+ntot3d            :            4
+num_p2d           :            1
+num_p3d           :            3
+nshoc_2d          :            0
+nshoc_3d          :            0
+ncnvcld3d         :            1
+npdf3d            :            0
+nctp              :            0
+nkbfshoc          :         -999
+nahdshoc          :         -999
+nscfshoc          :         -999
+
+debug flags
+debug             :  F
+pre_rad           :  F
+
+variables modified at each time step
+ipt               :            1
+lprnt             :  F
+lsswr             :  F
+lslwr             :  F
+solhr             :   -9999.00000000000
+solcon            :   -9999.00000000000
+slag              :   -9999.00000000000
+sdec              :   -9999.00000000000
+cdec              :   -9999.00000000000
+clstp             :   -9999.00000000000
+phour             :   0.000000000000000E+000
+fhour             :   0.166666666666667
+zhour             :   0.000000000000000E+000
+kdt               :            1
+jdat              :         2006           1          19           0
+3           0           0           0
+si                :    1.00000000000000       0.997911369382774
+0.995264192765792       0.992067407582632       0.988326347991431
+0.984047241728038       0.979237192837227       0.973904162028116
+0.968056944729840       0.961705146932186       0.954859158904105
+0.947530126890755       0.939729922897023       0.931471112672181
+0.922766922016518       0.913631201536363       0.904078389978906
+0.894123476282577       0.883781960482427       0.873069813613031
+0.862003436753789       0.850599619363238       0.838875497049999
+0.826848508928377       0.814536354706347       0.801956951652673
+0.789128391588382       0.776154008438653       0.763038138435507
+0.749785464783324       0.736401024915927       0.722890217101576
+0.709258806317649       0.695512929313795       0.681659098779548
+0.667704206529897       0.653655525620230       0.639520711300340
+0.625307800715990       0.611025211265847       0.596681737521616
+0.582286546619815       0.567849172035110       0.553379505647414
+0.538887788018188       0.524384596795624       0.509880833173706
+0.495387706336677       0.480916715828130       0.466479631793015
+0.452088473051246       0.437755482973408       0.423493103142365
+0.409313944799332       0.395230758089281       0.381256399138325
+0.367403795015037       0.353685906648421       0.340115689797386
+0.326706054190083       0.313469820976149       0.300419678660708
+0.287568137715682       0.274927484091496       0.262509731880228
+0.250326575409690       0.238389341076287       0.226708939252825
+0.215295816635172       0.204159909418798       0.193310597722272
+0.182756661699665       0.172506239807217       0.162566789711471
+0.152945052346290       0.143647019644752       0.134677906489123
+0.126042127438280       0.117743278807695       0.109784126693357
+0.102166601549084       9.489179994833018E-002  8.795999418923389E-002
+8.137065043830877E-002  7.512245615803950E-002  6.920550283522364E-002
+6.360824699302242E-002  5.832572733951924E-002  5.335216306617332E-002
+4.868099053899731E-002  4.430490565284321E-002  4.021591155590440E-002
+3.640537137666937E-002  3.286406551261812E-002  2.958225297038516E-002
+2.654973618241518E-002  2.375592866680377E-002  2.118992484650451E-002
+1.884057130278726E-002  1.669653870701723E-002  1.474639365560401E-002
+1.297866962624763E-002  1.138193628004992E-002  9.944866354044313E-003
+8.656299422297656E-003  7.505301850689402E-003  6.481222330164519E-003
+5.573742444723777E-003  4.772921812349713E-003  4.069237427839024E-003
+3.453616934202067E-003  2.917465651732657E-003  2.452687298696877E-003
+2.051698442367176E-003  1.707436821324845E-003  1.413363777093262E-003
+1.163461122890303E-003  9.522228574477088E-004  7.746422005644314E-004
+6.261944828154965E-004  4.989595256976048E-004  3.881918999165503E-004
+2.902781843557567E-004  2.040236818390805E-004  1.297040256916389E-004
+6.924012624198847E-005  2.565769887156028E-005  0.000000000000000E+000
+sec               :   0.000000000000000E+000
+first_time_step   :  T
+restart           :  F
+lsm_cold_start    :  T
+do_canopy         :  F
+
+lightning threat indexes
+lightning_threat  :  F
+lnd_iau_mod_set_control: Warning! EoF (-1) while reading land_iau namelist, lik
+ely because land_iau_nml was not found in input.nml. It will be set to default.
+land_iau_nml
+&LAND_IAU_NML
+DO_LAND_IAU     = F,
+LAND_IAU_DELTHRS        =  0.000000000000000E+000,
+LAND_IAU_INC_FILES      =
+
+
+
+
+
+
+
+
+
+
+
+,
+LAND_IAU_FHRS   = 7*-1.00000000000000       ,
+LAND_IAU_FILTER_INCREMENTS      = F,
+LSOIL_INCR      =           4,
+LAND_IAU_UPD_STC        = F,
+LAND_IAU_UPD_SLC        = F,
+LAND_IAU_DO_STCSMC_ADJUSTMENT   = F,
+LAND_IAU_MIN_T_INCREMENT        =  1.000000000000000E-004,
+LAND_IAU_MIN_SLC_INCREMENT      =  1.000000000000000E-006
+/
+***WARNING***: The shortwave radiation calling period is different than the out
+put period.
+From input_GFS_v17_p8_ugwpv1.nml, fhswr =    1200.00000000000
+The given output period in the case configuration namelist is
+3600.00000000000
+This will cause the effective output period of variables that are only given va
+lues during shortwave calls to be    3600.00000000000       seconds.
+***WARNING***: The longwave radiation calling period is different than the outp
+ut period.
+From input_GFS_v17_p8_ugwpv1.nml, fhlwr =    1200.00000000000
+The given output period in the case configuration namelist is
+3600.00000000000
+This will cause the effective output period of variables that are only given va
+lues during longwave calls to be    3600.00000000000       seconds.
+Calling ccpp_physics_init with suite 'SCM_GFS_v17_p8_ugwpv1'
+In rad_initialize (GFS_rrtmg_setup_init), before calling RRTMG initialization
+si =   1.00000000000000       0.997911369382774       0.995264192765792
+0.992067407582632       0.988326347991431       0.984047241728038
+0.979237192837227       0.973904162028116       0.968056944729840
+0.961705146932186       0.954859158904105       0.947530126890755
+0.939729922897023       0.931471112672181       0.922766922016518
+0.913631201536363       0.904078389978906       0.894123476282577
+0.883781960482427       0.873069813613031       0.862003436753789
+0.850599619363238       0.838875497049999       0.826848508928377
+0.814536354706347       0.801956951652673       0.789128391588382
+0.776154008438653       0.763038138435507       0.749785464783324
+0.736401024915927       0.722890217101576       0.709258806317649
+0.695512929313795       0.681659098779548       0.667704206529897
+0.653655525620230       0.639520711300340       0.625307800715990
+0.611025211265847       0.596681737521616       0.582286546619815
+0.567849172035110       0.553379505647414       0.538887788018188
+0.524384596795624       0.509880833173706       0.495387706336677
+0.480916715828130       0.466479631793015       0.452088473051246
+0.437755482973408       0.423493103142365       0.409313944799332
+0.395230758089281       0.381256399138325       0.367403795015037
+0.353685906648421       0.340115689797386       0.326706054190083
+0.313469820976149       0.300419678660708       0.287568137715682
+0.274927484091496       0.262509731880228       0.250326575409690
+0.238389341076287       0.226708939252825       0.215295816635172
+0.204159909418798       0.193310597722272       0.182756661699665
+0.172506239807217       0.162566789711471       0.152945052346290
+0.143647019644752       0.134677906489123       0.126042127438280
+0.117743278807695       0.109784126693357       0.102166601549084
+9.489179994833018E-002  8.795999418923389E-002  8.137065043830877E-002
+7.512245615803950E-002  6.920550283522364E-002  6.360824699302242E-002
+5.832572733951924E-002  5.335216306617332E-002  4.868099053899731E-002
+4.430490565284321E-002  4.021591155590440E-002  3.640537137666937E-002
+3.286406551261812E-002  2.958225297038516E-002  2.654973618241518E-002
+2.375592866680377E-002  2.118992484650451E-002  1.884057130278726E-002
+1.669653870701723E-002  1.474639365560401E-002  1.297866962624763E-002
+1.138193628004992E-002  9.944866354044313E-003  8.656299422297656E-003
+7.505301850689402E-003  6.481222330164519E-003  5.573742444723777E-003
+4.772921812349713E-003  4.069237427839024E-003  3.453616934202067E-003
+2.917465651732657E-003  2.452687298696877E-003  2.051698442367176E-003
+1.707436821324845E-003  1.413363777093262E-003  1.163461122890303E-003
+9.522228574477088E-004  7.746422005644314E-004  6.261944828154965E-004
+4.989595256976048E-004  3.881918999165503E-004  2.902781843557567E-004
+2.040236818390805E-004  1.297040256916389E-004  6.924012624198847E-005
+2.565769887156028E-005  0.000000000000000E+000
+levr=         127  ictm=           1  isol=           2  ico2=           2
+iaermdl=           1  iaerflg=          11
+np3d=           3  ntoz=           9  iovr=           3  isubcsw=           2
+isubclw=           2  icliq_sw=           2  iflip=           1   mpirank=
+0
+lcrick= F  lcnorm= F  lnoprec= F
+lextop= F  ltp=           0
+NCEP-Radiation_astronomy v5.2  Jan 2013
+- Using NOAA annual mean TSI table in TIM scale
+with cycle approximation (new values)!
+NCEP-Radiation_aerosols  v5.2  Jan 2013
+- Using MERRA2-climatology for tropospheric aerosol effect
+IAER=          11   LW-trop-aer= T   SW-trop-aer= T   Volc-aer= F
+- No stratospheric volcanic aerosol effect
+- Compute multi-band aerosol optical properties for SW input parameters
+- Compute multi-band aerosol optical properties for LW input parameters
+NOTE: gocart aerosol initialization is reading input data with all MPI ranks
+NCEP-Radiation_gases     v5.1  Nov 2012
+- Using observed co2 monthly 2-d data
+NCEP-Radiation_clouds    v5.1  Nov 2012
+- Using Prognostic Cloud Method
+--- Thompson cloud microphysics
+- Using AER Longwave Radiation, Version:
+NCEP LW v5.1  Nov 2012 -RRTMG-LW v4.82
+--- Include rare gases N2O, CH4, O2, CFCs absorptions in LW
+--- Using MCICA sub-colum clouds approximation
+with provided input array of permutation seeds
+- Using AER Shortwave Radiation, Version:
+NCEP SW v5.1  Nov 2012 -RRTMG-SW v3.8
+--- PIFM 2-stream transfer scheme
+--- Include rare gases N2O, CH4, O2, absorptions in SW
+--- Using MCICA sub-colum clouds approximation
+with provided input array of permutation seeds
+Radiation sub-cloud initial seed =       46935  IC-idate =           3
+1          19        2006
+return from rad_initialize (GFS_rrtmg_setup_init) - after calling RRTMG initia
+lization
+GFS is bottom-up
+MERRA2 dim:          576         361          72           1
+73          14  dimd of tau_ngw ugwp-v1
+GFS_phys_time_vary_init: initialize albedo for land and ice
+In GFS_radiation_surface_init, before calling sfc_init
+ialb=           2  iems=           2
+NCEP-Radiation_surface   v5.1  Nov 2012
+- Using Albedo From Land Model
+- Using Surface Emissivity From Land Model
+input_GFS_v17_p8_ugwpv1.nml GW-namelist file
+==================================================================
+CCPP cires_ugwp_namelist_extended_v1
+&CIRES_UGWP_NML
+KNOB_UGWP_SOLVER        =           2,
+KNOB_UGWP_SOURCE        = 2*1, 2*0,
+KNOB_UGWP_WVSPEC        =           1, 3*25,
+KNOB_UGWP_AZDIR =           2, 3*4,
+KNOB_UGWP_STOCH = 4*0,
+KNOB_UGWP_EFFAC = 4*1.00000000000000        ,
+KNOB_UGWP_DOAXYZ        =           1,
+KNOB_UGWP_DOHEAT        =           1,
+KNOB_UGWP_DOKDIS        =           2,
+KNOB_UGWP_NDX4LH        =           4,
+KNOB_UGWP_VERSION       =           1,
+KNOB_UGWP_PALAUNCH      =   27500.0000000000     ,
+KNOB_UGWP_NSLOPE        =           1,
+KNOB_UGWP_LZMAX =   15750.0000000000     ,
+KNOB_UGWP_LZMIN =   750.000000000000     ,
+KNOB_UGWP_LZSTAR        =   2000.00000000000     ,
+KNOB_UGWP_LHMET =   200000.000000000     ,
+KNOB_UGWP_TAUAMP        =  5.000000000000000E-004,
+KNOB_UGWP_TAUMIN        =  2.500000000000000E-004,
+KNOB_UGWP_TLIMB = T,
+KNOB_UGWP_OROSOLV       = pss-1986
+/
+==================================================================
+calendar_ugwp ddd_ugwp=          19
+calendar_ugwp curday_ugwp=    20060119
+==================================================================
+19  jdat_gfs ddd of year
+cires_ugwpv1 klev_ngw =          63       29139
+CIRES_ugwpV1 is initialized  T
+ccpp: ugwpv1_gsldrag_init
+ccpp do_ugwp_v1  flag  T
+ccpp do_gsl_drag_ls_bl  flag  T
+ccpp do_gsl_drag_ss  flag  F
+ccpp do_gsl_drag_tofd  flag  T
+ccpp: ugwpv1_gsldrag_init
+Using non-aerosol-aware version of Thompson microphysics
+creating microphysics lookup tables ...
+using: mu_c_o=15.00 mu_i= 0.00 mu_r= 0.00 mu_g= 0.00
+calling table_ccnAct routine
+creating qc collision eff tables
+creating rain evap table
+creating ice converting to snow table
+Calculating Thompson tables part 1 took      0.074 seconds.
+Calling radar_init took      0.000 seconds.
+creating rain collecting graupel table
+Computing rain collecting graupel table took      0.008 seconds.
+creating rain collecting snow table
+Computing rain collecting snow table took      0.004 seconds.
+creating freezing of water drops table
+Computing freezing of water drops table took      0.035 seconds.
+Calculating Thompson tables part 2 took      0.035 seconds.
+... DONE microphysical lookup tables
+Called ccpp_physics_init with suite 'SCM_GFS_v17_p8_ugwpv1', ierr=0
+DEBUG output_init_state: scm_state%tagging =  F
+NetCDF: Variable not found qv_tag
+stopped

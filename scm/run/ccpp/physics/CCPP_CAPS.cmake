@@ -1,0 +1,68 @@
+
+# All CCPP caps are defined here.
+#
+# This file is auto-generated using ccpp_prebuild.py
+# at compile time, do not edit manually.
+#
+set(CAPS
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v16_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v16_phys_ps_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v16_phys_ts_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v16_ps_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v16_ps_phys_ps_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v16_ps_phys_ts_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v16_ps_radiation_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v16_ps_time_vary_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v16_radiation_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v16_rrtmgp_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v16_rrtmgp_phys_ps_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v16_rrtmgp_phys_ts_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v16_rrtmgp_ps_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v16_rrtmgp_ps_phys_ps_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v16_rrtmgp_ps_phys_ts_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v16_rrtmgp_ps_radiation_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v16_rrtmgp_ps_time_vary_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v16_rrtmgp_radiation_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v16_rrtmgp_time_vary_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v16_time_vary_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v17_p8_ugwpv1_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v17_p8_ugwpv1_phys_ps_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v17_p8_ugwpv1_phys_ts_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v17_p8_ugwpv1_ps_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v17_p8_ugwpv1_ps_phys_ps_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v17_p8_ugwpv1_ps_phys_ts_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v17_p8_ugwpv1_ps_radiation_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v17_p8_ugwpv1_ps_time_vary_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v17_p8_ugwpv1_radiation_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_gfs_v17_p8_ugwpv1_time_vary_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_hrrr_gf_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_hrrr_gf_phys_ps_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_hrrr_gf_phys_ts_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_hrrr_gf_ps_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_hrrr_gf_ps_phys_ps_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_hrrr_gf_ps_phys_ts_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_hrrr_gf_ps_radiation_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_hrrr_gf_ps_time_vary_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_hrrr_gf_radiation_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_hrrr_gf_time_vary_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_rap_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_rap_phys_ps_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_rap_phys_ts_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_rap_ps_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_rap_ps_phys_ps_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_rap_ps_phys_ts_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_rap_ps_radiation_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_rap_ps_time_vary_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_rap_radiation_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_rap_time_vary_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_wofs_v0_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_wofs_v0_phys_ps_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_wofs_v0_phys_ts_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_wofs_v0_ps_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_wofs_v0_ps_phys_ps_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_wofs_v0_ps_phys_ts_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_wofs_v0_ps_radiation_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_wofs_v0_ps_time_vary_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_wofs_v0_radiation_cap.F90
+      /glade/work/asiyab/SWI_NCAR/UFS_versions_dev/ccpp-scm_dev/scm/run/ccpp/physics/physics/ccpp_scm_wofs_v0_time_vary_cap.F90
+)
