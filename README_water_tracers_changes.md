@@ -8,7 +8,7 @@ isotopes later) in CCPP-SCM v8.0.0 with the `SCM_GFS_v17_p8_ugwpv1` suite.
 | **SCM repository** | [Asiyaabs/ccpp-scm](https://github.com/Asiyaabs/ccpp-scm), branch `feature/water-tracers` |
 | **Physics repository** | [Asiyaabs/ccpp-physics](https://github.com/Asiyaabs/ccpp-physics), branch `feature/water-tracers` (submodule `ccpp/physics`) |
 | **Base** | CCPP-SCM v8.0.0 (`70dd01b`), CCPP-Physics v8.0.0 (`2a66945`) |
-| **Design / plan** | `README_water_tracers.md` |
+| **Overview / user guide** | [`README_water_tracers.md`](README_water_tracers.md) |
 
 ---
 
