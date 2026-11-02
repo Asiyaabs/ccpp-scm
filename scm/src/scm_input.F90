@@ -155,6 +155,7 @@ subroutine get_config_nml(scm_state)
   n_time_levels = 2 !used to hold physics initial state (level 1) and state updated by physics (level 2)
 
   call get_tracers(tracer_names, tracer_types)
+  call add_water_tracers(physics_nml, tracer_names, tracer_types)
 
   call scm_state%create(n_columns, n_levels, n_soil, n_snow, n_time_levels, tracer_names, tracer_types)
 
@@ -2071,6 +2072,46 @@ subroutine get_reference_profile(scm_state, scm_reference)
   scm_reference%ref_ozone = ozone
 
 end subroutine get_reference_profile
+
+!> Water tracers: if &water_tracer_nml in the physics namelist has tagging = .true.,
+!! append the water tracers (qv_H2O, ..., qg_H2O_COL, ...) to the tracer list.
+!! Without the group, or with tagging = .false., the tracer list is unchanged.
+subroutine add_water_tracers(physics_nml, tracer_names, tracer_types)
+  use water_tracers_config, only : wtr_config_type, wtr_read_nml, wtr_nset, wtr_nphase, wtr_tracer_names
+  character(len=*),                                          intent(in)    :: physics_nml
+  character(len=character_length), allocatable, dimension(:), intent(inout) :: tracer_names
+  integer,                         allocatable, dimension(:), intent(inout) :: tracer_types
+
+  type(wtr_config_type)                                      :: wtr_cfg
+  character(len=character_length), allocatable, dimension(:) :: names_tmp
+  integer,                         allocatable, dimension(:) :: types_tmp
+  character(len=32),               allocatable, dimension(:) :: wtr_names
+  character(len=512) :: errmsg
+  integer            :: errflg, n_old, n_wtr
+
+  call wtr_read_nml(wtr_cfg, errmsg, errflg, filename=trim(physics_nml))
+  if (errflg /= 0) then
+    write(error_unit,'(a)') trim(errmsg)
+    error stop "error in &water_tracer_nml"
+  end if
+  if (.not. wtr_cfg%tagging) return
+
+  n_old = size(tracer_names)
+  n_wtr = wtr_nset(wtr_cfg)*wtr_nphase
+  allocate(wtr_names(n_wtr))
+  call wtr_tracer_names(wtr_cfg, wtr_names)
+
+  allocate(names_tmp(n_old + n_wtr), types_tmp(n_old + n_wtr))
+  names_tmp(1:n_old) = tracer_names
+  types_tmp(1:n_old) = tracer_types
+  names_tmp(n_old+1:) = wtr_names
+  types_tmp(n_old+1:) = 0   ! generic tracers
+  call move_alloc(names_tmp, tracer_names)
+  call move_alloc(types_tmp, tracer_types)
+
+  write(*,'(a,i0,a)') 'water tracers: tagging on, ', n_wtr, ' tracers added:'
+  write(*,'(6(1x,a))') wtr_names
+end subroutine add_water_tracers
 
 subroutine get_tracers(tracer_names, tracer_types)
   character(len=character_length), allocatable, intent(inout), dimension(:) :: tracer_names

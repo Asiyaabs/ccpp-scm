@@ -1,0 +1,11 @@
+$case_config
+case_name = 'flux_chaz_2023031400',
+thermo_forcing_type = 0,
+model_ics=.true.,
+mom_forcing_type = 0,
+relax_time = 7200.0,
+sfc_flux_spec = .false.,
+sfc_type=1,
+reference_profile_choice = 2,
+C_RES = 768,
+$end

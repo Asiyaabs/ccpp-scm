@@ -9,6 +9,7 @@
   dependencies = photochem/module_ozphys.F90,photochem/module_h2ophys.F90
   dependencies = SFC_Models/Land/Noahmp/lnd_iau_mod.F90
   dependencies = Interstitials/UFS_SCM_NEPTUNE/GFS_ccpp_suite_sim_pre.F90
+  dependencies = tools/water_tracers_config.F90
 
 [ccpp-arg-table]
   name = GFS_typedefs
@@ -7087,6 +7088,54 @@
   long_name = tracer index for mass weighted rime factor
   units = index
   dimensions = ()
+  type = integer
+[tagging]
+  standard_name = flag_for_water_tracers
+  long_name = master switch for water tracers (tagging, later isotopes)
+  units = flag
+  dimensions = ()
+  type = logical
+[wtr_nset]
+  standard_name = number_of_water_tracer_sets
+  long_name = number of water tracer sets (0 if tagging is off)
+  units = count
+  dimensions = ()
+  type = integer
+[wtr_nphase]
+  standard_name = number_of_water_tracer_phases
+  long_name = number of water phases per water tracer set
+  units = count
+  dimensions = ()
+  type = integer
+[wtr_idx]
+  standard_name = index_of_water_tracers_in_tracer_concentration_array
+  long_name = tracer index of each water tracer set and phase
+  units = index
+  dimensions = (number_of_water_tracer_sets,number_of_water_tracer_phases)
+  type = integer
+[wtr_model_idx]
+  standard_name = index_of_model_water_per_water_tracer_phase_in_tracer_concentration_array
+  long_name = tracer index of the model water for each water tracer phase (0 if absent)
+  units = index
+  dimensions = (number_of_water_tracer_phases)
+  type = integer
+[wtr_species]
+  standard_name = species_of_water_tracer_sets
+  long_name = species of each water tracer set (1 H2O, 2 HDO, 3 H218O)
+  units = index
+  dimensions = (number_of_water_tracer_sets)
+  type = integer
+[wtr_kind]
+  standard_name = kind_of_water_tracer_sets
+  long_name = kind of each water tracer set (1 bulk, 2 tag)
+  units = index
+  dimensions = (number_of_water_tracer_sets)
+  type = integer
+[wtr_bulk]
+  standard_name = bulk_set_of_water_tracer_sets
+  long_name = bulk set of each water tracer set (0 means the model water)
+  units = index
+  dimensions = (number_of_water_tracer_sets)
   type = integer
 [ntwa]
   standard_name = index_of_mass_number_concentration_of_hygroscopic_aerosols_in_tracer_concentration_array

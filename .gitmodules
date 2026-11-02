@@ -6,7 +6,7 @@
 	branch = feature/capgen-v1
 [submodule "ccpp-physics"]
 	path = ccpp/physics
-	url = https://github.com/NCAR/ccpp-physics
+	url = https://github.com/Asiyaabs/ccpp-physics
 	branch = scm/dev
 [submodule "CMakeModules"]
 	path = CMakeModules

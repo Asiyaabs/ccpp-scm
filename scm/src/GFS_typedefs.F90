@@ -1508,6 +1508,16 @@ module GFS_typedefs
     integer              :: ntracp100             !< number of tracers plus one hundred
     integer              :: nqrimef               !< tracer index for mass weighted rime factor
 
+!--- water tracers (tagging, later isotopes); see water_tracers_config
+    logical              :: tagging               !< master switch for water tracers (&water_tracer_nml)
+    integer              :: wtr_nset              !< number of water tracer sets (0 if tagging off)
+    integer              :: wtr_nphase            !< number of water phases per set (qv,ql,qi,qr,qs,qg)
+    integer, pointer     :: wtr_idx(:,:)     => null() !< tracer index of (set, phase)
+    integer, pointer     :: wtr_model_idx(:) => null() !< tracer index of the model water per phase (0 if absent)
+    integer, pointer     :: wtr_species(:)   => null() !< species of each set (1 H2O, 2 HDO, 3 H218O)
+    integer, pointer     :: wtr_kind(:)      => null() !< kind of each set (1 bulk, 2 tag)
+    integer, pointer     :: wtr_bulk(:)      => null() !< bulk set of each set (0: the model water itself)
+
     integer, pointer :: dtidx(:,:) => null()                                !< index in outermost dimension of dtend
     integer :: ndtend                                                       !< size of outermost dimension of dtend
     type(dtend_var_label), pointer :: dtend_var_labels(:) => null()         !< information about first dim of dtidx
@@ -3444,6 +3454,8 @@ module GFS_typedefs
 
 !--- modules
     use physcons,         only: con_rerth, con_pi, con_p0, rhowater
+    use water_tracers_config, only: wtr_config_type, wtr_read_nml, wtr_nset, wtr_nphase, &
+                                    wtr_set_info, wtr_index_table
     use mersenne_twister, only: random_setseed, random_number
     use GFS_ccpp_suite_sim_pre, only: load_ccpp_suite_sim
 !
@@ -3490,6 +3502,10 @@ module GFS_typedefs
     integer :: ios
     integer :: seed0
     logical :: exists
+    type(wtr_config_type) :: wtr_cfg
+    character(len=32), allocatable :: wtr_set_names(:)
+    character(len=512) :: wtr_errmsg
+    integer :: wtr_errflg
     real(kind=kind_phys) :: tem
     real(kind=kind_dbl_prec) :: rinc(5)
     real(kind=kind_phys) :: wrk(1)
@@ -5639,6 +5655,43 @@ module GFS_typedefs
     Model%nqrimef          = get_tracer_index(Model%tracer_names, 'q_rimef')
     Model%ntwa             = get_tracer_index(Model%tracer_names, 'liq_aero')
     Model%ntia             = get_tracer_index(Model%tracer_names, 'ice_aero')
+
+!--- water tracers: read &water_tracer_nml (absent = off) and build the index tables
+#ifdef INTERNAL_FILE_NML
+    call wtr_read_nml(wtr_cfg, wtr_errmsg, wtr_errflg, lines=input_nml_file)
+#else
+    call wtr_read_nml(wtr_cfg, wtr_errmsg, wtr_errflg, filename=trim(fn_nml))
+#endif
+    if (wtr_errflg /= 0) then
+      write(6,*) trim(wtr_errmsg)
+      error stop
+    endif
+    Model%tagging    = wtr_cfg%tagging
+    Model%wtr_nset   = wtr_nset(wtr_cfg)
+    Model%wtr_nphase = wtr_nphase
+    allocate (Model%wtr_idx(Model%wtr_nset, Model%wtr_nphase))
+    allocate (Model%wtr_model_idx(Model%wtr_nphase))
+    allocate (Model%wtr_species(Model%wtr_nset), Model%wtr_kind(Model%wtr_nset), Model%wtr_bulk(Model%wtr_nset))
+    allocate (wtr_set_names(Model%wtr_nset))
+    Model%wtr_model_idx = (/ Model%ntqv, Model%ntcw, Model%ntiw, Model%ntrw, Model%ntsw, Model%ntgl /)
+    where (Model%wtr_model_idx < 0) Model%wtr_model_idx = 0
+    if (Model%tagging) then
+      call wtr_set_info(wtr_cfg, wtr_set_names, Model%wtr_species, Model%wtr_kind, Model%wtr_bulk)
+      call wtr_index_table(wtr_cfg, Model%tracer_names, Model%wtr_idx, wtr_errmsg, wtr_errflg)
+      if (wtr_errflg /= 0) then
+        write(6,*) trim(wtr_errmsg)
+        error stop
+      endif
+      if (me == master) then
+        write(6,'(a,i0,a)') ' water tracers: tagging on, ', Model%wtr_nset, ' sets'
+        do n = 1, Model%wtr_nset
+          write(6,'(3x,a,a16,a,i0,a,i0,a,i0,a,6(1x,i0))') 'set ', trim(wtr_set_names(n)), ' species ', &
+            Model%wtr_species(n), ' kind ', Model%wtr_kind(n), ' bulk set ', Model%wtr_bulk(n), &
+            ' tracer idx', Model%wtr_idx(n,:)
+        enddo
+      endif
+    endif
+    deallocate (wtr_set_names)
     if (Model%cpl_fire) then
     Model%ntfsmoke         = get_tracer_index(Model%tracer_names, 'fsmoke')
     endif
