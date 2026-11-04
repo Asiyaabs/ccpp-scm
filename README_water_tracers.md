@@ -19,8 +19,9 @@ following the iCESM / iCAM approach.
 | **Physics** | [Asiyaabs/ccpp-physics](https://github.com/Asiyaabs/ccpp-physics), branch `feature/water-tracers` |
 | **Change log and tests** | [`README_water_tracers_changes.md`](README_water_tracers_changes.md) |
 
-> **Status:** framework in place (namelist, tracer registration, index tables). The physics
-> schemes don't move the tracers yet. See [Roadmap](#roadmap).
+> **Status:** framework complete (namelist, tracer registration, index tables, helper routine,
+> initial values, forcing, output). The physics schemes don't move the tracers yet, apart
+> from passive transport by convection. See [Roadmap](#roadmap).
 
 ---
 
@@ -29,6 +30,7 @@ following the iCESM / iCAM approach.
 - [Key ideas](#key-ideas)
 - [Quick start](#quick-start)
 - [Namelist options](#namelist-options)
+- [Output](#output)
 - [Tracer sets and names](#tracer-sets-and-names)
 - [For developers: using the tracers in a scheme](#for-developers-using-the-tracers-in-a-scheme)
 - [Roadmap](#roadmap)
@@ -99,10 +101,19 @@ tracers are off.
 | `wtr_bulk_check` | `.true.` | Carry the `H2O` bulk check set |
 | `wtr_init_tags` | `'zero'` | Initial tags: `zero`, `bulk` (tag = all water), or `fraction` |
 | `wtr_init_frac` | `0.5` | Initial tag fraction when `wtr_init_tags = 'fraction'` |
+| `wtr_tag_moisten` | `.false.` | Test mode: tags get the full large-scale forcing, like the bulk set. With `wtr_init_tags = 'bulk'`, every tag must then equal the bulk set |
 
 An invalid option stops the run with a message that starts with `water_tracers_config:`.
 
 ---
+
+## Output
+
+With tagging on, `output.nc` gets the water tracers (`qv_H2O`, …, `qg_H2O_COL`), the model
+precipitation and surface flux with CAM names (`PRECC`, `PRECSC`, `PRECL`, `PRECSL`, `PRECT`,
+`QFLX`), and per set the iCESM-style fields `PRECRC_<set>r`, `PRECSC_<set>s`, `PRECRL_<set>R`,
+`PRECSL_<set>S` and `QFLX_<set>`. Lowercase `r`/`s` means convective, uppercase `R`/`S` means
+large-scale. With tagging off, `output.nc` is unchanged.
 
 ## Tracer sets and names
 
@@ -122,8 +133,10 @@ Each tracer is named `<phase>_<species>[_<tag>]`:
 | `HDO` *(planned)* | isotope bulk | `qv_HDO` … `qg_HDO` |
 | `HDO_COL` *(planned)* | isotope tag | `qv_HDO_COL` … `qg_HDO_COL` |
 
-The tracers are appended after the tracers from the tracer file. They are ordinary tracers,
-so the PBL and convection schemes mix and transport them like any other tracer.
+The tracers are appended after the tracers from the tracer file, as generic tracers (type 0).
+The convection schemes (samfdeepcnv, samfshalcnv) already transport them passively, like
+other generic tracers. The PBL scheme does not: with Thompson microphysics it mixes only a
+fixed list of tracers. The water tracers are added to that list in the PBL step.
 
 ---
 
@@ -146,10 +159,26 @@ standard name:
 For example, rain of set `s` is `q(:, :, wtr_idx(s, 4))`, and the matching model rain is
 `q(:, :, wtr_model_idx(4))`.
 
-The configuration code is the plain Fortran module
-[`physics/tools/water_tracers_config.F90`](https://github.com/Asiyaabs/ccpp-physics/blob/feature/water-tracers/physics/tools/water_tracers_config.F90).
-A helper routine for the transfer rule above (`wtr_transfer`, with the `wtr_alpha` hook)
-comes in the next step.
+Every water transfer in a scheme is one call of the helper routine, for each set `s`:
+
+```fortran
+use water_tracers_utils, only: wtr_transfer, wtr_alpha, wtr_proc_cond_liq
+
+! condensation of dq from vapour to cloud water (qv = model vapour before the transfer)
+call wtr_transfer(qv, q(i,k,wtr_idx(s,1)), dq, q(i,k,wtr_idx(s,2)), &
+                  wtr_alpha(wtr_species(s), wtr_proc_cond_liq, t(i,k)))
+```
+
+Leave out the destination for water that leaves the atmosphere (precipitation at the
+surface), and leave out `alpha` when the process does not fractionate. Tracer precipitation
+and surface fluxes go into the per-step arrays `wtr_raincd`, `wtr_raincs`, `wtr_rainmp`,
+`wtr_snowmp` and `wtr_qflx` (standard names in
+[`README_water_tracers_changes.md`](README_water_tracers_changes.md)).
+
+The code is in
+[`physics/tools/water_tracers_config.F90`](https://github.com/Asiyaabs/ccpp-physics/blob/feature/water-tracers/physics/tools/water_tracers_config.F90)
+and
+[`physics/tools/water_tracers_utils.F90`](https://github.com/Asiyaabs/ccpp-physics/blob/feature/water-tracers/physics/tools/water_tracers_utils.F90).
 
 ---
 
@@ -158,8 +187,8 @@ comes in the next step.
 | Step | Content | Status |
 |---|---|---|
 | Framework | Namelist, tracer registration, index tables | ✅ |
-| Framework | Helper module: `wtr_transfer`, `wtr_alpha` | ⏳ |
-| Framework | Initial values, forcing, clipping, output | ⏳ |
+| Framework | Helper module: `wtr_transfer`, `wtr_alpha` | ✅ |
+| Framework | Initial values, forcing, clipping, output | ✅ |
 | Schemes | PBL → shallow convection → deep convection → Thompson microphysics → surface (ocean, sea ice, Noah-MP), one at a time | ⏳ |
 | Isotopes | HDO and H₂¹⁸O with fractionation | ⏳ |
 

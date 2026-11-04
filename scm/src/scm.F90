@@ -16,6 +16,7 @@ subroutine scm_main_sub()
   use scm_time_integration, only: do_time_step
   use scm_output, only: output_init, output_append
   use scm_type_defs, only: scm_state_type, scm_input_type, scm_reference_type, physics
+  use scm_water_tracers, only: wtr_host_init
   use mpi_f08
 
   ! Import CCPP control variables from scm_time_integration
@@ -194,6 +195,9 @@ subroutine scm_main_sub()
       write(error_unit,'(a,i0,a)') 'An error occurred in ccpp_physics_init: ' // trim(errmsg) // '. Exiting...'
       error stop
   end if
+
+  !water tracers: initial values from the model water as the physics starts from it
+  if (physics%Model%tagging) call wtr_host_init(scm_state, physics%Model)
 
   physics%Model%first_time_step = .true.
 

@@ -6,6 +6,7 @@ module scm_output
 use netcdf
 use NetCDF_read, only: check
 use scm_kinds, only: sp, dp, qp
+use scm_water_tracers, only: wtr_output_init, wtr_output_append
 
 implicit none
 
@@ -110,6 +111,8 @@ subroutine output_init(scm_state, physics)
   CALL output_init_interstitial(ncid, time_inst_id, time_rad_id, hor_dim_id, vert_dim_id, vert_dim_rad_id, physics)
   CALL output_init_radtend(ncid, time_swrad_id, time_lwrad_id, hor_dim_id, vert_dim_id)
   CALL output_init_diag(ncid, time_inst_id, time_diag_id, time_rad_id, hor_dim_id, vert_dim_id, physics)
+  !> - Define the water tracer variables (only with tagging on)
+  if (physics%Model%tagging) CALL wtr_output_init(ncid, time_inst_id, hor_dim_id, vert_dim_id, physics%Model)
   
   call NetCDF_def_var(ncid, 'init_year',   NF90_INT, "model initialization year",   "year",   year_id)
   call NetCDF_def_var(ncid, 'init_month',  NF90_INT, "model initialization month",  "month",  month_id)
@@ -451,6 +454,7 @@ subroutine output_append(scm_state, physics, force)
     call output_append_sfcprop(ncid, scm_state, physics)
     call output_append_interstitial_inst(ncid, scm_state, physics)
     call output_append_diag_inst(ncid, scm_state, physics)
+    if (physics%Model%tagging) call wtr_output_append(ncid, scm_state, physics)
   end if
   
   if(physics%Model%lslwr .or. physics%Model%lsswr) then

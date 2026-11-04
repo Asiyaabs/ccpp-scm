@@ -6,6 +6,7 @@ module scm_time_integration
 use iso_fortran_env, only: error_unit
 use scm_kinds, only: sp, dp, qp
 use scm_forcing, only: apply_forcing_DEPHY
+use scm_water_tracers, only: wtr_host_forcing, wtr_host_clip
 
 use :: scm_ccpp_cap,                  &
        only: ccpp_physics_timestep_init, &
@@ -45,6 +46,7 @@ subroutine do_time_step(scm_state, physics, in_spinup)
 
   !> - Call apply_forcing_* from \ref forcing. This routine updates the "input" state variables for the physics call (updates filtered values from previous timestep, if leapfrog scheme). It effectively replaces the change of the state variables due to dynamics.
   call apply_forcing_DEPHY(scm_state, in_spinup)
+  if (physics%Model%tagging) call wtr_host_forcing(scm_state, physics%Model)
 
   ! Calculate total non-physics tendencies by substracting old Stateout
   ! variables from new/updated Statein variables (gives the tendencies
@@ -141,6 +143,7 @@ subroutine do_time_step(scm_state, physics, in_spinup)
   !At the end of the timestep, transfer the state that has been updated by physics back to the main (timelevel = 1) state
   scm_state%state_T(:,:,1) = scm_state%state_T(:,:,2)
   scm_state%state_tracer(:,:,:,1) = scm_state%state_tracer(:,:,:,2)
+  if (physics%Model%tagging) call wtr_host_clip(scm_state, physics%Model)
   scm_state%state_u(:,:,1) = scm_state%state_u(:,:,2)
   scm_state%state_v(:,:,1) = scm_state%state_v(:,:,2)
 

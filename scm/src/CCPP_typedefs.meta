@@ -1646,6 +1646,41 @@
   dimensions = (horizontal_dimension)
   type = real
   kind = kind_phys
+[wtr_raincd]
+  standard_name = lwe_thickness_of_deep_convective_precipitation_amount_of_water_tracers
+  long_name = deep convective precipitation of each water tracer set on physics timestep
+  units = m
+  dimensions = (horizontal_dimension,number_of_water_tracer_sets)
+  type = real
+  kind = kind_phys
+[wtr_raincs]
+  standard_name = lwe_thickness_of_shallow_convective_precipitation_amount_of_water_tracers
+  long_name = shallow convective precipitation of each water tracer set on physics timestep
+  units = m
+  dimensions = (horizontal_dimension,number_of_water_tracer_sets)
+  type = real
+  kind = kind_phys
+[wtr_rainmp]
+  standard_name = lwe_thickness_of_explicit_rain_amount_of_water_tracers
+  long_name = explicit rain of each water tracer set on physics timestep
+  units = m
+  dimensions = (horizontal_dimension,number_of_water_tracer_sets)
+  type = real
+  kind = kind_phys
+[wtr_snowmp]
+  standard_name = lwe_thickness_of_explicit_frozen_precipitation_amount_of_water_tracers
+  long_name = explicit snow + ice + graupel of each water tracer set on physics timestep
+  units = m
+  dimensions = (horizontal_dimension,number_of_water_tracer_sets)
+  type = real
+  kind = kind_phys
+[wtr_qflx]
+  standard_name = surface_upward_water_flux_of_water_tracers
+  long_name = surface upward water flux of each water tracer set
+  units = kg m-2 s-1
+  dimensions = (horizontal_dimension,number_of_water_tracer_sets)
+  type = real
+  kind = kind_phys
 [rainmcadj]
   standard_name = lwe_thickness_of_moist_convective_adj_precipitation_amount
   long_name = adjusted moist convective rainfall amount on physics timestep

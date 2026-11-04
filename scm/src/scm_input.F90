@@ -2078,6 +2078,7 @@ end subroutine get_reference_profile
 !! Without the group, or with tagging = .false., the tracer list is unchanged.
 subroutine add_water_tracers(physics_nml, tracer_names, tracer_types)
   use water_tracers_config, only : wtr_config_type, wtr_read_nml, wtr_nset, wtr_nphase, wtr_tracer_names
+  use scm_water_tracers,    only : wtr_host_cfg
   character(len=*),                                          intent(in)    :: physics_nml
   character(len=character_length), allocatable, dimension(:), intent(inout) :: tracer_names
   integer,                         allocatable, dimension(:), intent(inout) :: tracer_types
@@ -2094,6 +2095,7 @@ subroutine add_water_tracers(physics_nml, tracer_names, tracer_types)
     write(error_unit,'(a)') trim(errmsg)
     error stop "error in &water_tracer_nml"
   end if
+  wtr_host_cfg = wtr_cfg   ! kept for the host rules (init, forcing, clip, output)
   if (.not. wtr_cfg%tagging) return
 
   n_old = size(tracer_names)

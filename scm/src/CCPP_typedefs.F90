@@ -230,6 +230,12 @@ module CCPP_typedefs
     real (kind=kind_phys), pointer      :: rainmp(:)          => null()  !<
     real (kind=kind_phys), pointer      :: raincd(:)          => null()  !<
     real (kind=kind_phys), pointer      :: raincs(:)          => null()  !<
+!--- water tracers (one column per water tracer set; zero size if tagging is off)
+    real (kind=kind_phys), pointer      :: wtr_raincd(:,:)    => null()  !< deep convective precipitation of water tracers (m)
+    real (kind=kind_phys), pointer      :: wtr_raincs(:,:)    => null()  !< shallow convective precipitation of water tracers (m)
+    real (kind=kind_phys), pointer      :: wtr_rainmp(:,:)    => null()  !< explicit rain of water tracers (m)
+    real (kind=kind_phys), pointer      :: wtr_snowmp(:,:)    => null()  !< explicit snow + ice + graupel of water tracers (m)
+    real (kind=kind_phys), pointer      :: wtr_qflx(:,:)      => null()  !< surface upward water flux of water tracers (kg m-2 s-1)
     real (kind=kind_phys), pointer      :: rainmcadj(:)       => null()  !<
     real (kind=kind_phys), pointer      :: rainp(:,:)         => null()  !<
     real (kind=kind_phys), pointer      :: rb(:)              => null()  !<
@@ -581,6 +587,11 @@ contains
     allocate (Interstitial%qss_water       (ixs:ixe))
     allocate (Interstitial%raincd          (ixs:ixe))
     allocate (Interstitial%raincs          (ixs:ixe))
+    allocate (Interstitial%wtr_raincd      (ixs:ixe,Model%wtr_nset))
+    allocate (Interstitial%wtr_raincs      (ixs:ixe,Model%wtr_nset))
+    allocate (Interstitial%wtr_rainmp      (ixs:ixe,Model%wtr_nset))
+    allocate (Interstitial%wtr_snowmp      (ixs:ixe,Model%wtr_nset))
+    allocate (Interstitial%wtr_qflx        (ixs:ixe,Model%wtr_nset))
     allocate (Interstitial%rainmcadj       (ixs:ixe))
     allocate (Interstitial%rainp           (ixs:ixe,Model%levs))
     allocate (Interstitial%rb              (ixs:ixe))
@@ -942,6 +953,11 @@ contains
     deallocate (Interstitial%qss_water)
     deallocate (Interstitial%raincd)
     deallocate (Interstitial%raincs)
+    deallocate (Interstitial%wtr_raincd)
+    deallocate (Interstitial%wtr_raincs)
+    deallocate (Interstitial%wtr_rainmp)
+    deallocate (Interstitial%wtr_snowmp)
+    deallocate (Interstitial%wtr_qflx)
     deallocate (Interstitial%rainmcadj)
     deallocate (Interstitial%rainp)
     deallocate (Interstitial%rb)
@@ -1502,6 +1518,11 @@ contains
     Interstitial%raddt           = clear_val
     Interstitial%raincd          = clear_val
     Interstitial%raincs          = clear_val
+    Interstitial%wtr_raincd      = clear_val
+    Interstitial%wtr_raincs      = clear_val
+    Interstitial%wtr_rainmp      = clear_val
+    Interstitial%wtr_snowmp      = clear_val
+    Interstitial%wtr_qflx        = clear_val
     Interstitial%rainmcadj       = clear_val
     Interstitial%rainp           = clear_val
     Interstitial%rb              = clear_val

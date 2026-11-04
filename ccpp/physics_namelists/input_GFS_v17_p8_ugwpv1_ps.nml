@@ -179,4 +179,5 @@
   wtr_bulk_check = .true.
   wtr_init_tags  = 'zero'
   wtr_init_frac  = 0.5
+  wtr_tag_moisten = .false.
 /
