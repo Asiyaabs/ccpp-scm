@@ -135,7 +135,8 @@ Each tracer is named `<phase>_<species>[_<tag>]`:
 
 The tracers are appended in memory after the tracers from the tracer file, as generic tracers
 (type 0); the tracer file itself is not changed. The convection schemes (samfdeepcnv,
-samfshalcnv) transport them passively, like other generic tracers. The PBL scheme
+samfshalcnv) transport the vapour tracers, like other generic tracers; the tracer condensate is
+not transported, like the model condensate. The PBL scheme
 (satmedmfvdifq) mixes them too, and the surface evaporation enters their vapour (`qv_<set>`).
 
 ---
@@ -191,7 +192,8 @@ and
 | Framework | Initial values, forcing, clipping, output | ✅ |
 | Schemes | PBL: mixing and surface evaporation | ✅ |
 | Schemes | PBL: condensation in updrafts/downdrafts, negative-water fixes | ✅ |
-| Schemes | shallow convection → deep convection → Thompson microphysics → surface (ocean, sea ice, Noah-MP), one at a time | ⏳ |
+| Schemes | shallow convection | ✅ |
+| Schemes | deep convection → Thompson microphysics → surface (ocean, sea ice, Noah-MP), one at a time | ⏳ |
 | Isotopes | HDO and H₂¹⁸O with fractionation | ⏳ |
 
 Each scheme is accepted only when the `H2O` bulk set still equals the model water.

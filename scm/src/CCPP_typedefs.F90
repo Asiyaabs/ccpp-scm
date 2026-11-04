@@ -1326,6 +1326,8 @@ contains
                   n /= Model%nthv  .and. n /= Model%ntccn .and. n /= Model%ntccna  .and. &
                   n /= Model%ntrz  .and. n /= Model%ntgz  .and. n /= Model%nthz    .and. &
                   n /= Model%ntsigma .and.  n /= Model%ntomega)
+        ! water tracers: only the vapour is transported, like the model water
+        if (Model%tagging) ltest = ltest .and. .not. any(Model%wtr_idx(:,2:) == n)
         Interstitial%otsptflag(n) = ltest
         if ( ltest ) then
           tracers = tracers + 1
