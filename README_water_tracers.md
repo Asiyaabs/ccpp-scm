@@ -133,10 +133,10 @@ Each tracer is named `<phase>_<species>[_<tag>]`:
 | `HDO` *(planned)* | isotope bulk | `qv_HDO` … `qg_HDO` |
 | `HDO_COL` *(planned)* | isotope tag | `qv_HDO_COL` … `qg_HDO_COL` |
 
-The tracers are appended after the tracers from the tracer file, as generic tracers (type 0).
-The convection schemes (samfdeepcnv, samfshalcnv) already transport them passively, like
-other generic tracers. The PBL scheme does not: with Thompson microphysics it mixes only a
-fixed list of tracers. The water tracers are added to that list in the PBL step.
+The tracers are appended in memory after the tracers from the tracer file, as generic tracers
+(type 0); the tracer file itself is not changed. The convection schemes (samfdeepcnv,
+samfshalcnv) transport them passively, like other generic tracers. The PBL scheme
+(satmedmfvdifq) mixes them too, and the surface evaporation enters their vapour (`qv_<set>`).
 
 ---
 
@@ -189,7 +189,9 @@ and
 | Framework | Namelist, tracer registration, index tables | ✅ |
 | Framework | Helper module: `wtr_transfer`, `wtr_alpha` | ✅ |
 | Framework | Initial values, forcing, clipping, output | ✅ |
-| Schemes | PBL → shallow convection → deep convection → Thompson microphysics → surface (ocean, sea ice, Noah-MP), one at a time | ⏳ |
+| Schemes | PBL: mixing and surface evaporation | ✅ |
+| Schemes | PBL: condensation in updrafts/downdrafts, negative-water fixes | ✅ |
+| Schemes | shallow convection → deep convection → Thompson microphysics → surface (ocean, sea ice, Noah-MP), one at a time | ⏳ |
 | Isotopes | HDO and H₂¹⁸O with fractionation | ⏳ |
 
 Each scheme is accepted only when the `H2O` bulk set still equals the model water.

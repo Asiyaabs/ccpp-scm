@@ -50,7 +50,9 @@ tracers are switched on.
 | 1 – step 4 | Namelist, tracer registration, index tables | ✅ done, tested |
 | 1 – step 5 | Helper module (`wtr_transfer`, `wtr_alpha`) | ✅ done, tested |
 | 1 – step 6 | Host rules: initial values, forcing, clipping, output | ✅ done, tested |
-| 2 | Schemes, one per commit (PBL → shallow conv → deep conv → Thompson → photochem / surface / sea ice → Noah-MP) | ⏳ |
+| 2 – step 7a | PBL (`satmedmfvdifq`): tracers mixed, surface evaporation into tracer vapour | ✅ done, tested |
+| 2 – step 7b | PBL: condensation in updrafts (`mfpbltq`) and downdrafts (`mfscuq`), negative cloud water / rain borrowed from vapour | ✅ done, tested |
+| 2 | Next schemes, one per commit (shallow conv → deep conv → Thompson → photochem / surface / sea ice → Noah-MP) | ⏳ |
 | 3 | Documentation | ⏳ |
 | 4 | Isotopes (HDO, H218O) | ⏳ |
 
@@ -130,15 +132,16 @@ qv_H2O      ql_H2O      qi_H2O      qr_H2O      qs_H2O      qg_H2O
 qv_H2O_COL  ql_H2O_COL  qi_H2O_COL  qr_H2O_COL  qs_H2O_COL  qg_H2O_COL
 ```
 
-With the default namelist this gives 2 sets × 6 phases = **12 tracers**, added after the
-tracers from the tracer file. Their type is generic (0), so the convection schemes
-(samfdeepcnv, samfshalcnv) transport them passively with the mass flux, like other generic
-tracers (selection in `gfs_interstitial_setup_tracers`, `scm/src/CCPP_typedefs.F90`).
+With the default namelist this gives 2 sets × 6 phases = **12 tracers**, added in memory after
+the tracers from the tracer file (the file itself is not changed). Their type is generic (0),
+so the convection schemes (samfdeepcnv, samfshalcnv) transport them passively with the mass
+flux, like other generic tracers (selection in `gfs_interstitial_setup_tracers`,
+`scm/src/CCPP_typedefs.F90`).
 
-The PBL scheme does **not** mix them yet. With Thompson microphysics, `satmedmfvdifq` mixes a
-fixed list of 10 tracers (`nvdiff`, set in `gfs_interstitial_setup_tracers`, copied in
-`GFS_PBL_generic_pre`): the water species, number concentrations, ozone and TKE. The water
-tracers are added to this list in the PBL step (Phase 2).
+With Thompson microphysics, `satmedmfvdifq` mixes only a fixed list of tracers (`nvdiff`, set
+in `gfs_interstitial_setup_tracers`, copied in `GFS_PBL_generic_pre`): the water species,
+number concentrations, ozone and TKE (10). Step 7a adds the 12 water tracers to this list,
+just before TKE, which must stay last (`nvdiff` = 22).
 
 ### Index tables
 
@@ -165,6 +168,9 @@ all of these arrays have size zero.
 |---|---|
 | `physics/tools/water_tracers_config.F90` | **New (step 4).** Module `water_tracers_config`: reads `&water_tracer_nml` (`wtr_read_nml`), checks it, and builds sets, names and index tables (`wtr_nset`, `wtr_set_info`, `wtr_tracer_names`, `wtr_index_table`). This is a plain Fortran module, not a CCPP scheme. Step 6 adds the option `wtr_tag_moisten`. |
 | `physics/tools/water_tracers_utils.F90` | **New (step 5).** Module `water_tracers_utils`, the helper used inside the schemes: `wtr_transfer(src_q, src_trc, dq, dst_trc, alpha)` moves `alpha × (src_trc / src_q) × dq` from a source tracer to a destination tracer (or out of the atmosphere when `dst_trc` is absent), capped so the source never goes negative. It is `elemental`. `wtr_alpha(species, process, temp)` is the fractionation hook (returns 1 for now). Process ids `wtr_proc_*`. |
+| `physics/PBL/SATMEDMF/satmedmfvdifq.F` / `.meta` | **Step 7a.** New arguments `tagging, wtr_nset, wtr_nphase, wtr_kind, wtr_qflx`. One block after the surface boundary condition of `qv` (`f2(i,1) = q1(i,1,1) + dtdz1*evap`) gives the vapour tracer of each set its surface flux: bulk sets get `evap`; tags get `evap` when it is upward, and lose vapour at their lowest-layer ratio when it is downward (dew/frost). Fills `wtr_qflx = rho_a × flux`. `.meta`: the 5 arguments, `water_tracers_config.F90` dependency. **Step 7b.** New argument `wtr_species`, `water_tracers_utils.F90` dependency. (1) After `mfpbltq` / `mfscuq`: the model parcel entrains total water `qv + ql` and splits it into vapour and cloud water at each level; the tracer parcel of each set entrains its own `qv + ql` the same way, is scaled by the model's total-water change in the split, and its cloud water is condensed from it with `wtr_transfer` (`wtr_proc_cond_liq`, α hook). This replaces the passive entrainment of the `qv` and `ql` tracers in `qcko` / `qcdo`. (2) After the solver, where negative cloud water or rain borrows vapour in the same layer, the same amount moves from each vapour tracer to its cloud-water / rain tracer (`wtr_transfer`, no fractionation: a numerical fix). |
+| `physics/Interstitials/UFS_SCM_NEPTUNE/GFS_PBL_generic_pre.F90` / `.meta` | **Step 7a.** New arguments `tagging, wtr_nset, wtr_nphase, wtr_idx`. When `nvdiff ≠ ntrac` (e.g. Thompson), copies the water tracers into `vdftra`, just before TKE. |
+| `physics/Interstitials/UFS_SCM_NEPTUNE/GFS_PBL_generic_post.F90` / `.meta` | **Step 7a.** Same arguments. Maps the PBL tendencies of the water tracers back to `dqdt` (`ten_q`). |
 
 ### 6.2 SCM repository
 
@@ -178,7 +184,7 @@ all of these arrays have size zero.
 | `scm/src/scm_time_integration.F90` | Step 6: calls `wtr_host_forcing` after `apply_forcing_DEPHY`, and `wtr_host_clip` after the physics (after the state is copied to time level 1). |
 | `scm/src/scm_time_integration.meta` | Step 6: adds `scm_water_tracers.F90` to `dependencies`. |
 | `scm/src/scm_output.F90` | Step 6: calls `wtr_output_init` and `wtr_output_append` when tagging is on. |
-| `scm/src/CCPP_typedefs.F90` / `.meta` | Step 6: 5 per-time-step arrays in `GFS_interstitial_type`, shape (column, set), filled by the schemes in Phase 2 and reset to 0 every step (§6.3). Zero size when tagging is off. |
+| `scm/src/CCPP_typedefs.F90` / `.meta` | Step 6: 5 per-time-step arrays in `GFS_interstitial_type`, shape (column, set), filled by the schemes in Phase 2 and reset to 0 every step (§6.3). Zero size when tagging is off. Step 7a: in `gfs_interstitial_setup_tracers`, `nvdiff` grows by `wtr_nset × wtr_nphase` when tagging is on and `nvdiff ≠ ntrac`, before the TKE position (`ntkev`) is set. |
 | `ccpp/physics_namelists/input_GFS_v17_p8_ugwpv1.nml` | `&water_tracer_nml` group appended, `tagging = .false.` (step 6: `wtr_tag_moisten = .false.`) |
 | `ccpp/physics_namelists/input_GFS_v17_p8_ugwpv1_ps.nml` | same |
 | `.gitmodules` | `ccpp-physics` URL points to `Asiyaabs/ccpp-physics` |
@@ -334,10 +340,62 @@ This is the expected state before Phase 2.
 set is ≥ 0, `qv_H2O_COL = qv_H2O` exactly (difference 0.0). The only differences (989 of 6223
 points) are where the bulk set is negative and the clip sets the tag to 0, as intended.
 
+### Step 7a, PBL mixing and surface evaporation (✅ passed, 2026-11-04)
+
+Case `flux_chaz_2022081500` (dry: no clouds, no precipitation, so only the forcing and the PBL
+change the water), 48 h, hourly output.
+
+**Test A, tagging off:** `flux_chaz_2022081500` and `twpice`, `output.nc` byte-identical to the
+baseline (`cmp`, run with the 7b build).
+
+**Test B, tagging on** (`wtr_init_tags = 'zero'`):
+
+| Check | Result |
+|---|---|
+| Model fields vs baseline | none differ |
+| `qv_H2O` vs `qv`, troposphere, first 39 h | column totals equal to ~1e-6 (before 7a: off by up to 1.3e-2) |
+| `qv_H2O` vs `qv`, model top | up to 1e-7: stratospheric water photochemistry (`h2o_phys`), not yet applied to the tracers |
+| `QFLX_H2O` vs `QFLX` | equal to 0.3 % (2e-7 of 1.1e-4 kg m-2 s-1): `QFLX_H2O` uses the air density inside the PBL scheme, `QFLX` the density at the end of the step |
+| `qv_H2O_COL` | grows from 0 (column sum 0.034 after 24 h); `QFLX_H2O_COL` ≥ 0 except for dew |
+| Tags ≥ 0 and ≤ bulk | yes |
+
+After 40 h the forcing dries the whole column (model vapour column from 0.27 to 3e-6) and
+pushes `qv` below zero. Thompson microphysics resets negative `qv` to 1e-7
+(`module_mp_thompson.F90`, l. 1634), which adds water; the bulk set does not follow this reset
+and goes down to −1.4e-3 at 974 hPa. This is a Thompson step item, not a PBL error.
+
+**Test C, test mode** (`wtr_init_tags = 'bulk'`, `wtr_tag_moisten = .true.`): wherever the bulk
+set is ≥ 0, `qv_H2O_COL = qv_H2O` exactly (difference 0.0), and `QFLX_H2O_COL = QFLX_H2O`
+exactly. The only differences (406 points, all in the last hours) are where the bulk set is
+negative and the clip sets the tag to 0.
+
+### Step 7b, PBL condensation and negative-water fixes (✅ passed, 2026-11-04)
+
+**Test A, tagging off:** see step 7a (same build).
+
+**Test C, test mode** (`wtr_init_tags = 'bulk'`, `wtr_tag_moisten = .true.`), `twpice`:
+
+| Check | Result |
+|---|---|
+| Model fields vs baseline | none differ |
+| Tag vs bulk, every phase, where bulk ≥ 0 | 0.0 |
+| Tag vs bulk where bulk < 0 | 2 points, bulk −5e-20 (`ql`) and −3e-26 (`qr`): rounding at zero, clipped |
+| `ql_H2O`, `qr_H2O` | now non-zero (up to 3.6e-3 and 4.5e-7 kg kg-1); before 7b they stayed 0 |
+| `QFLX_H2O_COL` vs `QFLX_H2O` | 0.0 |
+
+`flux_chaz_2022081500` test C gives the same result as in step 7a.
+
+On `twpice` the bulk set still differs from the model water (`qv` up to 3.3e-2, `ql_H2O` up to
+3.6e-3 against 9.5e-4 in the model, `qi_H2O` = 0): convection and Thompson do not condense,
+rain out or freeze the tracers yet. This closes with those steps.
+
 ---
 
 ## 8. Next steps
 
-1. **Phase 2**: edit the schemes one at a time, one commit each, starting with the PBL. After
-   each scheme, the bulk set must still equal the model water, and in test mode (test C) every
-   tag must still equal the bulk set.
+1. **Phase 2, step 8: shallow convection (`samfshalcnv`)**: updraft condensation, convective
+   rain (`wtr_raincs`) and its evaporation, each with its own `wtr_transfer` call and α hook.
+   (Known limit of step 7b: the tracer vapour gets the PBL negative-vapour fix after the
+   borrowing instead of before; this matters only where the model vapour itself goes negative.)
+2. Then the other schemes, one at a time, one commit each. After each scheme, the bulk set must
+   still equal the model water, and in test mode (test C) every tag must still equal the bulk set.

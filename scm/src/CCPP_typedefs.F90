@@ -1282,6 +1282,10 @@ contains
       if (Model%ntke > 0) Interstitial%nvdiff = Interstitial%nvdiff + 1    !  adding tke to the list
     endif
 
+    ! water tracers: PBL-diffused too, placed just before TKE (GFS_PBL_generic_pre/post)
+    if (Model%tagging .and. Interstitial%nvdiff /= Model%ntrac) &
+      Interstitial%nvdiff = Interstitial%nvdiff + Model%wtr_nset*Model%wtr_nphase
+
     if (Model%ntke > 0) Interstitial%ntkev = Interstitial%nvdiff
 
     if (Model%ntiw > 0) then
