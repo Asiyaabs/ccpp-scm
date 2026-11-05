@@ -53,6 +53,7 @@ tracers are switched on.
 | 2 – step 7a | PBL (`satmedmfvdifq`): tracers mixed, surface evaporation into tracer vapour | ✅ done, tested |
 | 2 – step 7b | PBL: condensation in updrafts (`mfpbltq`) and downdrafts (`mfscuq`), negative cloud water / rain borrowed from vapour | ✅ done, tested |
 | 2 – step 8 | Shallow convection (`samfshalcnv`): updraft condensation, rain, rain evaporation, detrained cloud water | ✅ done, tested |
+| 2 – step 9 | Deep convection (`samfdeepcnv`): as step 8, plus the downdraft (rain evaporation / condensation in it) | ✅ done, tested |
 | 2 | Next schemes, one per commit (shallow conv → deep conv → Thompson → photochem / surface / sea ice → Noah-MP) | ⏳ |
 | 3 | Documentation | ⏳ |
 | 4 | Isotopes (HDO, H218O) | ⏳ |
@@ -172,6 +173,7 @@ all of these arrays have size zero.
 | `physics/tools/water_tracers_config.F90` | **New (step 4).** Module `water_tracers_config`: reads `&water_tracer_nml` (`wtr_read_nml`), checks it, and builds sets, names and index tables (`wtr_nset`, `wtr_set_info`, `wtr_tracer_names`, `wtr_index_table`). This is a plain Fortran module, not a CCPP scheme. Step 6 adds the option `wtr_tag_moisten`. |
 | `physics/tools/water_tracers_utils.F90` | **New (step 5).** Module `water_tracers_utils`, the helper used inside the schemes: `wtr_transfer(src_q, src_trc, dq, dst_trc, alpha)` moves `alpha × (src_trc / src_q) × dq` from a source tracer to a destination tracer (or out of the atmosphere when `dst_trc` is absent), capped so the source never goes negative. It is `elemental`. `wtr_alpha(species, process, temp)` is the fractionation hook (returns 1 for now). Process ids `wtr_proc_*`. |
 | `physics/PBL/SATMEDMF/satmedmfvdifq.F` / `.meta` | **Step 7a.** New arguments `tagging, wtr_nset, wtr_nphase, wtr_kind, wtr_qflx`. One block after the surface boundary condition of `qv` (`f2(i,1) = q1(i,1,1) + dtdz1*evap`) gives the vapour tracer of each set its surface flux: bulk sets get `evap`; tags get `evap` when it is upward, and lose vapour at their lowest-layer ratio when it is downward (dew/frost). Fills `wtr_qflx = rho_a × flux`. `.meta`: the 5 arguments, `water_tracers_config.F90` dependency. **Step 7b.** New argument `wtr_species`, `water_tracers_utils.F90` dependency. (1) After `mfpbltq` / `mfscuq`: the model parcel entrains total water `qv + ql` and splits it into vapour and cloud water at each level; the tracer parcel of each set entrains its own `qv + ql` the same way, is scaled by the model's total-water change in the split, and its cloud water is condensed from it with `wtr_transfer` (`wtr_proc_cond_liq`, α hook). This replaces the passive entrainment of the `qv` and `ql` tracers in `qcko` / `qcdo`. (2) After the solver, where negative cloud water or rain borrows vapour in the same layer, the same amount moves from each vapour tracer to its cloud-water / rain tracer (`wtr_transfer`, no fractionation: a numerical fix). |
+| `physics/CONV/SAMF/samfdeepcnv.f` / `.meta` | **Step 9.** Same arguments and pattern as `samfshalcnv` (step 8), with `wtr_raincd`. In addition: `wpwav` = tracer part of the column condensate `pwavo`; the downdraft vapour tracer `ecdo` is entrained like `qcdo` (kept in `wqcd`), then gets rain evaporation at the composition `wpwav/pwavo` (`wtr_transfer`, `wtr_proc_evap_liq`) or condenses where supersaturated (`wtr_proc_cond_liq`) to follow `qrcdo`; `wpwdo` = tracer `pwdo`. The model tendency uses `qcdo` at k-1 and `qrcdo` at k, the tracer loop `ecdo` at both: one block adds the k-1 difference. Tracer rain = updraft + downdraft share; rain evaporation, reset where the model rain is ≤ 0, and detrained ice/liquid as in step 8 (only where the model rain > 0). `GFS_DCNV_generic_post` is unchanged. |
 | `physics/CONV/SAMF/samfshalcnv.f` / `.meta` | **Step 8.** New arguments `tagging, wtr_nset, wtr_nphase, wtr_idx, wtr_species, otsptflag, wtr_raincs`; `water_tracers_utils.F90` dependency. The vapour tracer of each set (found in `qtr` from `otsptflag`): (1) on interface levels it is set to the model `qo` times its tracer/model ratio; (2) its updraft value `ecko` is recomputed like `qcko` and gives its share of the condensate removed at each level and at cloud top (`wtr_transfer`, `wtr_proc_cond_liq`); `wrt` keeps that share per level; (3) tracer rain collects `wrt × pwo`, rain evaporation is `wtr_transfer` (`wtr_proc_evap_liq`) back into the vapour tracer, the final rain reset is mirrored and the result goes to `wtr_raincs`; (4) detrained cloud water `wrt × dellal` is split into ice/liquid like the model (`wtr_transfer`, `wtr_proc_freeze`) and returned as tendencies of the `ql`/`qi` tracers (`ten_q`). The tendency, subsidence and feedback code already treats tracers like `q1` and is unchanged. |
 | `physics/Interstitials/UFS_SCM_NEPTUNE/GFS_PBL_generic_pre.F90` / `.meta` | **Step 7a.** New arguments `tagging, wtr_nset, wtr_nphase, wtr_idx`. When `nvdiff ≠ ntrac` (e.g. Thompson), copies the water tracers into `vdftra`, just before TKE. |
 | `physics/Interstitials/UFS_SCM_NEPTUNE/GFS_PBL_generic_post.F90` / `.meta` | **Step 7a.** Same arguments. Maps the PBL tendencies of the water tracers back to `dqdt` (`ten_q`). |
@@ -419,12 +421,35 @@ m s-1). Both close with the deep convection and Thompson steps.
 **Test A, tagging off:** `flux_chaz_2022081500` and `twpice`, `output.nc` byte-identical to the
 baseline (`cmp`).
 
+### Step 9, deep convection (✅ passed, 2026-11-04)
+
+**Test A, tagging off:** `flux_chaz_2022081500` and `twpice`, `output.nc` byte-identical to the
+baseline (`cmp`).
+
+**Test B** (`wtr_init_tags = 'zero'`), `twpice`, compared with step 8:
+
+| Check | Step 8 | Step 9 |
+|---|---|---|
+| Model fields vs baseline | none differ | none differ |
+| max\|`qv_H2O` − `qv`\| after 1 h | 1.3e-2 | 3.5e-4 |
+| max\|`qv_H2O` − `qv`\| over the run | 9.7e-2 | 4.5e-2 |
+| Bulk convective precipitation, run mean (model `PRECC` 9.5e-8 m s-1) | 4.6e-9 | 7.1e-8 |
+| `qi_H2O` | 0 | up to 4.3e-3 (detrained convective ice) |
+
+The rest of the gap is Thompson: tracer cloud water is not yet converted to rain or evaporated
+(`ql_H2O` up to 0.14 kg kg-1), so the bulk set is too moist and its convective precipitation
+can exceed `PRECC` at some times (by up to 6.7e-8 m s-1). `flux_chaz_2022081500` (no convection)
+is unchanged from step 7.
+
+**Test C, test mode**, `twpice`: tag = bulk wherever bulk ≥ 0 (`ql` … `qg` 0.0, `qv` ≤ 8.5e-22,
+rounding next to zero); convective precipitation tag vs bulk 0.0; `QFLX` tag vs bulk 0.0.
+
 ---
 
 ## 8. Next steps
 
-1. **Phase 2, step 9: deep convection (`samfdeepcnv`)**: as step 8, plus the downdraft
-   (`wtr_raincd`).
+1. **Phase 2, step 10: Thompson microphysics (`mp_thompson`)**: cloud water / ice / rain / snow /
+   graupel processes, `wtr_rainmp`, `wtr_snowmp`; also the reset of negative `qv` to 1e-7.
    (Known limit of step 7b: the tracer vapour gets the PBL negative-vapour fix after the
    borrowing instead of before; this matters only where the model vapour itself goes negative.)
 2. Then the other schemes, one at a time, one commit each. After each scheme, the bulk set must
