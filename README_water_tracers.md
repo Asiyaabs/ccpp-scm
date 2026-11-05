@@ -194,7 +194,8 @@ and
 | Schemes | PBL: condensation in updrafts/downdrafts, negative-water fixes | ✅ |
 | Schemes | shallow convection | ✅ |
 | Schemes | deep convection | ✅ |
-| Schemes | Thompson microphysics → surface (ocean, sea ice, Noah-MP), one at a time | ⏳ |
+| Schemes | Thompson microphysics | ✅ |
+| Schemes | water photochemistry → surface (ocean, sea ice, Noah-MP), one at a time | ⏳ |
 | Isotopes | HDO and H₂¹⁸O with fractionation | ⏳ |
 
 Each scheme is accepted only when the `H2O` bulk set still equals the model water.
