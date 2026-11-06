@@ -1510,6 +1510,7 @@ module GFS_typedefs
 
 !--- water tracers (tagging, later isotopes); see water_tracers_config
     logical              :: tagging               !< master switch for water tracers (&water_tracer_nml)
+    logical              :: wtr_tag_moisten       !< test mode: tags also get the non-surface water sources
     integer              :: wtr_nset              !< number of water tracer sets (0 if tagging off)
     integer              :: wtr_nphase            !< number of water phases per set (qv,ql,qi,qr,qs,qg)
     integer, pointer     :: wtr_idx(:,:)     => null() !< tracer index of (set, phase)
@@ -5667,6 +5668,7 @@ module GFS_typedefs
       error stop
     endif
     Model%tagging    = wtr_cfg%tagging
+    Model%wtr_tag_moisten = wtr_cfg%tag_moisten
     Model%wtr_nset   = wtr_nset(wtr_cfg)
     Model%wtr_nphase = wtr_nphase
     allocate (Model%wtr_idx(Model%wtr_nset, Model%wtr_nphase))
