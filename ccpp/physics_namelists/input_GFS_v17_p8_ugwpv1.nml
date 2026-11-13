@@ -173,7 +173,7 @@
 /
 
 &water_tracer_nml
-  tagging        = .true.
+  tagging        = .false.
   wtr_species    = 'H2O'
   wtr_tag_names  = 'COL'
   wtr_tag_source = 'surface'

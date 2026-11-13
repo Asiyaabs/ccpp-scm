@@ -520,6 +520,111 @@ clipped points); convective and large-scale precipitation and `QFLX`, tag vs bul
 **Test A, tagging off:** `flux_chaz_2022081500` and `twpice`, `output.nc` byte-identical to the
 baseline.
 
+### Fraction test (test D)
+
+Test C (tag = bulk) only checks the ratio 1. Test D checks that every process keeps any tag
+ratio: with `wtr_init_tags = 'fraction'`, `wtr_init_frac = f` and `wtr_tag_moisten = .true.`,
+tags start at `f × bulk` and get `f ×` each source they get directly (forcing moistening, surface
+evaporation in the PBL, photochemistry source). Nothing inside the schemes changes; the tag
+must then stay at `f × bulk` everywhere, to rounding, for any `0 < f ≤ 1`.
+
+| File | Change |
+|---|---|
+| `scm/src/GFS_typedefs.F90` / `.meta` | Field `wtr_tag_frac` (standard name `fraction_of_water_sources_given_to_water_tracer_tags`): `wtr_init_frac` in the fraction test, exactly 1 otherwise. |
+| `scm/src/scm_water_tracers.F90` | Test-mode forcing moistening of tags × `wtr_tag_frac`. |
+| `physics/PBL/SATMEDMF/satmedmfvdifq.F` / `.meta` | Upward surface evaporation of tags × `wtr_tag_frac`. |
+| `physics/Interstitials/UFS_SCM_NEPTUNE/GFS_photochemistry.F90` / `.meta` | Test-mode photochemistry source of tags × `wtr_tag_frac`. |
+
+Outside the fraction test the factor is exactly 1, so normal runs do not change.
+
+Results, `twpice`, 595 h (2026-11-06):
+
+| f | max\|tag − f·bulk\| / max bulk, all phases, precipitation, `QFLX` |
+|---|---|
+| 0.5 | 0 for `qv`, precipitation, `QFLX`; ≤ 1.3e-15 for the condensate |
+| 0.3 | 1.5e-8 to 2.2e-8, the same for every field: float32 rounding of the output file |
+
+The test B output with test-mode settings `'bulk'` was byte-identical before and after this
+change (`wtr_tag_frac` = 1).
+
+What this shows: every tracer operation used in this case scales with the tracer (a tag that is
+a fixed fraction of the bulk set stays that fraction). What it does not show: in test D the ratio
+is the same everywhere, so it does not test the mixing of air with different tag ratios, and the
+convection ratio limiter never acts; differences below ~2e-8 relative are hidden by the float32
+output; only the processes active in `twpice` were exercised. A tag water budget and runs of
+other cases are still to do.
+
+Fraction test on more cases (final build, f = 0.5, 2026-11-13): max |tag − 0.5 × bulk| relative to
+max |bulk|, over all six phases and convective and large-scale precipitation (phases with no water,
+max < 1e-12 kg/kg, skipped):
+
+| Case | Length | max \|tag − 0.5·bulk\| (relative) |
+|---|---|---|
+| `twpice` | 594 h | 1.3e-15 |
+| `arm_sgp_summer_1997_X` | 696 h | 5.4e-18 |
+| `MOSAiC-AMPS` | 168 h | 1.2e-17 |
+| `gabls3_noahmp` | 24 h | 0 |
+| `flux_clar_2022081500` / `2023011500` / `2023031400` | 48 h each | 7e-20 / 8e-24 / 2e-19 |
+
+The tag stays exactly half of the bulk set (to rounding) in every case, over ocean, land with
+prescribed fluxes, Noah-MP land, and Arctic sea ice, including the cases that exercise the
+created-water rule (SGP X). The bulk set equals the model water in all of them.
+
+### Fix after step 11: water the model creates (✅ passed, 2026-11-12)
+
+Found in the first tagging run over land, `arm_sgp_summer_1997_X` (29 days, prescribed surface
+fluxes, suite `SCM_GFS_v17_p8_ugwpv1_ps`). The bulk set equalled the model water exactly for
+174 h, then fell below it. Cause (temporary prints, removed): a deep-convection cloud top at
+~100 hPa where the updraft parcel water is already < 0 (`qcko` = −9.8e-7) and the saturation
+value is < 0 (`qrch` = −4.0e-6). The model still detrains cloud-top water
+`qlko_ktcon = qcko − qrch` = 3.0e-6 as ice, i.e. it creates that water. `wtr_transfer` moved
+nothing from a source that holds ≤ 0, so the bulk set got no ice; Thompson then sublimated the
+model's ice into vapour the bulk set never had.
+
+Rule: water the model takes beyond what a store holds (all of it if the store holds ≤ 0), or
+creates by a floor, has no ratio to follow and gets the column vapour ratio of the set (levels
+with vapour > 0): 1 for a bulk set, the column tag fraction for a tag.
+
+A first version gave the column ratio only to water taken from a store holding ≤ 0. SGP X then
+stayed exact to hour 218 but failed at hour 219, and once the rule was widened to every overdraw,
+`twpice` failed too. Cause: the column ratio summed over all levels, but the convection schemes
+fill their tracer copy `ctr` only up to `kmax` (shallow convection: only in convective columns);
+above it the values are undefined. The column ratio now uses levels `1:kmax` only.
+
+| File | Change |
+|---|---|
+| `water_tracers_utils.F90` | `wtr_transfer`: new optional `rdef`. With it, where the model takes more than the source holds (`dq > max(src_q, 0)`), the source tracer gives all it holds and the part beyond is created water at the ratio `rdef`; without it, unchanged (the whole `dq` at the source ratio, not capped). New `wtr_col_ratio(q, t, rdef)`: tracer/model ratio over the levels with model water > 0, `rdef` if there is none |
+| `samfdeepcnv.f` / `.meta`, `samfshalcnv.f` / `.meta` | New argument `wtr_kind`, `water_tracers_config.F90` dependency. Column ratio `wrc` of each set (default 1 for a bulk set, 0 for a tag), given as `rdef` to the updraft condensation and cloud-top transfers. The interface fallback where the model vapour is ≤ 0 is now `ctro = ctr + (qo − q1) × wrc` (was the whole increment at ratio 1: right for the bulk set, but a tag got the created water as if all of it were tagged) |
+| `module_mp_thompson.F90` | The ratio for created water (`wrv`) uses `wtr_col_ratio`, i.e. only levels with vapour > 0 (was the sum over all levels). Default when no level has vapour: 1 for every set, as before (cannot happen in a column with vapour near the surface) |
+
+Results with tagging on (`'zero'` tags, 2026-11-12), max |bulk − model| over the run:
+
+| Case | `qv` | `ql` | `qi` | convective / large-scale precipitation |
+|---|---|---|---|---|
+| `arm_sgp_summer_1997_X` (land, 29 days) | 1.9e-9 | 5e-20 | 7e-12 | 0 / 1.8e-14 |
+| `twpice` (ocean, 24.75 days) | 1.9e-9 | 7e-12 | 1.5e-11 | 1.8e-15 / 1.4e-14 |
+
+`qv` differences are float32 output rounding. Before the fix, SGP X reached 4.4e-4 in `qv` after
+hour 175. `twpice` tag results are unchanged by the fix (precipitation recycling ratio 0.257,
+mean tag fraction of the column vapour 0.354); 0 ≤ tag ≤ bulk in both cases. Test A (tagging off, final build): `flux_chaz_2022081500` and `twpice` byte-identical to the baseline.
+
+More cases with tagging on (final build, `'zero'` tags, 2026-11-12); bulk set = model water in all
+of them (max |bulk − model|, qv / ql / qi; precipitation exact or ≤ 1e-13; 0 ≤ tag ≤ bulk):
+
+| Case | What it adds | qv / ql / qi |
+|---|---|---|
+| `MOSAiC-AMPS` (168 h) | Arctic: snow, ice, graupel, sea ice | 0 / 3e-20 / 2e-28 |
+| `gabls3_noahmp` (24 h) | Noah-MP land surface | 0 / 3e-21 / 0 |
+| `flux_clar_2022081500` (48 h) | NYS Mesonet Claryville, August (ufscasegen) | 0 / 1e-20 / 2e-22 |
+| `flux_clar_2023011500` (48 h) | Claryville, January | 0 / 3e-20 / 2e-25 |
+| `flux_clar_2023031400` (48 h) | Claryville, March | 0 / 2e-20 / 3e-21 |
+
+The Claryville cases (input copied from the ufscasegen output used before, not in git) have
+strong horizontal moisture advection in January and March (column total up to +219 mm/day with
+5–10 mm of column vapour): the model's column vapour rises to ~75 mm in both, so these two runs
+test the tracer code but not realistic winter weather. August is the case without clear forcing
+issues (column vapour 20–43 mm).
+
 ---
 
 ## 8. Next steps
@@ -530,3 +635,23 @@ baseline.
    borrowing instead of before; this matters only where the model vapour itself goes negative.)
 2. Then the other schemes, one at a time, one commit each. After each scheme, the bulk set must
    still equal the model water, and in test mode (test C) every tag must still equal the bulk set.
+3. **Phase 4, isotopes**: the places below are correct for water and tags (α = 1) but need a
+   change or a check before isotopes (α ≠ 1) are switched on.
+
+### Isotope hooks still to add (Phase 4)
+
+Every true move of water between two stores is a helper call (`wtr_transfer`, `wtr_exchange`)
+with an α hook, and `wtr_alpha` only has to be filled in. The places in this table are written
+by hand, or follow a rule that is only right for α = 1:
+
+| Where | Now | For isotopes |
+|---|---|---|
+| Deep and shallow convection: detrained cloud water split into ice and liquid with the model's fraction `tem1` | Same ratio for both phases (non-fractionating) | If freezing gets an α, make the split a `wtr_transfer` from liquid to ice with an α hook (`wtr_proc_freeze`, new) |
+| Deep and shallow convection: updraft condensate `wrt` | One `wtr_transfer` per level with `wtr_proc_cond_liq` at all temperatures | Below freezing the updraft condensate is partly ice: choose `wtr_proc_dep_ice` (kinetic effect at ice supersaturation) by temperature, like the PBL dew/frost |
+| Deep and shallow convection: rain `pwo × wrt` and detrained cloud water `dellal × wrt` | Both take the condensate ratio of the level | Unchanged, as long as there is no fractionation between rain and cloud water in the updraft |
+| Convection interface values `ctro` and PBL parcel scaling `wqt × wqm1/wqm0` | Rebuild values from the model, not moves of water | Unchanged |
+| Water the model creates (no ratio to follow): convection `ctro` where the model vapour is ≤ 0, water taken from an updraft parcel that holds ≤ 0, Thompson floors (`wrv`) | Column vapour ratio of the set over levels with vapour > 0 (`wtr_col_ratio`; fix after step 11) | Column ratio: for an isotope set that is its mean isotope ratio |
+| Photochemistry: loss `tracer × f` | Same as `wtr_transfer` of `(1 − f) × q`, no α | Methane oxidation and the photolysis loss fractionate: give the source `S` of an isotope set its own isotope ratio, and the loss an α hook (`wtr_transfer` call) |
+| `wtr_transfer` not capped (step 11) | Where the model drives a store negative, the tracer follows at the same ratio | With α ≠ 1 an isotope ratio of a negative or near-zero store is meaningless: check where this happens (deep-convection cloud tops) and decide a rule (e.g. α = 1 there) |
+| Thompson: all exchanges other than vapour–ice/snow/graupel (`wtr_net`) | One net, non-fractionating change per level | Rain evaporation already has its own call (`wtr_proc_evap_liq`); partial re-equilibration of falling rain with the vapour (Stewart 1975) is not included |
+| Surface evaporation and dew/frost (PBL) | α hook at dew/frost; upward evaporation gets the surface value | Evaporation needs the Craig-Gordon α and a surface isotope value (ocean, land, sea ice); see step 1 above |
