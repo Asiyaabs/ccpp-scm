@@ -68,7 +68,7 @@ contains
   !!  - bulk sets: + dqv (stay equal to the model vapour)
   !!  - tags: drying (dqv < 0) removes vapour at the tag ratio; moistening adds nothing,
   !!    because advected vapour did not evaporate in the column.
-  !!    Test mode wtr_tag_moisten = .true.: tags get + dqv like the bulk set.
+  !!    Test mode wtr_tag_moisten = .true.: tags get + dqv like the bulk set (x wtr_init_frac in the fraction test).
   subroutine wtr_host_forcing(scm_state, Model)
     use scm_type_defs, only: scm_state_type
     use GFS_typedefs,  only: GFS_control_type
@@ -85,8 +85,10 @@ contains
       do k = 1, scm_state%n_levels
         do i = 1, scm_state%n_cols
           dqv = scm_state%dt*scm_state%qv_force_tend(i,k)
-          if (Model%wtr_kind(s) == wtr_kind_bulk .or. wtr_host_cfg%tag_moisten) then
+          if (Model%wtr_kind(s) == wtr_kind_bulk) then
             scm_state%state_tracer(i,k,iv,1) = scm_state%state_tracer(i,k,iv,1) + dqv
+          else if (wtr_host_cfg%tag_moisten) then
+            scm_state%state_tracer(i,k,iv,1) = scm_state%state_tracer(i,k,iv,1) + dqv*Model%wtr_tag_frac
           else if (dqv < 0.0_dp) then
             qv_old = scm_state%state_tracer(i,k,iwv,1) - dqv
             call wtr_transfer(qv_old, scm_state%state_tracer(i,k,iv,1), -dqv)
