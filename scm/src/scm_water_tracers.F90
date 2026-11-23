@@ -10,7 +10,7 @@
 module scm_water_tracers
 
   use scm_kinds,            only: dp
-  use water_tracers_config, only: wtr_config_type, wtr_kind_bulk, wtr_kind_tag
+  use water_tracers_config, only: wtr_config_type, wtr_kind_bulk, wtr_kind_tag, wtr_species_h2o
   use water_tracers_utils,  only: wtr_transfer
 
   implicit none
@@ -65,7 +65,9 @@ contains
 
   !> Large-scale forcing of the vapour tracers, with the same increment dqv = dt*qv_force_tend
   !! that apply_forcing_DEPHY gave the model vapour:
-  !!  - bulk sets: + dqv (stay equal to the model vapour)
+  !!  - H2O bulk set: + dqv (stays equal to the model vapour)
+  !!  - isotope bulk sets: moistening + dqv (advected vapour at delta = 0 for now), drying
+  !!    removes vapour at the set's own ratio (no fractionation)
   !!  - tags: drying (dqv < 0) removes vapour at the tag ratio; moistening adds nothing,
   !!    because advected vapour did not evaporate in the column.
   !!    Test mode wtr_tag_moisten = .true.: tags get + dqv like the bulk set (x wtr_init_frac in the fraction test).
@@ -85,9 +87,10 @@ contains
       do k = 1, scm_state%n_levels
         do i = 1, scm_state%n_cols
           dqv = scm_state%dt*scm_state%qv_force_tend(i,k)
-          if (Model%wtr_kind(s) == wtr_kind_bulk) then
+          if (Model%wtr_kind(s) == wtr_kind_bulk .and. &
+              (Model%wtr_species(s) == wtr_species_h2o .or. dqv >= 0.0_dp)) then
             scm_state%state_tracer(i,k,iv,1) = scm_state%state_tracer(i,k,iv,1) + dqv
-          else if (wtr_host_cfg%tag_moisten) then
+          else if (Model%wtr_kind(s) == wtr_kind_tag .and. wtr_host_cfg%tag_moisten) then
             scm_state%state_tracer(i,k,iv,1) = scm_state%state_tracer(i,k,iv,1) + dqv*Model%wtr_tag_frac
           else if (dqv < 0.0_dp) then
             qv_old = scm_state%state_tracer(i,k,iwv,1) - dqv

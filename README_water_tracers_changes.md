@@ -58,7 +58,9 @@ tracers are switched on.
 | 2 – step 11 | Water photochemistry (`GFS_photochemistry`, `h2o_phys`); `wtr_transfer` uncapped; `wtr_ratio_limit` helper | ✅ done, tested |
 | 2 | Next schemes, one per commit (shallow conv → deep conv → Thompson → photochem / surface / sea ice → Noah-MP) | ⏳ |
 | 3 | Documentation | ⏳ |
-| 4 | Isotopes (HDO, H218O) | ⏳ |
+| 4 – step 1 | Isotope sets (HDO, H218O) allowed, no fractionation (α = 1): every isotope set must equal the H2O set with the same tag | ✅ done, tested |
+| 4 – step 2a | Equilibrium fractionation: `wtr_alpha` filled (liquid, ice), `wtr_transfer` closed-equilibrium step, isotope losses at their own ratio (forcing, dew); sub-stepped convective transport of isotope vapour | ✅ done, tested |
+| 4 | Isotopes: kinetic effects, surface isotope values (Craig-Gordon), advected vapour δ | ⏳ |
 
 ---
 
@@ -88,7 +90,7 @@ effect as `tagging = .false.`.
 ```fortran
 &water_tracer_nml
   tagging        = .false.     ! master switch
-  wtr_species    = 'H2O'       ! species list: H2O (HDO, H218O later)
+  wtr_species    = 'H2O'       ! species list: any of H2O, HDO, H218O
   wtr_tag_names  = 'COL'       ! tag names, up to 10
   wtr_tag_source = 'surface'   ! where the water of each tag enters
   wtr_bulk_check = .true.      ! add the H2O bulk check set
@@ -101,7 +103,7 @@ effect as `tagging = .false.`.
 | Variable | Type | Default | Allowed values |
 |---|---|---|---|
 | `tagging` | logical | `.false.` | |
-| `wtr_species` | string list | `'H2O'` | `H2O` only for now (`HDO` and `H218O` give "not implemented yet") |
+| `wtr_species` | string list | `'H2O'` | `H2O`, `HDO`, `H218O`, no duplicates (isotopes: α = 1 until fractionation is added) |
 | `wtr_tag_names` | string list | `'COL'` | any names, no duplicates, up to 10 |
 | `wtr_tag_source` | string list | `'surface'` | `surface` only for now |
 | `wtr_bulk_check` | logical | `.true.` | for H2O only; isotopes always get a bulk set |
@@ -174,6 +176,7 @@ all of these arrays have size zero.
 |---|---|
 | `physics/tools/water_tracers_config.F90` | **New (step 4).** Module `water_tracers_config`: reads `&water_tracer_nml` (`wtr_read_nml`), checks it, and builds sets, names and index tables (`wtr_nset`, `wtr_set_info`, `wtr_tracer_names`, `wtr_index_table`). This is a plain Fortran module, not a CCPP scheme. Step 6 adds the option `wtr_tag_moisten`. |
 | `physics/tools/water_tracers_utils.F90` | **New (step 5).** Module `water_tracers_utils`, the helper used inside the schemes: `wtr_transfer(src_q, src_trc, dq, dst_trc, alpha)` moves `alpha × (src_trc / src_q) × dq` from a source tracer to a destination tracer (or out of the atmosphere when `dst_trc` is absent). Not capped (step 11): where the model takes more than a store holds and drives it negative (e.g. a deep-convection cloud top where the saturation value is < 0), the tracer follows at the same ratio, so a bulk set stays equal to the model; tags are reset to ≥ 0 by the host clip. To be revisited for isotopes (α ≠ 1). It is `elemental`. `wtr_alpha(species, process, temp)` is the fractionation hook (returns 1 for now). Process ids `wtr_proc_*`. |
+| `physics/tools/water_tracers_config.F90` (isotopes, step 1) | `HDO` and `H218O` are accepted in `wtr_species` (was "not implemented yet"). Isotopes are carried as R/R_VSMOW times the water (`Rstd` = 1, as in iCESM), so δ = 1000 (q_iso / q_H2O − 1) ‰. Nothing else changes: every scheme and host rule treats a set by its kind (bulk or tag), so an isotope bulk set gets the same sources as the H2O bulk set (initial water, forcing, surface evaporation, photochemistry source), i.e. at δ = 0, and the only species-dependent call, `wtr_alpha`, still returns 1. Isotope tags have the isotope bulk set as their bulk set (clip). |
 | `physics/PBL/SATMEDMF/satmedmfvdifq.F` / `.meta` | **Step 7a.** New arguments `tagging, wtr_nset, wtr_nphase, wtr_kind, wtr_qflx`. One block after the surface boundary condition of `qv` (`f2(i,1) = q1(i,1,1) + dtdz1*evap`) gives the vapour tracer of each set its surface flux: bulk sets get `evap`; tags get `evap` when it is upward, and lose vapour at their lowest-layer ratio when it is downward (dew/frost: `wtr_transfer`, `wtr_proc_cond_liq` or `wtr_proc_dep_ice` below 273.15 K; fix commit after step 9). Fills `wtr_qflx = rho_a × flux`. `.meta`: the 5 arguments, `water_tracers_config.F90` dependency. **Step 7b.** New argument `wtr_species`, `water_tracers_utils.F90` dependency. (1) After `mfpbltq` / `mfscuq`: the model parcel entrains total water `qv + ql` and splits it into vapour and cloud water at each level; the tracer parcel of each set entrains its own `qv + ql` the same way, is scaled by the model's total-water change in the split, and its cloud water is condensed from it with `wtr_transfer` (`wtr_proc_cond_liq`, α hook). This replaces the passive entrainment of the `qv` and `ql` tracers in `qcko` / `qcdo`. (2) After the solver, where negative cloud water or rain borrows vapour in the same layer, the net vapour given to cloud water and to rain by the two borrowings is moved in one block after both, from each vapour tracer to its cloud-water / rain tracer (one `wtr_transfer` per destination, no fractionation: a numerical fix). |
 | `physics/tools/water_tracers_utils.F90` (step 10) | Three more helpers. `wtr_exchange`: two-way move between two stores with the α of each direction (one fractionating process, e.g. condensation/evaporation). `wtr_net`: one net, non-fractionating change of n stores after a list of model steps (losers give tracer at their own ratio into a pool, gainers get the pool ratio; water the model creates gets a given ratio). `wtr_sediment`: one net sedimentation of a species in a column (all sub-steps together), rebuilding the flux out of each level from the model mass budget, top down. |
 | `physics/MP/Thompson/module_mp_thompson.F90` | **Step 10.** `mp_gt_driver`: new arguments `wtr_nset, wtr_species, wtr_q, wtr_ppt`; copies each column's tracers in and out of the column routine; tracer surface precipitation of the last inner step (like `RAINNCV`); vapour created by the negative-`qv` reset (1e-7) gets the column vapour ratio of each set. `mp_thompson` (column): (1) after the process rates, vapour ↔ ice, snow, graupel are one `wtr_exchange` each (`wtr_proc_dep_ice` / `wtr_proc_subl_ice`), and every other process (autoconversion, accretion, riming, collection, melting, freezing, clipping on entry) is one `wtr_net` per level; (2) cloud condensation/evaporation `prw_vcd`: one `wtr_exchange` (`cond_liq` / `evap_liq`); (3) rain evaporation `prv_rev`: one `wtr_transfer` (`evap_liq`); (4) sedimentation of cloud, ice, rain, snow, graupel: one `wtr_sediment` each, giving the tracer surface precipitation; (5) instant melting/freezing and the final floors/clips: one `wtr_net` per level. An internal routine `wtr_state` gives the model water at each stage. |
@@ -625,6 +628,128 @@ strong horizontal moisture advection in January and March (column total up to +2
 test the tracer code but not realistic winter weather. August is the case without clear forcing
 issues (column vapour 20–43 mm).
 
+### Isotopes, step 1: isotope sets with α = 1 (✅ passed, 2026-11-16)
+
+With `wtr_species = 'H2O', 'HDO', 'H218O'` and one tag there are 6 sets (36 tracers): `H2O`, `H2O_COL`,
+`HDO`, `HDO_COL`, `H218O`, `H218O_COL`. With α = 1 and all sources at δ = 0, every isotope set must
+be bit-identical to the H2O set with the same tag, in all 6 phases, precipitation and `QFLX`
+(δ = 0 ‰ everywhere), and adding the isotope sets must not change any other field.
+
+| Test | Run | Pass if |
+|---|---|---|
+| A | tagging off | `output.nc` byte-identical to the baseline (the change only acts with tagging on) |
+| E | `arm_sgp_summer_1997_A`, `--n_itt_out 1`, `'zero'` tags, 3 species | `notes/check_iso.py <new> <H2O-only run>`: every isotope set = its H2O set (max diff 0), and all fields of the H2O-only run (model and H2O sets) identical |
+
+Reference for test E: the same case run with `wtr_species = 'H2O'` (saved before the rebuild).
+The column budget (`notes/budget_tags.py`) of that run closes to 0.35 mm for the bulk set and
+0.05 mm for the tag over 96 h, with output every step.
+
+Result of test E (`arm_sgp_summer_1997_A`, 96 h, output every 600 s, 6 sets):
+
+| Set | vs | max\|diff\|, 6 phases + precipitation + `QFLX` | δ(qv) |
+|---|---|---|---|
+| `HDO` | `H2O` | 0 | 0 ‰ |
+| `HDO_COL` | `H2O_COL` | 0 | 0 ‰ |
+| `H218O` | `H2O` | 0 | 0 ‰ |
+| `H218O_COL` | `H2O_COL` | 0 | 0 ‰ |
+
+All 165 fields of the H2O-only run (model fields and H2O sets) are bit-identical in the run with
+isotopes. Test A not repeated: the change acts only with tagging on.
+
+### Isotopes, step 2a: equilibrium fractionation (✅ passed, 2026-11-17)
+
+Every phase change already calls `wtr_alpha`; step 2a gives it values for the isotopes. H2O
+(bulk and tags) is unchanged by construction: `wtr_alpha` is exactly 1 for H2O and every new
+branch is taken only for isotope sets.
+
+| File | Change |
+|---|---|
+| `physics/tools/water_isotopes.F90` | **New.** Fractionation factors and isotope helpers ported from iCESM1.2 (`water_isotopes.F90`, `water_types.F90`, CAM `water_tracers.F90`); isotopes carried as R/R_VSMOW (`Rstd` = 1). Step 2a uses only `wiso_alpl`, `wiso_alpi`. |
+| `physics/tools/water_tracers_utils.F90` | `wtr_alpha`: vapour → liquid α_l(T) (Horita & Wesolowski 1994); vapour → ice α_i(T) (Merlivat & Nief 1967 for HDO, Majoube 1971b for H218O); liquid → vapour 1/α_l; ice → vapour 1 (layer-by-layer sublimation, as iCESM); freezing, melting, surface, sea ice 1; exactly 1 for H2O. `wtr_transfer` with α ≠ 1: the water moved is in equilibrium with the water left in the source (`dtrc = trc·α f / (1 + (α−1) f)`, f = dq/src_q), equal to α·f·trc for small f and never more than the source holds; where the model takes all of a store or more (f ≥ 1, overdraw with `rdef`) the tracer follows at the source ratio without α. With α = 1 the arithmetic is the same as before (bit-identical). Uses `water_isotopes`. |
+| `physics/PBL/SATMEDMF/satmedmfvdifq.F` | Dew/frost: isotope bulk sets now lose vapour at their own ratio with α (like tags); only the H2O bulk set takes `evap` directly. Upward evaporation enters isotope sets at δ = 0 until the surface step. |
+| `scm/src/scm_water_tracers.F90` | Forcing: isotope bulk sets get moistening `+dqv` (advected vapour at δ = 0 for now) and lose vapour at their own ratio when drying. H2O bulk set unchanged. |
+| `.meta` of `satmedmfvdifq`, `samfshalcnv`, `samfdeepcnv`, `mp_thompson`, `GFS_photochemistry`, `GFS_typedefs` | `water_isotopes.F90` added to `dependencies` (re-run cmake). |
+
+**Convective transport of isotope vapour (fix, 2026-11-17).** The first 2a runs showed isotope
+noise wherever deep convection acts (`twpice` from hour 22, SGP A): vapour δ alternating level by
+level, independently in HDO and H218O, so vapour d-excess of +100 to +450 ‰ (equilibrium only: ~0)
+and a few impossible values (δ¹⁸O −630 ‰). Cause: SAMF moves the environment (subsidence/uplift,
+TVD flux limiter) in one explicit step of up to 3–5 layers; the TVD scheme is monotone only below
+one layer per step. The model vapour is kept in check by saturation (it is itself rough at those
+hours, 2–3 % level to level); a ratio has nothing to restore it. The ratio limiter only caps this
+noise; widening it for isotopes (tried, removed) cannot remove it. Fix: for isotope sets the
+convective transport is redone sub-stepped (`wtr_cnv_substep`, first-order upwind, at most one
+layer per sub-step, the scheme's own source terms and mass fluxes) for the isotope and for the model
+vapour; their quotient is the new isotope ratio, applied to the model's transported vapour, plus
+the isotope of the rain evaporated below cloud. So the isotope amount follows the model vapour and
+its composition is smooth. Toy column, 200 steps at Courant 4: the scheme's single explicit step
+flips sign at 27 of 27 levels and diverges; sub-stepped: smooth, monotone δ (−114 to −207 ‰). H2O
+sets: unchanged (limiter as before).
+
+| File | Change |
+|---|---|
+| `physics/tools/water_tracers_utils.F90` | New `wtr_cnv_substep`: sub-stepped upwind convective transport of one vapour field in a column, with the scheme's source tendencies, net cloud mass flux and kb/jmin corrections. |
+| `physics/CONV/SAMF/samfdeepcnv.f`, `samfshalcnv.f` | Keep the source tendencies before the environment term (`wsq` model vapour, `wse` each set) and the rain evaporated below cloud (`wqev`, `wiev`). At the end, H2O sets first (ratio limiter, unchanged), then isotope sets (deep: where it rains): new isotope vapour = (twin's new vapour − its evaporated rain) × (sub-stepped isotope / sub-stepped twin) + the isotope's evaporated rain. The twin is the model vapour for an isotope bulk set and the matching H2O tag for an isotope tag set (2026-11-20; before, isotope tags also used the model vapour, so their δ against the H2O tag mixed two different transports: tagged δ alternating level by level, δD and δ¹⁸O off by the same amount, e.g. −685 … +129 ‰ on `flux_clar_2022081500`). After that, each isotope tag's ratio to its H2O tag is kept within the range it had in the column (levels 1..ktcon) before the scheme: one `wtr_ratio_limit` call per isotope tag, deep and shallow (2026-11-20, see the cloud-top fix below). |
+| `physics/tools/water_tracers_config.F90` | New `wtr_h2o_twin(m, set_species, set_kind)`: the H2O set matching set m (same kind; for a tag, the same tag). |
+
+Results (2026-11-17; `arm_sgp_summer_1997_A` 96 h with output every step, `twpice` 594 h hourly;
+3 species, `'zero'` tags; spin-up 24 h left out of means; plots by `notes/plot_isotopes.py`):
+
+| Check | `twpice` | SGP A |
+|---|---|---|
+| H2O sets and model fields vs H2O-only run | — | 165 of 165 fields bit-identical |
+| Isotope values finite, 0 ≤ isotope tag ≤ isotope bulk | yes | yes |
+| Vapour d-excess, median (1–99 %), below 150 hPa | −2.6 ‰ (−14 … +28) | −0.5 ‰ (−26 … +54) |
+| Vapour δD–δ¹⁸O slope (equilibrium theory ~8) | 7.1 | 7.4 |
+| Mean vapour δD at 500 hPa: model / Rayleigh | −91 / −157 ‰ | −42 / −178 ‰ |
+| Cloud liquid enrichment over vapour / equilibrium (median) | 1.19 | 1.42 |
+| Cloud ice enrichment over vapour / equilibrium (median) | 0.84 | 0.62 |
+| Amount effect, corr(precip rate, precip δ) | −0.62 | −0.60 |
+| Column budget, max \|R\| H2O / HDO / H218O | (hourly output) | 0.35 / 0.40 / 0.36 mm |
+
+Further tests (2026-11-20, hourly output): `MOSAiC-AMPS` and `flux_clar_2022081500`: vapour d-excess
+median −1.4 / −1.1 ‰, δD–δ¹⁸O slope 8.7 / 7.8, cloud ice enrichment 1.02 / 0.94 of equilibrium, cloud
+liquid 1.69 / 1.06 (MOSAiC: mixed-phase cloud, liquid partly evaporating while ice grows; to look
+at), H2O bulk = model water (round-off ≤ 1e-20 kg/kg in ql, qi). They showed the isotope-tag
+inconsistency fixed above (twin = matching H2O tag). Rerun with the fix (2026-11-20): SGP A still
+165 of 165 fields bit-identical; tagged vapour δ¹⁸O on `flux_clar_2022081500` −74 … 0 ‰ (was −323 …
++786), smooth in height (hour 18: −0.3 … −3.6 ‰, was alternating +21/−7/+22), tagged d-excess median
+−3.3 ‰; isotope tag budgets now close like the H2O tag (SGP A max |R| 0.047–0.050 mm, was ~0.2).
+
+**Isotope tags at the deep-convection cloud top (fix, 2026-11-20).** With the twin fix, SGP X
+(`arm_sgp_summer_1997_X`, 29 days) still had a few impossible tagged values (tagged vapour δ¹⁸O down
+to −843 ‰, some 0 or negative isotope tags). A temporary debug run (removed) found all of them in deep
+convection, in raining columns, at cloud top or up to 3 levels below it (57–107 hPa); shallow
+convection printed nothing. There the vapour is tiny compared with what the scheme adds or removes
+at cloud top, so the sub-stepped H2O tag and isotope tag the ratio is taken from end up near zero or
+negative, and their quotient is 0 or negative. Fix: after the twin calculation, the isotope tag / H2O
+tag ratio is kept within its pre-scheme column range by `wtr_ratio_limit` (one call per isotope tag,
+`samfdeepcnv.f` and `samfshalcnv.f`). Only isotope-tag sets pass through it, so H2O sets, the model
+and isotope bulk sets cannot change. Checks: SGP X rerun, only the 18 isotope-tag fields differ from
+the run without the fix; tagged vapour δ¹⁸O −133 … 0 ‰ (was down to −843). What is left above 200 hPa
+(60 points on SGP X, 134 on `twpice`): isotope tags more than 100 ‰ lighter than the isotope bulk set,
+changing slowly and inside the bulk range. That is physics, not a bug: the tag is surface water
+lifted and distilled by deep convection, while the bulk set also holds initial and advected water
+at δ = 0.
+
+Before the transport fix the same runs had vapour d-excess of +100 to +450 ‰ in convection and
+δ¹⁸O down to −630 ‰. Vapour lies between no depletion and Rayleigh (mixing, re-evaporation);
+cloud liquid is more enriched than equilibrium with the local vapour (formed lower, from heavier
+vapour, and carried up), cloud ice less (convective ice still made with the liquid α, step 2b).
+Isotope tags close their budget like the H2O tag (0.05 mm) since the twin fix of 2026-11-20.
+
+Sources still at δ = 0 in 2a: initial values, surface evaporation, forcing moistening,
+photochemistry. So absolute δ values are not yet realistic (too heavy near the surface); 2a
+tests the fractionation itself.
+
+Tests (`arm_sgp_summer_1997_A`, `--n_itt_out 1`, 3 species, `'zero'` tags):
+
+| Check | Tool | Pass if |
+|---|---|---|
+| H2O sets and model unchanged | `notes/check_iso.py <new> scm/run/output_sgpA_h2o_only_ref.nc --alpha` | 0 of 165 reference fields differ; isotope values finite; 0 ≤ isotope tag ≤ isotope bulk |
+| Isotope budget | `notes/budget_tags.py <new>` | R of HDO and H218O as small as that of H2O (0.35 mm) |
+| Physics vs theory | `notes/plot_isotopes.py <new>` | fresh cloud condensate on the equilibrium line ε = 1000(α(T) − 1); vapour depleted with height, between no depletion and Rayleigh; rain enriched over vapour; vapour d-excess near 0 (no kinetic effects yet) |
+
 ---
 
 ## 8. Next steps
@@ -652,6 +777,6 @@ by hand, or follow a rule that is only right for α = 1:
 | Convection interface values `ctro` and PBL parcel scaling `wqt × wqm1/wqm0` | Rebuild values from the model, not moves of water | Unchanged |
 | Water the model creates (no ratio to follow): convection `ctro` where the model vapour is ≤ 0, water taken from an updraft parcel that holds ≤ 0, Thompson floors (`wrv`) | Column vapour ratio of the set over levels with vapour > 0 (`wtr_col_ratio`; fix after step 11) | Column ratio: for an isotope set that is its mean isotope ratio |
 | Photochemistry: loss `tracer × f` | Same as `wtr_transfer` of `(1 − f) × q`, no α | Methane oxidation and the photolysis loss fractionate: give the source `S` of an isotope set its own isotope ratio, and the loss an α hook (`wtr_transfer` call) |
-| `wtr_transfer` not capped (step 11) | Where the model drives a store negative, the tracer follows at the same ratio | With α ≠ 1 an isotope ratio of a negative or near-zero store is meaningless: check where this happens (deep-convection cloud tops) and decide a rule (e.g. α = 1 there) |
+| `wtr_transfer` not capped (step 11) | Where the model drives a store negative, the tracer follows at the same ratio | Decided in step 2a: α is applied only when part of a store moves (f < 1); a store emptied or overdrawn moves at the source ratio without α |
 | Thompson: all exchanges other than vapour–ice/snow/graupel (`wtr_net`) | One net, non-fractionating change per level | Rain evaporation already has its own call (`wtr_proc_evap_liq`); partial re-equilibration of falling rain with the vapour (Stewart 1975) is not included |
 | Surface evaporation and dew/frost (PBL) | α hook at dew/frost; upward evaporation gets the surface value | Evaporation needs the Craig-Gordon α and a surface isotope value (ocean, land, sea ice); see step 1 above |

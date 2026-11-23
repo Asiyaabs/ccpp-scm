@@ -95,7 +95,7 @@ tracers are off.
 | Option | Default | Meaning |
 |---|---|---|
 | `tagging` | `.false.` | Master switch |
-| `wtr_species` | `'H2O'` | Species to carry. Only `H2O` for now; `HDO` and `H218O` are planned |
+| `wtr_species` | `'H2O'` | Species to carry: any of `H2O`, `HDO`, `H218O` (isotopes: no fractionation yet, see [Roadmap](#roadmap)) |
 | `wtr_tag_names` | `'COL'` | Names of the tags (up to 10) |
 | `wtr_tag_source` | `'surface'` | Where each tag's water enters: `surface` = surface evaporation in the column |
 | `wtr_bulk_check` | `.true.` | Carry the `H2O` bulk check set |
@@ -130,8 +130,13 @@ Each tracer is named `<phase>_<species>[_<tag>]`:
 |---|---|---|
 | `H2O` | bulk check | `qv_H2O` … `qg_H2O` |
 | `H2O_COL` | tag | `qv_H2O_COL` … `qg_H2O_COL` |
-| `HDO` *(planned)* | isotope bulk | `qv_HDO` … `qg_HDO` |
-| `HDO_COL` *(planned)* | isotope tag | `qv_HDO_COL` … `qg_HDO_COL` |
+| `HDO` | isotope bulk | `qv_HDO` … `qg_HDO` |
+| `HDO_COL` | isotope tag | `qv_HDO_COL` … `qg_HDO_COL` |
+
+Isotopes are carried as the isotope ratio relative to VSMOW times the water (R/R_VSMOW), so an
+isotope tracer has the size of the water it belongs to and
+δ = 1000 × (`qv_HDO` / `qv_H2O` − 1) ‰. An isotope set always has its bulk set; its sources
+(initial water, forcing, surface evaporation, photochemistry) enter at δ = 0 for now.
 
 The tracers are appended in memory after the tracers from the tracer file, as generic tracers
 (type 0); the tracer file itself is not changed. The convection schemes (samfdeepcnv,
@@ -197,7 +202,9 @@ and
 | Schemes | Thompson microphysics | ✅ |
 | Schemes | water photochemistry | ✅ |
 | Schemes | surface (ocean, sea ice, Noah-MP), one at a time | ⏳ |
-| Isotopes | HDO and H₂¹⁸O with fractionation | ⏳ |
+| Isotopes | Step 1: HDO and H₂¹⁸O sets, no fractionation (α = 1, δ = 0 everywhere) | ✅ |
+| Isotopes | Step 2a: equilibrium fractionation (liquid, ice) | ✅ |
+| Isotopes | Kinetic effects, surface isotope values (Craig-Gordon), advected vapour δ | ⏳ |
 
 Each scheme is accepted only when the `H2O` bulk set still equals the model water.
 
