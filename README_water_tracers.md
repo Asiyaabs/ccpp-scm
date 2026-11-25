@@ -8,7 +8,8 @@ They answer questions the model water alone cannot:
   precipitation.
 - **What isotopic signal does it carry?** *Water isotopes* (HDO, H₂¹⁸O) follow the same
   paths as the water, with fractionation at phase changes. This lets the model be compared
-  with isotope observations. (Planned.)
+  with isotope observations. (Equilibrium fractionation in place; kinetic effects and
+  surface isotope values next.)
 
 This branch adds water tracers to CCPP-SCM v8.0.0 with the `SCM_GFS_v17_p8_ugwpv1` suite,
 following the iCESM / iCAM approach.
@@ -19,9 +20,12 @@ following the iCESM / iCAM approach.
 | **Physics** | [Asiyaabs/ccpp-physics](https://github.com/Asiyaabs/ccpp-physics), branch `feature/water-tracers` |
 | **Change log and tests** | [`README_water_tracers_changes.md`](README_water_tracers_changes.md) |
 
-> **Status:** framework complete (namelist, tracer registration, index tables, helper routine,
-> initial values, forcing, output). The physics schemes don't move the tracers yet, apart
-> from passive transport by convection. See [Roadmap](#roadmap).
+> **Status:** water tagging works in every scheme of the suite (PBL, shallow and deep
+> convection, Thompson microphysics, water photochemistry); the `H2O` bulk set equals the model
+> water in all tested cases, including two very cold, drying NYS Mesonet cases (Fredonia, Burt,
+> 2023-03-14) that needed two fixes on 2026-11-24/25 (see the change log). Isotopes (HDO,
+> H₂¹⁸O) have equilibrium fractionation; all their sources still enter at δ = 0, so absolute δ
+> values are not realistic yet. The surface schemes (ocean, sea ice, Noah-MP) are next. See [Roadmap](#roadmap).
 
 ---
 
@@ -95,7 +99,7 @@ tracers are off.
 | Option | Default | Meaning |
 |---|---|---|
 | `tagging` | `.false.` | Master switch |
-| `wtr_species` | `'H2O'` | Species to carry: any of `H2O`, `HDO`, `H218O` (isotopes: no fractionation yet, see [Roadmap](#roadmap)) |
+| `wtr_species` | `'H2O'` | Species to carry: any of `H2O`, `HDO`, `H218O` (isotopes: equilibrium fractionation only, see [Roadmap](#roadmap)) |
 | `wtr_tag_names` | `'COL'` | Names of the tags (up to 10) |
 | `wtr_tag_source` | `'surface'` | Where each tag's water enters: `surface` = surface evaporation in the column |
 | `wtr_bulk_check` | `.true.` | Carry the `H2O` bulk check set |
@@ -181,10 +185,23 @@ and surface fluxes go into the per-step arrays `wtr_raincd`, `wtr_raincs`, `wtr_
 `wtr_snowmp` and `wtr_qflx` (standard names in
 [`README_water_tracers_changes.md`](README_water_tracers_changes.md)).
 
+Which helper a scheme calls depends on the move:
+
+| Helper | Use |
+|---|---|
+| `wtr_transfer` | one-way move of water from one store to another (condensation, rain out, evaporation) |
+| `wtr_alpha` | fractionation factor of a process (exactly 1 for H2O and tags) |
+| `wtr_exchange` | two-way process between two stores, with the α of each direction |
+| `wtr_net` | one net change after many non-fractionating steps at a level (riming, melting, autoconversion, …) |
+| `wtr_sediment` | precipitation falling through the column to the surface |
+| `wtr_col_ratio` | ratio for water the model creates (floors, cloud tops) |
+| `wtr_ratio_limit` | after convection: keeps a tracer's ratio within its pre-scheme column range |
+| `wtr_cnv_substep` | after convection, isotope sets: convective transport redone in steps of at most one layer |
+
 The code is in
-[`physics/tools/water_tracers_config.F90`](https://github.com/Asiyaabs/ccpp-physics/blob/feature/water-tracers/physics/tools/water_tracers_config.F90)
-and
-[`physics/tools/water_tracers_utils.F90`](https://github.com/Asiyaabs/ccpp-physics/blob/feature/water-tracers/physics/tools/water_tracers_utils.F90).
+[`physics/tools/water_tracers_config.F90`](https://github.com/Asiyaabs/ccpp-physics/blob/feature/water-tracers/physics/tools/water_tracers_config.F90),
+[`physics/tools/water_tracers_utils.F90`](https://github.com/Asiyaabs/ccpp-physics/blob/feature/water-tracers/physics/tools/water_tracers_utils.F90)
+and `physics/tools/water_isotopes.F90` (fractionation factors, ported from iCESM1.2).
 
 ---
 
@@ -203,7 +220,7 @@ and
 | Schemes | water photochemistry | ✅ |
 | Schemes | surface (ocean, sea ice, Noah-MP), one at a time | ⏳ |
 | Isotopes | Step 1: HDO and H₂¹⁸O sets, no fractionation (α = 1, δ = 0 everywhere) | ✅ |
-| Isotopes | Step 2a: equilibrium fractionation (liquid, ice) | ✅ |
+| Isotopes | Step 2a: equilibrium fractionation (liquid, ice); tested on `twpice`, SGP A and X, MOSAiC, NYS Mesonet cases | ✅ |
 | Isotopes | Kinetic effects, surface isotope values (Craig-Gordon), advected vapour δ | ⏳ |
 
 Each scheme is accepted only when the `H2O` bulk set still equals the model water.

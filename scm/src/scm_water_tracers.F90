@@ -11,7 +11,7 @@ module scm_water_tracers
 
   use scm_kinds,            only: dp
   use water_tracers_config, only: wtr_config_type, wtr_kind_bulk, wtr_kind_tag, wtr_species_h2o
-  use water_tracers_utils,  only: wtr_transfer
+  use water_tracers_utils,  only: wtr_transfer, wtr_col_ratio, wtr_qmin_ratio
 
   implicit none
   private
@@ -67,7 +67,9 @@ contains
   !! that apply_forcing_DEPHY gave the model vapour:
   !!  - H2O bulk set: + dqv (stays equal to the model vapour)
   !!  - isotope bulk sets: moistening + dqv (advected vapour at delta = 0 for now), drying
-  !!    removes vapour at the set's own ratio (no fractionation)
+  !!    removes vapour at the set's own ratio (no fractionation); where the
+  !!    forcing takes more than a level holds, the extra goes at the column ratio (rdef), so a
+  !!    level with model vapour near 0 cannot amplify the isotope's own ratio there
   !!  - tags: drying (dqv < 0) removes vapour at the tag ratio; moistening adds nothing,
   !!    because advected vapour did not evaporate in the column.
   !!    Test mode wtr_tag_moisten = .true.: tags get + dqv like the bulk set (x wtr_init_frac in the fraction test).
@@ -80,10 +82,19 @@ contains
 
     integer  :: s, i, k, iv, iwv
     real(dp) :: dqv, qv_old
+    real(dp) :: wrc(scm_state%n_cols)
+    logical  :: iso_bulk
 
     iwv = scm_state%water_vapor_index
     do s = 1, Model%wtr_nset
       iv = Model%wtr_idx(s,1)
+      iso_bulk = Model%wtr_kind(s) == wtr_kind_bulk .and. Model%wtr_species(s) /= wtr_species_h2o
+      if (iso_bulk) then
+        do i = 1, scm_state%n_cols
+          wrc(i) = wtr_col_ratio(scm_state%state_tracer(i,:,iwv,1) - scm_state%dt*scm_state%qv_force_tend(i,:), &
+                                 scm_state%state_tracer(i,:,iv,1), 1.0_dp, wtr_qmin_ratio)
+        end do
+      end if
       do k = 1, scm_state%n_levels
         do i = 1, scm_state%n_cols
           dqv = scm_state%dt*scm_state%qv_force_tend(i,k)
@@ -94,7 +105,11 @@ contains
             scm_state%state_tracer(i,k,iv,1) = scm_state%state_tracer(i,k,iv,1) + dqv*Model%wtr_tag_frac
           else if (dqv < 0.0_dp) then
             qv_old = scm_state%state_tracer(i,k,iwv,1) - dqv
-            call wtr_transfer(qv_old, scm_state%state_tracer(i,k,iv,1), -dqv)
+            if (iso_bulk) then
+              call wtr_transfer(qv_old, scm_state%state_tracer(i,k,iv,1), -dqv, rdef=wrc(i))
+            else
+              call wtr_transfer(qv_old, scm_state%state_tracer(i,k,iv,1), -dqv)
+            end if
           end if
         end do
       end do
